@@ -22,19 +22,21 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="ar" suppressHydrationWarning dir="rtl">
-			<body className={`${Playpen.className} antialiased`}>
+			<body className={`${Playpen.className} antialiased scroll-smooth`}>
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-					<TooltipProvider>{children}</TooltipProvider>
-					<Toaster
-						theme="system"
-						richColors
-						duration={5000}
-						icons={{
-							success: <CircleCheckBig />,
-							warning: <CircleAlert />,
-							error: <CircleX />,
-						}}
-					/>
+					<TooltipProvider>
+						{children}
+						<Toaster
+							theme="system"
+							richColors
+							duration={5000}
+							icons={{
+								success: <CircleCheckBig />,
+								warning: <CircleAlert />,
+								error: <CircleX />,
+							}}
+						/>
+					</TooltipProvider>
 				</ThemeProvider>
 			</body>
 		</html>

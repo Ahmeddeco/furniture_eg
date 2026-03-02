@@ -1,8 +1,12 @@
+import Footer from "@/components/layout/Footer"
+import NavBar from "@/components/layout/NavBar"
+
 export default function FrontEndLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<main className="">
-			<h4>FrontEndLayout</h4>
-			{children}
-		</main>
+		<>
+			<NavBar />
+			<main className="min-h-dvh px-4">{children}</main>
+			<Footer />
+		</>
 	)
 }

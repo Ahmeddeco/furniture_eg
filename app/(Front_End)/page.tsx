@@ -1,16 +1,11 @@
-import { session } from "@/auth/session"
-import SignIn from "@/auth/SignIn"
-import SignOut from "@/auth/signOut"
+import FindWhatYouNeed from "@/components/pages/home/FindWhatYouNeed"
+import Hero from "@/components/pages/home/Hero"
 
-export default async function HomePage() {
-	const Session = await session()
-	console.log("Session from HomePage", Session)
-
+export default function HomePage() {
 	return (
-		<div className="">
-			<h1>Welcome to Homepage!</h1>
-			<SignIn />
-			<SignOut />
-		</div>
+		<>
+			<Hero />
+			<FindWhatYouNeed />
+		</>
 	)
 }

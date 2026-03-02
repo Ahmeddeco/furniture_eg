@@ -10,8 +10,10 @@ export default async function SignOut() {
 	}
 
 	return (
-		<Form action={signOut}>
-			<Button type="submit">SignOut</Button>
+		<Form action={signOut} className="w-full">
+			<Button type="submit" variant={"destructive"} size={"full"}>
+				SignOut
+			</Button>
 		</Form>
 	)
 }

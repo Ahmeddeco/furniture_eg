@@ -8,9 +8,9 @@ export const VerificationSchema = z.object({
   id: z.string(),
   identifier: z.string(),
   value: z.string(),
-  expiresAt: z.date(),
-  createdAt: z.date(),
-  updatedAt: z.date(),
+  expiresAt: z.coerce.date(),
+  createdAt: z.coerce.date(),
+  updatedAt: z.coerce.date(),
 })
 
 export type Verification = z.infer<typeof VerificationSchema>

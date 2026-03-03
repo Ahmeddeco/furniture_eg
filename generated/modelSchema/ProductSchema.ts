@@ -1,14 +1,15 @@
 import { z } from 'zod';
+import { ProductStatusSchema } from '../inputTypeSchemas/ProductStatusSchema'
 
 /////////////////////////////////////////
 // PRODUCT SCHEMA
 /////////////////////////////////////////
 
 export const ProductSchema = z.object({
+  status: ProductStatusSchema,
   id: z.string(),
   title: z.string(),
   model: z.string(),
-  manufacture: z.string(),
   miniDescription: z.string(),
   manual: z.string().nullish(),
   description: z.string().nullish(),
@@ -19,9 +20,10 @@ export const ProductSchema = z.object({
   mainImage: z.string(),
   bluePrint: z.string().nullish(),
   images: z.string().array(),
+  createdAt: z.coerce.date(),
+  updatedAt: z.coerce.date(),
   categoryId: z.string(),
-  createdAt: z.date(),
-  updatedAt: z.date(),
+  factoryId: z.string(),
 })
 
 export type Product = z.infer<typeof ProductSchema>

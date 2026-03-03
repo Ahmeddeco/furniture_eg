@@ -12,12 +12,12 @@ export const AccountSchema = z.object({
   accessToken: z.string().nullish(),
   refreshToken: z.string().nullish(),
   idToken: z.string().nullish(),
-  accessTokenExpiresAt: z.date().nullish(),
-  refreshTokenExpiresAt: z.date().nullish(),
+  accessTokenExpiresAt: z.coerce.date().nullish(),
+  refreshTokenExpiresAt: z.coerce.date().nullish(),
   scope: z.string().nullish(),
   password: z.string().nullish(),
-  createdAt: z.date(),
-  updatedAt: z.date(),
+  createdAt: z.coerce.date(),
+  updatedAt: z.coerce.date(),
 })
 
 export type Account = z.infer<typeof AccountSchema>

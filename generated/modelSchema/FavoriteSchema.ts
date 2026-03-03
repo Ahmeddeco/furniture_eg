@@ -8,7 +8,7 @@ export const FavoriteSchema = z.object({
   id: z.string(),
   userId: z.string(),
   productId: z.string(),
-  createdAt: z.date(),
+  createdAt: z.coerce.date(),
 })
 
 export type Favorite = z.infer<typeof FavoriteSchema>

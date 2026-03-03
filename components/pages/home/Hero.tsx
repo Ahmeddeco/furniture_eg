@@ -3,7 +3,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Phone, ShoppingBag } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import ceilingLamp from "@/public/images/ceilingLamp.avif"
+import ceilingLamp from "@/public/images/ceilingLamp.webp"
 
 export default function Hero() {
 	return (
@@ -25,19 +25,19 @@ export default function Hero() {
 			{/* --------------------------------- Vase -------------------------------- */}
 			<div className="absolute lg:h-[60vh] h-[40vh] z-20 lg:bottom-32 bottom-12 right-0 lg:-right-10">
 				<div className="relative aspect-9/16 h-full">
-					<Image src={"/images/vase2.avif"} alt={"vase2"} fill className="object-contain " />
+					<Image src={"/images/vase2.webp"} alt={"vase2"} fill className="object-contain " />
 				</div>
 			</div>
 
 			{/* --------------------------------- sofa -------------------------------- */}
 			<div className="absolute lg:bottom-12 bottom-0 lg:right-24 left-4 h-[22vh] lg:h-[40vh] z-20">
 				<div className=" relative aspect-video h-full ">
-					<Image src={"/images/sofa1.avif"} alt={"hero sofa"} fill className="object-contain object-bottom" />
+					<Image src={"/images/sofa1.webp"} alt={"hero sofa"} fill className="object-contain object-bottom" />
 				</div>
 			</div>
 
 			{/* -------------------------------- Text -------------------------------- */}
-			<div className="h-full w-full z-20 flex items-center justify-center">
+			<div className="h-full w-full z-20 flex items-start lg:items-center justify-center">
 				<Card className=" w-fit! m-8 flex flex-col gap-4 justify-center  bg-card/50 shadow-none backdrop-blur-md ">
 					<CardHeader>
 						<CardTitle>

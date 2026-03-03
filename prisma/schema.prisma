@@ -25,7 +25,7 @@ generator zod {
   // default is false
   useDefaultValidators             = false
   // default is true
-  coerceDate                       = false
+  coerceDate                       = true
   // default is true
 }
 
@@ -36,23 +36,6 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-}
-
-model User {
-  id            String     @id @default(cuid())
-  name          String?
-  email         String
-  emailVerified Boolean    @default(false)
-  image         String?
-  createdAt     DateTime   @default(now())
-  updatedAt     DateTime   @updatedAt
-  sessions      Session[]
-  accounts      Account[]
-  role          Role?      @default(user)
-  favorites     Favorite[]
-
-  @@unique([email])
-  @@map("user")
 }
 
 model Session {
@@ -110,6 +93,12 @@ enum Role {
   buyer
 }
 
+enum ProductStatus {
+  draft
+  published
+  archived
+}
+
 model Category {
   id      String    @id @default(cuid())
   title   String
@@ -123,42 +112,87 @@ model Category {
 model Color {
   id        String    @id @default(cuid())
   title     String
-  colorCode String
+  colorCode String    @unique
   product   Product[]
 }
 
+model User {
+  id            String   @id @default(cuid())
+  name          String?
+  email         String
+  emailVerified Boolean  @default(false)
+  role          Role?    @default(user)
+  mobile        String?
+  country       String?
+  state         String?
+  city          String?
+  image         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  sessions  Session[]
+  accounts  Account[]
+  favorites Favorite[]
+  factories Factory[]
+
+  @@unique([email])
+  @@map("user")
+}
+
+model Factory {
+  id      String  @id @default(cuid())
+  name    String
+  logo    String?
+  info    String? @db.Text
+  country String
+  state   String
+  city    String?
+  mobile  String
+  hotLine String?
+
+  // Relations
+  owner    User[]
+  products Product[]
+}
+
 model Product {
-  id              String   @id @default(cuid())
+  id              String        @id @default(cuid())
   title           String
   model           String
-  manufacture     String
   miniDescription String
   manual          String?
-  description     String?
-  quantity        Int
-  lowStock        Int      @default(0)
-  price           Float    @default(0.0)
-  discount        Int?     @default(0)
+  description     String?       @db.Text
+  status          ProductStatus @default(draft)
+  quantity        Int           @default(0)
+  lowStock        Int           @default(0)
+  price           Int           @default(0)
+  discount        Int?          @default(0)
   mainImage       String
   bluePrint       String?
   images          String[]
-  category        Category @relation(fields: [categoryId], references: [id])
-  categoryId      String
-  color           Color[]
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
 
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  favorites Favorite[]
+  // Relations
+  color      Color[]
+  favorites  Favorite[]
+  category   Category   @relation(fields: [categoryId], references: [id])
+  categoryId String
+  factory    Factory    @relation(fields: [factoryId], references: [id], onDelete: Cascade)
+  factoryId  String
+
+  @@index([categoryId, factoryId])
 }
 
 model Favorite {
   id        String   @id @default(cuid())
-  user      User     @relation(fields: [userId], references: [id])
-  product   Product  @relation(fields: [productId], references: [id])
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String
   createdAt DateTime @default(now())
 
   @@unique([userId, productId])
-  @@index([userId])
+  @@index([userId, productId])
 }

@@ -178,13 +178,13 @@ export type ColorOrderByWithRelationInput = {
 
 export type ColorWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  colorCode?: string
   AND?: Prisma.ColorWhereInput | Prisma.ColorWhereInput[]
   OR?: Prisma.ColorWhereInput[]
   NOT?: Prisma.ColorWhereInput | Prisma.ColorWhereInput[]
   title?: Prisma.StringFilter<"Color"> | string
-  colorCode?: Prisma.StringFilter<"Color"> | string
   product?: Prisma.ProductListRelationFilter
-}, "id">
+}, "id" | "colorCode">
 
 export type ColorOrderByWithAggregationInput = {
   id?: Prisma.SortOrder

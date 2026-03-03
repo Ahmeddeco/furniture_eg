@@ -11,9 +11,13 @@ export const UserSchema = z.object({
   name: z.string().nullish(),
   email: z.string(),
   emailVerified: z.boolean(),
+  mobile: z.string().nullish(),
+  country: z.string().nullish(),
+  state: z.string().nullish(),
+  city: z.string().nullish(),
   image: z.string().nullish(),
-  createdAt: z.date(),
-  updatedAt: z.date(),
+  createdAt: z.coerce.date(),
+  updatedAt: z.coerce.date(),
 })
 
 export type User = z.infer<typeof UserSchema>

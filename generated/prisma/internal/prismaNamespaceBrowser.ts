@@ -51,12 +51,13 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  User: 'User',
   Session: 'Session',
   Account: 'Account',
   Verification: 'Verification',
   Category: 'Category',
   Color: 'Color',
+  User: 'User',
+  Factory: 'Factory',
   Product: 'Product',
   Favorite: 'Favorite'
 } as const
@@ -75,20 +76,6 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
-
-
-export const UserScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  email: 'email',
-  emailVerified: 'emailVerified',
-  image: 'image',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  role: 'role'
-} as const
-
-export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
 export const SessionScalarFieldEnum = {
@@ -156,14 +143,47 @@ export const ColorScalarFieldEnum = {
 export type ColorScalarFieldEnum = (typeof ColorScalarFieldEnum)[keyof typeof ColorScalarFieldEnum]
 
 
+export const UserScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  emailVerified: 'emailVerified',
+  role: 'role',
+  mobile: 'mobile',
+  country: 'country',
+  state: 'state',
+  city: 'city',
+  image: 'image',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const FactoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  logo: 'logo',
+  info: 'info',
+  country: 'country',
+  state: 'state',
+  city: 'city',
+  mobile: 'mobile',
+  hotLine: 'hotLine'
+} as const
+
+export type FactoryScalarFieldEnum = (typeof FactoryScalarFieldEnum)[keyof typeof FactoryScalarFieldEnum]
+
+
 export const ProductScalarFieldEnum = {
   id: 'id',
   title: 'title',
   model: 'model',
-  manufacture: 'manufacture',
   miniDescription: 'miniDescription',
   manual: 'manual',
   description: 'description',
+  status: 'status',
   quantity: 'quantity',
   lowStock: 'lowStock',
   price: 'price',
@@ -171,9 +191,10 @@ export const ProductScalarFieldEnum = {
   mainImage: 'mainImage',
   bluePrint: 'bluePrint',
   images: 'images',
-  categoryId: 'categoryId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  categoryId: 'categoryId',
+  factoryId: 'factoryId'
 } as const
 
 export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]

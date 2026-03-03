@@ -19,7 +19,7 @@ export default async function SignIn() {
 
 	return (
 		<Form action={signIn}>
-			<Button type="submit" variant={"outline"} size={"sm"}>
+			<Button type="submit" size={"sm"}>
 				Sign In
 				<FaGoogle />
 			</Button>

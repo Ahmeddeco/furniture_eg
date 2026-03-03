@@ -1,8 +1,14 @@
+import { ServerSidebar } from "@/components/layout/ServerSidebar"
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+
 export default function ServerLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<main className="">
-			<h4>ServerLayout</h4>
-			{children}
-		</main>
+		<SidebarProvider>
+			<ServerSidebar />
+			<div className="w-full p-6 ">
+				<SidebarTrigger />
+				<div className="min-h-[80vh]">{children}</div>
+			</div>
+		</SidebarProvider>
 	)
 }

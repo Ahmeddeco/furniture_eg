@@ -33,10 +33,15 @@ export type Account = Prisma.AccountModel
  */
 export type Verification = Prisma.VerificationModel
 /**
- * Model Category
+ * Model Class
  * 
  */
-export type Category = Prisma.CategoryModel
+export type Class = Prisma.ClassModel
+/**
+ * Model Style
+ * 
+ */
+export type Style = Prisma.StyleModel
 /**
  * Model Color
  * 

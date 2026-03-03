@@ -22,8 +22,9 @@ export const ProductSchema = z.object({
   images: z.string().array(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
-  categoryId: z.string(),
   factoryId: z.string(),
+  styleId: z.string().nullish(),
+  classId: z.string().nullish(),
 })
 
 export type Product = z.infer<typeof ProductSchema>

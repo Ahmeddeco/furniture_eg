@@ -99,19 +99,29 @@ enum ProductStatus {
   archived
 }
 
-model Category {
-  id      String    @id @default(cuid())
-  title   String
-  image   String
-  product Product[]
+model Class {
+  id          String    @id @default(cuid())
+  title       String    @unique
+  slug        String    @unique
+  description String?   @db.Text
+  product     Product[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@index([slug])
+}
+
+model Style {
+  id          String    @id @default(cuid())
+  title       String
+  description String?
+  product     Product[]
 }
 
 model Color {
   id        String    @id @default(cuid())
-  title     String
+  title     String    @unique
   colorCode String    @unique
   product   Product[]
 }
@@ -175,14 +185,16 @@ model Product {
   updatedAt       DateTime      @updatedAt
 
   // Relations
-  color      Color[]
-  favorites  Favorite[]
-  category   Category   @relation(fields: [categoryId], references: [id])
-  categoryId String
-  factory    Factory    @relation(fields: [factoryId], references: [id], onDelete: Cascade)
-  factoryId  String
+  color     Color[]
+  favorites Favorite[]
+  factory   Factory    @relation(fields: [factoryId], references: [id], onDelete: Cascade)
+  factoryId String
+  style     Style?     @relation(fields: [styleId], references: [id])
+  styleId   String?
+  class     Class?     @relation(fields: [classId], references: [id])
+  classId   String?
 
-  @@index([categoryId, factoryId])
+  @@index([factoryId, classId])
 }
 
 model Favorite {

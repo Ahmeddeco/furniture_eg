@@ -16,8 +16,9 @@ export const ProductSchema = z.object({
   mainImage: z.string(),
   bluePrint: z.string().nullish(),
   images: z.string().array(),
-  categoryId: z.string(),
   factoryId: z.string(),
+  styleId: z.string().nullish(),
+  classId: z.string().nullish(),
 })
 
 export type Product = z.infer<typeof ProductSchema>

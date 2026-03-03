@@ -5,6 +5,7 @@ import localFont from "next/font/local"
 import { ThemeProvider } from "@/components/theme/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
 import { CircleAlert, CircleCheckBig, CircleX } from "lucide-react"
+import Footer from "@/components/layout/Footer"
 
 const Playpen = localFont({
 	src: "../public/Playpen.ttf",
@@ -36,6 +37,7 @@ export default function RootLayout({
 								error: <CircleX />,
 							}}
 						/>
+						<Footer />
 					</TooltipProvider>
 				</ThemeProvider>
 			</body>

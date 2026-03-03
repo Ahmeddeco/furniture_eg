@@ -1,17 +1,18 @@
 import { z } from 'zod';
 
 /////////////////////////////////////////
-// CATEGORY SCHEMA
+// CLASS SCHEMA
 /////////////////////////////////////////
 
-export const CategorySchema = z.object({
+export const ClassSchema = z.object({
   id: z.string(),
   title: z.string(),
-  image: z.string(),
+  slug: z.string(),
+  description: z.string().nullish(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
 })
 
-export type Category = z.infer<typeof CategorySchema>
+export type Class = z.infer<typeof ClassSchema>
 
-export default CategorySchema;
+export default ClassSchema;

@@ -51,7 +51,8 @@ export default async function ColorsPage({ searchParams }: { searchParams: Promi
 						<TableRow>
 							<TableHead>color</TableHead>
 							<TableHead>title</TableHead>
-							<TableHead className="text-right">settings</TableHead>
+							<TableHead>color Code</TableHead>
+							<TableHead className="text-left">settings</TableHead>
 						</TableRow>
 					</TableHeader>
 					{/* ----------------------------- TableBody ----------------------------- */}
@@ -62,9 +63,10 @@ export default async function ColorsPage({ searchParams }: { searchParams: Promi
 									<div className="rounded-full size-12 shadow-xl border" style={{ backgroundColor: colorCode }} />
 								</TableCell>
 								<TableCell className="capitalize">{title}</TableCell>
+								<TableCell className="capitalize">{colorCode}</TableCell>
 
 								{/* -------------------------------- settings -------------------------------- */}
-								<TableCell className="text-right">
+								<TableCell className="text-left">
 									<DropdownMenu>
 										<DropdownMenuTrigger>
 											<MoreVertical />

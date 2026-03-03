@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma"
 
-/* ------------------------------ getAllFactory ----------------------------- */
+/* ------------------------------ getAllColors ----------------------------- */
 export const getAllColors = async (size: number, page: number) => {
   try {
     const totalColors = await prisma.color.count()
@@ -18,12 +18,12 @@ export const getAllColors = async (size: number, page: number) => {
   }
 }
 
-/* ------------------------------ getOneFactory ----------------------------- */
-export const getOneColor = async (id: string) => {
+/* ------------------------------ getOneColor ----------------------------- */
+export const getOneColor = async (title: string) => {
   try {
     const data = await prisma.color.findUnique({
       where: {
-        id: id,
+        title: title,
       }
     })
     return { data }
@@ -32,11 +32,3 @@ export const getOneColor = async (id: string) => {
   }
 }
 
-export const getAllFactoryForDropdown = async () => {
-  try {
-    const data = await prisma.factory.findMany({ orderBy: { name: "asc" }, select: { id: true, name: true } })
-    return data
-  } catch (error) {
-    console.error(error)
-  }
-}

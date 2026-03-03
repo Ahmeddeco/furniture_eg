@@ -3,10 +3,11 @@ import Logo from "./Logo"
 import MobileMenu from "./MobileMenu"
 import { ThemeButton } from "../theme/ThemeButton"
 import FrontNavigation from "./FrontNavigation"
+import ServerButton from "./ServerButton"
 
 export default function NavBar() {
 	return (
-		<header className="fixed inset-0 mx-auto bg-card/30 border drop-shadow-xl text-foreground backdrop-blur-2xl lg:rounded-full rounded-none px-4 h-14 z-50 container lg:mt-4 mt-0 flex items-center justify-between ">
+		<header className="fixed inset-0 mx-auto bg-foreground/80 border drop-shadow-xl text-background backdrop-blur-2xl lg:rounded-full rounded-none px-4 h-14 z-50 container lg:mt-4 mt-0 flex items-center justify-between ">
 			{/* --------------------------------- Logo -------------------------------- */}
 			<Logo />
 
@@ -20,6 +21,7 @@ export default function NavBar() {
 			{/* ------------------------------ Socials ----------------------------- */}
 			<div className="lg:flex hidden items-center gap-2">
 				<ThemeButton />
+				<ServerButton />
 				<UserButton />
 			</div>
 		</header>

@@ -14,11 +14,16 @@ export const addColorAction = async (prevState: unknown, formData: FormData) => 
     return submission.reply()
   }
   try {
-    await prisma.color.create({
-      data: {
+    await prisma.color.upsert({
+      where: { title: submission.value.title },
+      create: {
         title: submission.value.title,
         colorCode: submission.value.colorCode
       },
+      update: {
+        title: submission.value.title,
+        colorCode: submission.value.colorCode
+      }
     })
   } catch (error) {
     console.error(error)

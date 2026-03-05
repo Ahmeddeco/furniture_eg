@@ -1,6 +1,4 @@
 import Logo from "./Logo"
-import Link from "next/link"
-import React from "react"
 import { Separator } from "../ui/separator"
 import { Copyright } from "lucide-react"
 import { Badge } from "../ui/badge"

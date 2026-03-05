@@ -139,6 +139,7 @@ export type ClassScalarFieldEnum = (typeof ClassScalarFieldEnum)[keyof typeof Cl
 export const StyleScalarFieldEnum = {
   id: 'id',
   title: 'title',
+  slug: 'slug',
   description: 'description'
 } as const
 
@@ -175,6 +176,7 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 export const FactoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  slug: 'slug',
   logo: 'logo',
   info: 'info',
   country: 'country',

@@ -3,6 +3,7 @@ import { z } from 'zod'
 export const StyleSchema = z.object({
   id: z.string().nullish(),
   title: z.string(),
+  slug: z.string(),
   description: z.string().nullish(),
 })
 

@@ -43,7 +43,7 @@ export default async function ColorsPage({ searchParams }: { searchParams: Promi
 			href={"/server/colors/add"}
 		>
 			{!colors?.data.length ? (
-				<EmptyCard href={"/server/colors/add"} linkTitle={"add color"} linkIcon={Palette} />
+				<EmptyCard href={"/server/colors/add"} linkTitle={"add color"} />
 			) : (
 				<Table>
 					{/* ---------------------------- TableHeader ---------------------------- */}
@@ -74,7 +74,7 @@ export default async function ColorsPage({ searchParams }: { searchParams: Promi
 										<DropdownMenuContent align="end" className="space-y-2">
 											<DropdownMenuItem asChild>
 												<Button variant={"default"} size={"full"} asChild>
-													<Link href={`/server/colors/edit/${id}`}>edit</Link>
+													<Link href={`/server/colors/edit/${title}`}>edit</Link>
 												</Button>
 											</DropdownMenuItem>
 											{/* ---------------------------- delete --------------------------- */}

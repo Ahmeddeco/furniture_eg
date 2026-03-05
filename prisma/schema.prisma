@@ -114,7 +114,8 @@ model Class {
 
 model Style {
   id          String    @id @default(cuid())
-  title       String
+  title       String    @unique
+  slug        String    @unique
   description String?
   product     Product[]
 }
@@ -153,6 +154,7 @@ model User {
 model Factory {
   id      String  @id @default(cuid())
   name    String
+  slug    String  @unique
   logo    String?
   info    String? @db.Text
   country String

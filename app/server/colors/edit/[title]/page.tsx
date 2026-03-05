@@ -1,12 +1,12 @@
-import { CircleChevronLeft, Palette } from "lucide-react"
+import { CircleChevronLeft } from "lucide-react"
 import ServerPageCard from "@/components/shared/ServerPageCard"
 import EmptyCard from "@/components/shared/EmptyCard"
 import EditColor from "@/forms/EditColor"
 import { getOneColor } from "@/dl/color.data"
 
-export default async function EditUserPage({ params }: { params: Promise<{ id: string }> }) {
-	const id = (await params).id
-	const color = await getOneColor(id)
+export default async function EditUserPage({ params }: { params: Promise<{ title: string }> }) {
+	const title = (await params).title
+	const color = await getOneColor(title)
 
 	return (
 		<ServerPageCard
@@ -17,7 +17,7 @@ export default async function EditUserPage({ params }: { params: Promise<{ id: s
 			href="/server/colors"
 		>
 			{!color?.data ? (
-				<EmptyCard href={"/server/colors"} linkTitle={"no color found"} linkIcon={Palette} />
+				<EmptyCard href={"/server/colors"} linkTitle={"no color found"} />
 			) : (
 				<EditColor data={color.data} />
 			)}

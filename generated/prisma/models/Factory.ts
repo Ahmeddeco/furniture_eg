@@ -27,6 +27,7 @@ export type AggregateFactory = {
 export type FactoryMinAggregateOutputType = {
   id: string | null
   name: string | null
+  slug: string | null
   logo: string | null
   info: string | null
   country: string | null
@@ -39,6 +40,7 @@ export type FactoryMinAggregateOutputType = {
 export type FactoryMaxAggregateOutputType = {
   id: string | null
   name: string | null
+  slug: string | null
   logo: string | null
   info: string | null
   country: string | null
@@ -51,6 +53,7 @@ export type FactoryMaxAggregateOutputType = {
 export type FactoryCountAggregateOutputType = {
   id: number
   name: number
+  slug: number
   logo: number
   info: number
   country: number
@@ -65,6 +68,7 @@ export type FactoryCountAggregateOutputType = {
 export type FactoryMinAggregateInputType = {
   id?: true
   name?: true
+  slug?: true
   logo?: true
   info?: true
   country?: true
@@ -77,6 +81,7 @@ export type FactoryMinAggregateInputType = {
 export type FactoryMaxAggregateInputType = {
   id?: true
   name?: true
+  slug?: true
   logo?: true
   info?: true
   country?: true
@@ -89,6 +94,7 @@ export type FactoryMaxAggregateInputType = {
 export type FactoryCountAggregateInputType = {
   id?: true
   name?: true
+  slug?: true
   logo?: true
   info?: true
   country?: true
@@ -174,6 +180,7 @@ export type FactoryGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 export type FactoryGroupByOutputType = {
   id: string
   name: string
+  slug: string
   logo: string | null
   info: string | null
   country: string
@@ -207,6 +214,7 @@ export type FactoryWhereInput = {
   NOT?: Prisma.FactoryWhereInput | Prisma.FactoryWhereInput[]
   id?: Prisma.StringFilter<"Factory"> | string
   name?: Prisma.StringFilter<"Factory"> | string
+  slug?: Prisma.StringFilter<"Factory"> | string
   logo?: Prisma.StringNullableFilter<"Factory"> | string | null
   info?: Prisma.StringNullableFilter<"Factory"> | string | null
   country?: Prisma.StringFilter<"Factory"> | string
@@ -221,6 +229,7 @@ export type FactoryWhereInput = {
 export type FactoryOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  slug?: Prisma.SortOrder
   logo?: Prisma.SortOrderInput | Prisma.SortOrder
   info?: Prisma.SortOrderInput | Prisma.SortOrder
   country?: Prisma.SortOrder
@@ -234,6 +243,7 @@ export type FactoryOrderByWithRelationInput = {
 
 export type FactoryWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  slug?: string
   AND?: Prisma.FactoryWhereInput | Prisma.FactoryWhereInput[]
   OR?: Prisma.FactoryWhereInput[]
   NOT?: Prisma.FactoryWhereInput | Prisma.FactoryWhereInput[]
@@ -247,11 +257,12 @@ export type FactoryWhereUniqueInput = Prisma.AtLeast<{
   hotLine?: Prisma.StringNullableFilter<"Factory"> | string | null
   owner?: Prisma.UserListRelationFilter
   products?: Prisma.ProductListRelationFilter
-}, "id">
+}, "id" | "slug">
 
 export type FactoryOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  slug?: Prisma.SortOrder
   logo?: Prisma.SortOrderInput | Prisma.SortOrder
   info?: Prisma.SortOrderInput | Prisma.SortOrder
   country?: Prisma.SortOrder
@@ -270,6 +281,7 @@ export type FactoryScalarWhereWithAggregatesInput = {
   NOT?: Prisma.FactoryScalarWhereWithAggregatesInput | Prisma.FactoryScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Factory"> | string
   name?: Prisma.StringWithAggregatesFilter<"Factory"> | string
+  slug?: Prisma.StringWithAggregatesFilter<"Factory"> | string
   logo?: Prisma.StringNullableWithAggregatesFilter<"Factory"> | string | null
   info?: Prisma.StringNullableWithAggregatesFilter<"Factory"> | string | null
   country?: Prisma.StringWithAggregatesFilter<"Factory"> | string
@@ -282,6 +294,7 @@ export type FactoryScalarWhereWithAggregatesInput = {
 export type FactoryCreateInput = {
   id?: string
   name: string
+  slug: string
   logo?: string | null
   info?: string | null
   country: string
@@ -296,6 +309,7 @@ export type FactoryCreateInput = {
 export type FactoryUncheckedCreateInput = {
   id?: string
   name: string
+  slug: string
   logo?: string | null
   info?: string | null
   country: string
@@ -310,6 +324,7 @@ export type FactoryUncheckedCreateInput = {
 export type FactoryUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
@@ -324,6 +339,7 @@ export type FactoryUpdateInput = {
 export type FactoryUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
@@ -338,6 +354,7 @@ export type FactoryUncheckedUpdateInput = {
 export type FactoryCreateManyInput = {
   id?: string
   name: string
+  slug: string
   logo?: string | null
   info?: string | null
   country: string
@@ -350,6 +367,7 @@ export type FactoryCreateManyInput = {
 export type FactoryUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
@@ -362,6 +380,7 @@ export type FactoryUpdateManyMutationInput = {
 export type FactoryUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
@@ -384,6 +403,7 @@ export type FactoryOrderByRelationAggregateInput = {
 export type FactoryCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  slug?: Prisma.SortOrder
   logo?: Prisma.SortOrder
   info?: Prisma.SortOrder
   country?: Prisma.SortOrder
@@ -396,6 +416,7 @@ export type FactoryCountOrderByAggregateInput = {
 export type FactoryMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  slug?: Prisma.SortOrder
   logo?: Prisma.SortOrder
   info?: Prisma.SortOrder
   country?: Prisma.SortOrder
@@ -408,6 +429,7 @@ export type FactoryMaxOrderByAggregateInput = {
 export type FactoryMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  slug?: Prisma.SortOrder
   logo?: Prisma.SortOrder
   info?: Prisma.SortOrder
   country?: Prisma.SortOrder
@@ -477,6 +499,7 @@ export type FactoryUpdateOneRequiredWithoutProductsNestedInput = {
 export type FactoryCreateWithoutOwnerInput = {
   id?: string
   name: string
+  slug: string
   logo?: string | null
   info?: string | null
   country: string
@@ -490,6 +513,7 @@ export type FactoryCreateWithoutOwnerInput = {
 export type FactoryUncheckedCreateWithoutOwnerInput = {
   id?: string
   name: string
+  slug: string
   logo?: string | null
   info?: string | null
   country: string
@@ -527,6 +551,7 @@ export type FactoryScalarWhereInput = {
   NOT?: Prisma.FactoryScalarWhereInput | Prisma.FactoryScalarWhereInput[]
   id?: Prisma.StringFilter<"Factory"> | string
   name?: Prisma.StringFilter<"Factory"> | string
+  slug?: Prisma.StringFilter<"Factory"> | string
   logo?: Prisma.StringNullableFilter<"Factory"> | string | null
   info?: Prisma.StringNullableFilter<"Factory"> | string | null
   country?: Prisma.StringFilter<"Factory"> | string
@@ -539,6 +564,7 @@ export type FactoryScalarWhereInput = {
 export type FactoryCreateWithoutProductsInput = {
   id?: string
   name: string
+  slug: string
   logo?: string | null
   info?: string | null
   country: string
@@ -552,6 +578,7 @@ export type FactoryCreateWithoutProductsInput = {
 export type FactoryUncheckedCreateWithoutProductsInput = {
   id?: string
   name: string
+  slug: string
   logo?: string | null
   info?: string | null
   country: string
@@ -581,6 +608,7 @@ export type FactoryUpdateToOneWithWhereWithoutProductsInput = {
 export type FactoryUpdateWithoutProductsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
@@ -594,6 +622,7 @@ export type FactoryUpdateWithoutProductsInput = {
 export type FactoryUncheckedUpdateWithoutProductsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
@@ -607,6 +636,7 @@ export type FactoryUncheckedUpdateWithoutProductsInput = {
 export type FactoryUpdateWithoutOwnerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
@@ -620,6 +650,7 @@ export type FactoryUpdateWithoutOwnerInput = {
 export type FactoryUncheckedUpdateWithoutOwnerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
@@ -633,6 +664,7 @@ export type FactoryUncheckedUpdateWithoutOwnerInput = {
 export type FactoryUncheckedUpdateManyWithoutOwnerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
@@ -685,6 +717,7 @@ export type FactoryCountOutputTypeCountProductsArgs<ExtArgs extends runtime.Type
 export type FactorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  slug?: boolean
   logo?: boolean
   info?: boolean
   country?: boolean
@@ -700,6 +733,7 @@ export type FactorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 export type FactorySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  slug?: boolean
   logo?: boolean
   info?: boolean
   country?: boolean
@@ -712,6 +746,7 @@ export type FactorySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type FactorySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  slug?: boolean
   logo?: boolean
   info?: boolean
   country?: boolean
@@ -724,6 +759,7 @@ export type FactorySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type FactorySelectScalar = {
   id?: boolean
   name?: boolean
+  slug?: boolean
   logo?: boolean
   info?: boolean
   country?: boolean
@@ -733,7 +769,7 @@ export type FactorySelectScalar = {
   hotLine?: boolean
 }
 
-export type FactoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "logo" | "info" | "country" | "state" | "city" | "mobile" | "hotLine", ExtArgs["result"]["factory"]>
+export type FactoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "slug" | "logo" | "info" | "country" | "state" | "city" | "mobile" | "hotLine", ExtArgs["result"]["factory"]>
 export type FactoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   owner?: boolean | Prisma.Factory$ownerArgs<ExtArgs>
   products?: boolean | Prisma.Factory$productsArgs<ExtArgs>
@@ -751,6 +787,7 @@ export type $FactoryPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string
+    slug: string
     logo: string | null
     info: string | null
     country: string
@@ -1185,6 +1222,7 @@ export interface Prisma__FactoryClient<T, Null = never, ExtArgs extends runtime.
 export interface FactoryFieldRefs {
   readonly id: Prisma.FieldRef<"Factory", 'String'>
   readonly name: Prisma.FieldRef<"Factory", 'String'>
+  readonly slug: Prisma.FieldRef<"Factory", 'String'>
   readonly logo: Prisma.FieldRef<"Factory", 'String'>
   readonly info: Prisma.FieldRef<"Factory", 'String'>
   readonly country: Prisma.FieldRef<"Factory", 'String'>

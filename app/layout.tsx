@@ -6,6 +6,9 @@ import { ThemeProvider } from "@/components/theme/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
 import { CircleAlert, CircleCheckBig, CircleX } from "lucide-react"
 import Footer from "@/components/layout/Footer"
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin"
+import { extractRouterConfig } from "uploadthing/server"
+import { ourFileRouter } from "@/app/api/uploadthing/core"
 
 const Playpen = localFont({
 	src: "../public/Playpen.ttf",
@@ -24,6 +27,7 @@ export default function RootLayout({
 	return (
 		<html lang="ar" suppressHydrationWarning dir="rtl">
 			<body className={`${Playpen.className} antialiased scroll-smooth`}>
+				<NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 					<TooltipProvider>
 						{children}

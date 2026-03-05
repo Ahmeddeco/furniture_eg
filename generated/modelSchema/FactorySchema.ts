@@ -7,6 +7,7 @@ import { z } from 'zod';
 export const FactorySchema = z.object({
   id: z.string(),
   name: z.string(),
+  slug: z.string(),
   logo: z.string().nullish(),
   info: z.string().nullish(),
   country: z.string(),

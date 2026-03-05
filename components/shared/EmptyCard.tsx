@@ -1,6 +1,6 @@
 import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
 import { Button } from "../ui/button"
-import { LucideIcon, PlusCircle, Trash2 } from "lucide-react"
+import { PlusCircle, Trash2 } from "lucide-react"
 import Link from "next/link"
 import React from "react"
 

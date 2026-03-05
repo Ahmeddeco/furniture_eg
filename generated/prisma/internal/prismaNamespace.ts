@@ -1262,6 +1262,7 @@ export type StyleScalarFieldEnum = (typeof StyleScalarFieldEnum)[keyof typeof St
 export const ColorScalarFieldEnum = {
   id: 'id',
   title: 'title',
+  slug: 'slug',
   colorCode: 'colorCode'
 } as const
 

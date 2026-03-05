@@ -5,6 +5,7 @@ export const ProductSchema = z.object({
   status: ProductStatusSchema,
   id: z.string().nullish(),
   title: z.string(),
+  slug: z.string().nullish(),
   model: z.string(),
   miniDescription: z.string(),
   manual: z.string().nullish(),

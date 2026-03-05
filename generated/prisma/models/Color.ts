@@ -27,18 +27,21 @@ export type AggregateColor = {
 export type ColorMinAggregateOutputType = {
   id: string | null
   title: string | null
+  slug: string | null
   colorCode: string | null
 }
 
 export type ColorMaxAggregateOutputType = {
   id: string | null
   title: string | null
+  slug: string | null
   colorCode: string | null
 }
 
 export type ColorCountAggregateOutputType = {
   id: number
   title: number
+  slug: number
   colorCode: number
   _all: number
 }
@@ -47,18 +50,21 @@ export type ColorCountAggregateOutputType = {
 export type ColorMinAggregateInputType = {
   id?: true
   title?: true
+  slug?: true
   colorCode?: true
 }
 
 export type ColorMaxAggregateInputType = {
   id?: true
   title?: true
+  slug?: true
   colorCode?: true
 }
 
 export type ColorCountAggregateInputType = {
   id?: true
   title?: true
+  slug?: true
   colorCode?: true
   _all?: true
 }
@@ -138,6 +144,7 @@ export type ColorGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 export type ColorGroupByOutputType = {
   id: string
   title: string
+  slug: string
   colorCode: string
   _count: ColorCountAggregateOutputType | null
   _min: ColorMinAggregateOutputType | null
@@ -165,6 +172,7 @@ export type ColorWhereInput = {
   NOT?: Prisma.ColorWhereInput | Prisma.ColorWhereInput[]
   id?: Prisma.StringFilter<"Color"> | string
   title?: Prisma.StringFilter<"Color"> | string
+  slug?: Prisma.StringFilter<"Color"> | string
   colorCode?: Prisma.StringFilter<"Color"> | string
   product?: Prisma.ProductListRelationFilter
 }
@@ -172,6 +180,7 @@ export type ColorWhereInput = {
 export type ColorOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  slug?: Prisma.SortOrder
   colorCode?: Prisma.SortOrder
   product?: Prisma.ProductOrderByRelationAggregateInput
 }
@@ -179,16 +188,18 @@ export type ColorOrderByWithRelationInput = {
 export type ColorWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   title?: string
+  slug?: string
   colorCode?: string
   AND?: Prisma.ColorWhereInput | Prisma.ColorWhereInput[]
   OR?: Prisma.ColorWhereInput[]
   NOT?: Prisma.ColorWhereInput | Prisma.ColorWhereInput[]
   product?: Prisma.ProductListRelationFilter
-}, "id" | "title" | "colorCode">
+}, "id" | "title" | "slug" | "colorCode">
 
 export type ColorOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  slug?: Prisma.SortOrder
   colorCode?: Prisma.SortOrder
   _count?: Prisma.ColorCountOrderByAggregateInput
   _max?: Prisma.ColorMaxOrderByAggregateInput
@@ -201,12 +212,14 @@ export type ColorScalarWhereWithAggregatesInput = {
   NOT?: Prisma.ColorScalarWhereWithAggregatesInput | Prisma.ColorScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Color"> | string
   title?: Prisma.StringWithAggregatesFilter<"Color"> | string
+  slug?: Prisma.StringWithAggregatesFilter<"Color"> | string
   colorCode?: Prisma.StringWithAggregatesFilter<"Color"> | string
 }
 
 export type ColorCreateInput = {
   id?: string
   title: string
+  slug: string
   colorCode: string
   product?: Prisma.ProductCreateNestedManyWithoutColorInput
 }
@@ -214,6 +227,7 @@ export type ColorCreateInput = {
 export type ColorUncheckedCreateInput = {
   id?: string
   title: string
+  slug: string
   colorCode: string
   product?: Prisma.ProductUncheckedCreateNestedManyWithoutColorInput
 }
@@ -221,6 +235,7 @@ export type ColorUncheckedCreateInput = {
 export type ColorUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   colorCode?: Prisma.StringFieldUpdateOperationsInput | string
   product?: Prisma.ProductUpdateManyWithoutColorNestedInput
 }
@@ -228,6 +243,7 @@ export type ColorUpdateInput = {
 export type ColorUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   colorCode?: Prisma.StringFieldUpdateOperationsInput | string
   product?: Prisma.ProductUncheckedUpdateManyWithoutColorNestedInput
 }
@@ -235,36 +251,42 @@ export type ColorUncheckedUpdateInput = {
 export type ColorCreateManyInput = {
   id?: string
   title: string
+  slug: string
   colorCode: string
 }
 
 export type ColorUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   colorCode?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ColorUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   colorCode?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ColorCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  slug?: Prisma.SortOrder
   colorCode?: Prisma.SortOrder
 }
 
 export type ColorMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  slug?: Prisma.SortOrder
   colorCode?: Prisma.SortOrder
 }
 
 export type ColorMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  slug?: Prisma.SortOrder
   colorCode?: Prisma.SortOrder
 }
 
@@ -319,12 +341,14 @@ export type ColorUncheckedUpdateManyWithoutProductNestedInput = {
 export type ColorCreateWithoutProductInput = {
   id?: string
   title: string
+  slug: string
   colorCode: string
 }
 
 export type ColorUncheckedCreateWithoutProductInput = {
   id?: string
   title: string
+  slug: string
   colorCode: string
 }
 
@@ -355,24 +379,28 @@ export type ColorScalarWhereInput = {
   NOT?: Prisma.ColorScalarWhereInput | Prisma.ColorScalarWhereInput[]
   id?: Prisma.StringFilter<"Color"> | string
   title?: Prisma.StringFilter<"Color"> | string
+  slug?: Prisma.StringFilter<"Color"> | string
   colorCode?: Prisma.StringFilter<"Color"> | string
 }
 
 export type ColorUpdateWithoutProductInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   colorCode?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ColorUncheckedUpdateWithoutProductInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   colorCode?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ColorUncheckedUpdateManyWithoutProductInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   colorCode?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -410,6 +438,7 @@ export type ColorCountOutputTypeCountProductArgs<ExtArgs extends runtime.Types.E
 export type ColorSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   title?: boolean
+  slug?: boolean
   colorCode?: boolean
   product?: boolean | Prisma.Color$productArgs<ExtArgs>
   _count?: boolean | Prisma.ColorCountOutputTypeDefaultArgs<ExtArgs>
@@ -418,22 +447,25 @@ export type ColorSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
 export type ColorSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   title?: boolean
+  slug?: boolean
   colorCode?: boolean
 }, ExtArgs["result"]["color"]>
 
 export type ColorSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   title?: boolean
+  slug?: boolean
   colorCode?: boolean
 }, ExtArgs["result"]["color"]>
 
 export type ColorSelectScalar = {
   id?: boolean
   title?: boolean
+  slug?: boolean
   colorCode?: boolean
 }
 
-export type ColorOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "colorCode", ExtArgs["result"]["color"]>
+export type ColorOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "slug" | "colorCode", ExtArgs["result"]["color"]>
 export type ColorInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   product?: boolean | Prisma.Color$productArgs<ExtArgs>
   _count?: boolean | Prisma.ColorCountOutputTypeDefaultArgs<ExtArgs>
@@ -449,6 +481,7 @@ export type $ColorPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     title: string
+    slug: string
     colorCode: string
   }, ExtArgs["result"]["color"]>
   composites: {}
@@ -876,6 +909,7 @@ export interface Prisma__ColorClient<T, Null = never, ExtArgs extends runtime.Ty
 export interface ColorFieldRefs {
   readonly id: Prisma.FieldRef<"Color", 'String'>
   readonly title: Prisma.FieldRef<"Color", 'String'>
+  readonly slug: Prisma.FieldRef<"Color", 'String'>
   readonly colorCode: Prisma.FieldRef<"Color", 'String'>
 }
     

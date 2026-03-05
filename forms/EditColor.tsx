@@ -12,10 +12,10 @@ import { Field, FieldError, FieldLabel } from "@/components/ui/field"
 import SubmitButton from "@/components/shared/SubmitButton"
 
 type Props = {
-	data: Color
+	color: Color
 }
 
-export default function EditColor({ data }: Props) {
+export default function EditColor({ color }: Props) {
 	const [lastResult, action] = useActionState(editColorAction, undefined)
 	const [form, fields] = useForm({
 		lastResult,
@@ -27,7 +27,7 @@ export default function EditColor({ data }: Props) {
 	})
 	return (
 		<Form id={form.id} action={action} onSubmit={form.onSubmit} className="space-y-6">
-			<Input type="hidden" name="id" value={data.id} />
+			<Input type="hidden" name="slug" value={color.slug} />
 
 			{/* ---------------------------------- title --------------------------------- */}
 			<Field>
@@ -36,7 +36,7 @@ export default function EditColor({ data }: Props) {
 					type="text"
 					key={fields.title.key}
 					name={fields.title.name}
-					defaultValue={data.title ?? ""}
+					defaultValue={color.title ?? ""}
 					placeholder="Red"
 				/>
 				<FieldError>{fields.title.errors}</FieldError>
@@ -49,7 +49,7 @@ export default function EditColor({ data }: Props) {
 					type="text"
 					key={fields.colorCode.key}
 					name={fields.colorCode.name}
-					defaultValue={data.colorCode ?? ""}
+					defaultValue={color.colorCode ?? ""}
 					placeholder="#dc2626"
 				/>
 				<FieldError>{fields.colorCode.errors}</FieldError>

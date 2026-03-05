@@ -19,11 +19,11 @@ export const getAllColors = async (size: number, page: number) => {
 }
 
 /* ------------------------------ getOneColor ----------------------------- */
-export const getOneColor = async (title: string) => {
+export const getOneColor = async (slug: string) => {
   try {
     const data = await prisma.color.findUnique({
       where: {
-        title: title,
+        slug
       }
     })
     return { data }

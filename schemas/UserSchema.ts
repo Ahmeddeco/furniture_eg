@@ -2,12 +2,11 @@ import RoleSchema from '@/generated/inputTypeSchemas/RoleSchema'
 import { z } from 'zod'
 
 export const UserSchema = z.object({
-  role: RoleSchema.nullish(),
   id: z.string().nullish(),
-  name: z.string().nullish(),
-  email: z.string(),
-  emailVerified: z.boolean(),
+  name: z.string().min(3).max(64),
+  email: z.string().email(),
   mobile: z.string().nullish(),
+  role: RoleSchema.nullish(),
   country: z.string().nullish(),
   state: z.string().nullish(),
   city: z.string().nullish(),

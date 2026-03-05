@@ -16,7 +16,7 @@ type Props = {
 	dbImages?: string[]
 	dbImage?: string
 	label?: string
-	imageName?: string
+	imageName: string
 	imagesName?: string
 	imageKey?: string | undefined
 	errors: string[] | undefined

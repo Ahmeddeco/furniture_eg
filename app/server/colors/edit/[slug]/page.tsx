@@ -4,9 +4,9 @@ import EmptyCard from "@/components/shared/EmptyCard"
 import EditColor from "@/forms/EditColor"
 import { getOneColor } from "@/dl/color.data"
 
-export default async function EditUserPage({ params }: { params: Promise<{ title: string }> }) {
-	const title = (await params).title
-	const color = await getOneColor(title)
+export default async function EditUserPage({ params }: { params: Promise<{ slug: string }> }) {
+	const slug = (await params).slug
+	const color = await getOneColor(slug)
 
 	return (
 		<ServerPageCard
@@ -19,7 +19,7 @@ export default async function EditUserPage({ params }: { params: Promise<{ title
 			{!color?.data ? (
 				<EmptyCard href={"/server/colors"} linkTitle={"no color found"} />
 			) : (
-				<EditColor data={color.data} />
+				<EditColor color={color.data} />
 			)}
 		</ServerPageCard>
 	)

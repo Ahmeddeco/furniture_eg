@@ -123,6 +123,7 @@ model Style {
 model Color {
   id        String    @id @default(cuid())
   title     String    @unique
+  slug      String    @unique
   colorCode String    @unique
   product   Product[]
 }
@@ -130,10 +131,10 @@ model Color {
 model User {
   id            String   @id @default(cuid())
   name          String?
-  email         String
+  email         String   @unique
   emailVerified Boolean  @default(false)
   role          Role?    @default(user)
-  mobile        String?
+  mobile        String?  @unique
   country       String?
   state         String?
   city          String?
@@ -147,7 +148,7 @@ model User {
   favorites Favorite[]
   factories Factory[]
 
-  @@unique([email])
+  @@index([name, mobile])
   @@map("user")
 }
 
@@ -202,11 +203,10 @@ model Product {
 model Favorite {
   id        String   @id @default(cuid())
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId    String
+  userId    String   @unique
   product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
-  productId String
+  productId String   @unique
   createdAt DateTime @default(now())
 
-  @@unique([userId, productId])
   @@index([userId, productId])
 }

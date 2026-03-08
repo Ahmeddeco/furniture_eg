@@ -31,3 +31,15 @@ export const getOneStyle = async (slug: string) => {
     console.error(error)
   }
 }
+
+export const getAllStylesForProductPage = async () => {
+  try {
+    const data = await prisma.style.findMany({
+      select: { id: true, title: true },
+      orderBy: { title: "asc" },
+    })
+    return data
+  } catch (error) {
+    console.error(error)
+  }
+}

@@ -28,6 +28,7 @@ import { deleteClassAction } from "@/actions/class.action"
 import { getAllFactories } from "@/dl/factory.data"
 import Image from "next/image"
 import { deleteFactoryAction } from "@/actions/factory.action"
+import { getAllFactoriesType } from "@/types/factory.type"
 
 export default async function FactoriesPage({
 	searchParams,
@@ -37,7 +38,7 @@ export default async function FactoriesPage({
 	const { page, size } = await searchParams
 	const pageNumber = +page > 1 ? +page : 1
 	const pageSize = +size || 10
-	const factories = await getAllFactories(pageSize, pageNumber)
+	const factories: getAllFactoriesType = await getAllFactories(pageSize, pageNumber)
 
 	return (
 		<ServerPageCard
@@ -56,6 +57,7 @@ export default async function FactoriesPage({
 						<TableRow>
 							<TableHead>logo</TableHead>
 							<TableHead>name</TableHead>
+							<TableHead>owner</TableHead>
 							<TableHead>slug</TableHead>
 							<TableHead>mobile</TableHead>
 							<TableHead>address</TableHead>
@@ -64,7 +66,7 @@ export default async function FactoriesPage({
 					</TableHeader>
 					{/* ----------------------------- TableBody ----------------------------- */}
 					<TableBody>
-						{factories.data.map(({ id, slug, name, logo, country, state, mobile }) => (
+						{factories.data.map(({ id, slug, name, logo, country, state, mobile, owner }) => (
 							<TableRow key={id}>
 								<TableCell className="relative rounded-lg size-16 ">
 									{logo ? (
@@ -74,6 +76,7 @@ export default async function FactoriesPage({
 									)}
 								</TableCell>
 								<TableCell className="capitalize ">{name}</TableCell>
+								<TableCell className="capitalize ">{owner?.[0]?.name}</TableCell>
 								<TableCell>{slug}</TableCell>
 								<TableCell>{mobile}</TableCell>
 								<TableCell>

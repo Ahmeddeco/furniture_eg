@@ -8,9 +8,8 @@ export const getAllFactories = async (size: number, page: number) => {
     const data = await prisma.factory.findMany({
       skip: (page * size) - size,
       take: size,
-      orderBy: {
-        name: "asc",
-      },
+      include: { owner: { select: { id: true, name: true } } },
+      orderBy: { name: "asc" },
     })
     return { data, totalPages }
   } catch (error) {
@@ -22,11 +21,23 @@ export const getAllFactories = async (size: number, page: number) => {
 export const getOneFactory = async (slug: string) => {
   try {
     const data = await prisma.factory.findUnique({
-      where: {
-        slug
-      }
+      where: { slug },
+      include: { owner: { select: { id: true, name: true } } }
     })
     return { data }
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+/* ---------------------- getAllFactoriesForProductPage --------------------- */
+export const getAllFactoriesForProductPage = async () => {
+  try {
+    const data = await prisma.factory.findMany({
+      select: { id: true, name: true },
+      orderBy: { name: "asc" },
+    })
+    return data
   } catch (error) {
     console.error(error)
   }

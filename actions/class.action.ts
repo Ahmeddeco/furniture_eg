@@ -47,7 +47,6 @@ export const editClassAction = async (prevState: unknown, formData: FormData) =>
   }
 
   const generatedSlug = slugify(submission.value.title, { lower: true, strict: true, locale: "ar" })
-  console.log('generatedSlug from editClassAction', generatedSlug)
 
   try {
     await prisma.class.update({

@@ -1,4 +1,4 @@
-import { MoreVertical, Palette, PlusCircle } from "lucide-react"
+import { MoreVertical, PlusCircle } from "lucide-react"
 import ServerPageCard from "@/components/shared/ServerPageCard"
 import EmptyCard from "@/components/shared/EmptyCard"
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
@@ -32,7 +32,6 @@ export default async function ColorsPage({ searchParams }: { searchParams: Promi
 	const pageNumber = +page > 1 ? +page : 1
 	const pageSize = +size || 10
 	const colors = await getAllColors(pageSize, pageNumber)
-	console.log("pageNumber", pageNumber)
 
 	return (
 		<ServerPageCard
@@ -57,7 +56,7 @@ export default async function ColorsPage({ searchParams }: { searchParams: Promi
 					</TableHeader>
 					{/* ----------------------------- TableBody ----------------------------- */}
 					<TableBody>
-						{colors.data.map(({ id, colorCode, title }) => (
+						{colors.data.map(({ id, colorCode, title, slug }) => (
 							<TableRow key={id}>
 								<TableCell>
 									<div className="rounded-full size-12 shadow-xl border" style={{ backgroundColor: colorCode }} />
@@ -74,7 +73,7 @@ export default async function ColorsPage({ searchParams }: { searchParams: Promi
 										<DropdownMenuContent align="end" className="space-y-2">
 											<DropdownMenuItem asChild>
 												<Button variant={"default"} size={"full"} asChild>
-													<Link href={`/server/colors/edit/${title}`}>edit</Link>
+													<Link href={`/server/colors/edit/${slug}`}>edit</Link>
 												</Button>
 											</DropdownMenuItem>
 											{/* ---------------------------- delete --------------------------- */}

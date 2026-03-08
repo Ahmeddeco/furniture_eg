@@ -31,3 +31,16 @@ export const getOneUser = async (id: string) => {
     console.error(error)
   }
 }
+
+/* ----------------------- getAllUsersForFactoriesPage ---------------------- */
+export const getAllUsersForFactoriesPage = async () => {
+  try {
+    const data = await prisma.user.findMany({
+      select: { id: true, name: true },
+      orderBy: { name: "asc" }
+    })
+    return data
+  } catch (error) {
+    console.error(error)
+  }
+}

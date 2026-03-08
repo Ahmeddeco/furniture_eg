@@ -32,3 +32,14 @@ export const getOneColor = async (slug: string) => {
   }
 }
 
+export const getAllColorsForProductPage = async () => {
+  try {
+    const colors = await prisma.color.findMany({
+      select: { id: true, title: true },
+      orderBy: { title: "asc" },
+    })
+    return colors
+  } catch (error) {
+    console.error(error)
+  }
+}

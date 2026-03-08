@@ -14,12 +14,32 @@ import { UploadOneImagesDropZone } from "@/components/shared/UploadImagesDropZon
 import Phone from "@/components/shared/Phone"
 import CountryInput from "@/components/shared/CountryInput"
 import { Factory } from "@/generated/modelSchema/FactorySchema"
+import MultiSelect from "@/components/shared/MultiSelect"
 
 type Props = {
-	factory: Factory
+	factory:
+		| ({
+				owner: {
+					id: string
+					name: string | null
+				}[]
+		  } & {
+				info: string | null
+				id: string
+				name: string
+				slug: string
+				logo: string | null
+				country: string
+				state: string
+				city: string | null
+				mobile: string
+				hotLine: string | null
+		  })
+		| null
+	users: { id: string; name: string | null }[] | undefined
 }
 
-export default function EditFactory({ factory }: Props) {
+export default function EditFactory({ factory, users }: Props) {
 	const [lastResult, action] = useActionState(editFactoryAction, undefined)
 	const [form, fields] = useForm({
 		lastResult,
@@ -33,7 +53,7 @@ export default function EditFactory({ factory }: Props) {
 	return (
 		<Form id={form.id} action={action} onSubmit={form.onSubmit} className="space-y-6">
 			{/* --------------------------------- slug -------------------------------- */}
-			<Input type="hidden" name="slug" value={factory.slug} />
+			<Input type="hidden" name="slug" value={factory?.slug} />
 			{/* ---------------------------------- name --------------------------------- */}
 			<Field>
 				<FieldLabel htmlFor={fields.name.name}>{fields.name.name}</FieldLabel>
@@ -41,16 +61,24 @@ export default function EditFactory({ factory }: Props) {
 					type="text"
 					key={fields.name.key}
 					name={fields.name.name}
-					defaultValue={factory.name}
+					defaultValue={factory?.name}
 					placeholder="Mobilia"
 				/>
 				<FieldError>{fields.name.errors}</FieldError>
 			</Field>
 
+			{/* ---------------------------------- owners --------------------------------- */}
+			<MultiSelect
+				allSelectedData={users?.map((u) => ({ id: u.id, title: u.name || "" }))}
+				inputName={fields.users.name}
+				label={fields.users.name}
+				defaultValues={factory?.owner.map((person) => ({ id: person.id, title: person.name || "" }))}
+			/>
+
 			{/* ---------------------------------- info ---------------------------------- */}
 			<Field>
 				<FieldLabel htmlFor={fields.info.name}>{fields.info.name}</FieldLabel>
-				<Textarea key={fields.info.key} name={fields.info.name} defaultValue={factory.info ?? ""} />
+				<Textarea key={fields.info.key} name={fields.info.name} defaultValue={factory?.info ?? ""} />
 				<FieldError>{fields.info.errors}</FieldError>
 			</Field>
 
@@ -60,23 +88,23 @@ export default function EditFactory({ factory }: Props) {
 				imageName={fields.logo.name}
 				key={fields.logo.key}
 				label={fields.logo.name}
-				dbImage={factory.logo ?? ""}
+				dbImage={factory?.logo ?? ""}
 			/>
 
 			{/* --------------------------------- mobile --------------------------------- */}
-			<Phone name={fields.mobile.name} defaultValue={factory.mobile} errors={fields.mobile.errors} />
+			<Phone name={fields.mobile.name} defaultValue={factory?.mobile ?? ""} errors={fields.mobile.errors} />
 
 			{/* --------------------------------- hotLine -------------------------------- */}
-			<Phone name={fields.hotLine.name} defaultValue={factory.hotLine ?? ""} errors={fields.hotLine.errors} />
+			<Phone name={fields.hotLine.name} defaultValue={factory?.hotLine ?? ""} errors={fields.hotLine.errors} />
 
 			{/* --------------------------------- address -------------------------------- */}
 			<CountryInput
 				cityName={fields.city.name}
 				countryName={fields.country.name}
 				stateName={fields.state.name}
-				userCountry={factory.country}
-				userState={factory.state}
-				userCity={factory.city ?? ""}
+				userCountry={factory?.country}
+				userState={factory?.state}
+				userCity={factory?.city ?? ""}
 			/>
 
 			{/* ----------------------------- SubmitButton ---------------------------- */}

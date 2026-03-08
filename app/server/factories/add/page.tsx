@@ -1,11 +1,13 @@
 import ServerPageCard from "@/components/shared/ServerPageCard"
-import AddClass from "@/forms/AddClass"
+import { getAllUsersForFactoriesPage } from "@/dl/users.data"
 import AddFactory from "@/forms/AddFactory"
 
-export default function AddColorPage() {
+export default async function AddColorPage() {
+	const users = await getAllUsersForFactoriesPage()
+
 	return (
 		<ServerPageCard title={"Add factory"} description={"Add a factory to the database."} href="/server/factories">
-			<AddFactory />
+			<AddFactory users={users} />
 		</ServerPageCard>
 	)
 }

@@ -3,11 +3,12 @@ import ServerPageCard from "@/components/shared/ServerPageCard"
 import EmptyCard from "@/components/shared/EmptyCard"
 import { getOneFactory } from "@/dl/factory.data"
 import EditFactory from "@/forms/EditFactory"
+import { getAllUsersForFactoriesPage } from "@/dl/users.data"
 
 export default async function EditClassPage({ params }: { params: Promise<{ slug: string }> }) {
 	const slug = (await params).slug
 	const oneFactory = await getOneFactory(slug)
-
+	const users = await getAllUsersForFactoriesPage()
 	return (
 		<ServerPageCard
 			icon={CircleChevronLeft}
@@ -19,7 +20,7 @@ export default async function EditClassPage({ params }: { params: Promise<{ slug
 			{!oneFactory?.data ? (
 				<EmptyCard href={"/server/factories"} linkTitle={"no factory found"} />
 			) : (
-				<EditFactory factory={oneFactory.data} />
+				<EditFactory users={users} factory={oneFactory.data} />
 			)}
 		</ServerPageCard>
 	)

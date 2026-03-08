@@ -21,8 +21,6 @@ type Props = {
 }
 
 export default function EditUser({ user }: Props) {
-	console.log("user from EditUser", user)
-
 	const [lastResult, action] = useActionState(addUserAction, undefined)
 	const [form, fields] = useForm({
 		lastResult,

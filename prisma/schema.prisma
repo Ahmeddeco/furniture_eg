@@ -153,18 +153,16 @@ model User {
 }
 
 model Factory {
-  id      String  @id @default(cuid())
-  name    String
-  slug    String  @unique
-  logo    String?
-  info    String? @db.Text
-  country String
-  state   String
-  city    String?
-  mobile  String
-  hotLine String?
-
-  // Relations
+  id       String    @id @default(cuid())
+  name     String
+  slug     String    @unique
+  logo     String?
+  info     String?   @db.Text
+  country  String
+  state    String
+  city     String?
+  mobile   String
+  hotLine  String?
   owner    User[]
   products Product[]
 }
@@ -172,9 +170,8 @@ model Factory {
 model Product {
   id              String        @id @default(cuid())
   title           String
-  model           String
+  model           String        @unique
   miniDescription String
-  manual          String?
   description     String?       @db.Text
   status          ProductStatus @default(draft)
   quantity        Int           @default(0)
@@ -187,7 +184,6 @@ model Product {
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt
 
-  // Relations
   color     Color[]
   favorites Favorite[]
   factory   Factory    @relation(fields: [factoryId], references: [id], onDelete: Cascade)

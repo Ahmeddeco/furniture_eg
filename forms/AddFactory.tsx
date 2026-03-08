@@ -13,8 +13,13 @@ import { Textarea } from "@/components/ui/textarea"
 import { UploadOneImagesDropZone } from "@/components/shared/UploadImagesDropZone"
 import Phone from "@/components/shared/Phone"
 import CountryInput from "@/components/shared/CountryInput"
+import MultiSelect from "@/components/shared/MultiSelect"
 
-export default function AddFactory() {
+type Props = {
+	users: { id: string; name: string | null }[] | undefined
+}
+
+export default function AddFactory({ users }: Props) {
 	const [lastResult, action] = useActionState(addFactoryAction, undefined)
 	const [form, fields] = useForm({
 		lastResult,
@@ -38,6 +43,13 @@ export default function AddFactory() {
 				/>
 				<FieldError>{fields.name.errors}</FieldError>
 			</Field>
+
+			{/* ---------------------------------- owners --------------------------------- */}
+			<MultiSelect
+				allSelectedData={users?.map((u) => ({ id: u.id, title: u.name || "" }))}
+				inputName={fields.users.name}
+				label={fields.users.name}
+			/>
 
 			{/* ---------------------------------- info ---------------------------------- */}
 			<Field>

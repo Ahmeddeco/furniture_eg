@@ -1,10 +1,10 @@
 import prisma from "@/lib/prisma"
 
-/* ------------------------------ getAllFactory ----------------------------- */
+/* ------------------------------ getAllClasses ----------------------------- */
 export const getAllClasses = async (size: number, page: number) => {
   try {
-    const totalColors = await prisma.class.count()
-    const totalPages = Math.ceil(totalColors / size)
+    const totalClasses = await prisma.class.count()
+    const totalPages = Math.ceil(totalClasses / size)
     const data = await prisma.class.findMany({
       skip: (page * size) - size,
       take: size,
@@ -27,6 +27,19 @@ export const getOneClass = async (slug: string) => {
       }
     })
     return { data }
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+/* ----------------------- getAllClassesForProductPage ---------------------- */
+export const getAllClassesForProductPage = async () => {
+  try {
+    const data = await prisma.class.findMany({
+      select: { id: true, title: true },
+      orderBy: { title: "asc" },
+    })
+    return data
   } catch (error) {
     console.error(error)
   }

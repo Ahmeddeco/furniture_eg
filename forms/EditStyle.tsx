@@ -28,7 +28,7 @@ export default function EditStyle({ style }: Props) {
 	return (
 		<Form id={form.id} action={action} onSubmit={form.onSubmit} className="space-y-6">
 			{/* --------------------------------- slug -------------------------------- */}
-			<Input type="hidden" name="slug" value={style.slug} />
+			<Input type="hidden" name="slug" value={style.slug!} />
 			{/* ---------------------------------- title --------------------------------- */}
 			<Field>
 				<FieldLabel htmlFor={fields.title.name}>{fields.title.name}</FieldLabel>

@@ -18,6 +18,9 @@ export const UserSchema = z.object({
   image: z.string().nullish(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
+  banned: z.boolean().nullish(),
+  banReason: z.string().nullish(),
+  banExpires: z.coerce.date().nullish(),
 })
 
 export type User = z.infer<typeof UserSchema>

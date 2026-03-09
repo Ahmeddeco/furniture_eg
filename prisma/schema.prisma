@@ -49,6 +49,8 @@ model Session {
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  impersonatedBy String?
+
   @@unique([token])
   @@index([userId])
   @@map("session")
@@ -87,10 +89,10 @@ model Verification {
 }
 
 enum Role {
+  owner
   admin
   user
   client
-  buyer
 }
 
 enum ProductStatus {
@@ -147,6 +149,10 @@ model User {
   accounts  Account[]
   favorites Favorite[]
   factories Factory[]
+
+  banned     Boolean?  @default(false)
+  banReason  String?
+  banExpires DateTime?
 
   @@index([name, mobile])
   @@map("user")

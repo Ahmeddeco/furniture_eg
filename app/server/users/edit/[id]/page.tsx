@@ -3,8 +3,12 @@ import ServerPageCard from "@/components/shared/ServerPageCard"
 import EmptyCard from "@/components/shared/EmptyCard"
 import { getOneUser } from "@/dl/users.data"
 import EditUser from "@/forms/EditUser"
+import { allowedRoles } from "@/auth/allowedRoles"
+import { Role } from "@/generated/prisma/enums"
 
 export default async function EditClassPage({ params }: { params: Promise<{ id: string }> }) {
+	await allowedRoles([Role.admin, Role.owner])
+
 	const id = (await params).id
 	const user = await getOneUser(id)
 

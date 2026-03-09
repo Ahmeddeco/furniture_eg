@@ -26,8 +26,12 @@ import Form from "next/form"
 import { Input } from "@/components/ui/input"
 import { getAllClasses } from "@/dl/class.data"
 import { deleteClassAction } from "@/actions/class.action"
+import { allowedRoles } from "@/auth/allowedRoles"
+import { Role } from "@/generated/prisma/enums"
 
 export default async function ColorsPage({ searchParams }: { searchParams: Promise<{ page: string; size: string }> }) {
+	await allowedRoles([Role.admin, Role.owner])
+
 	const { page, size } = await searchParams
 	const pageNumber = +page > 1 ? +page : 1
 	const pageSize = +size || 10

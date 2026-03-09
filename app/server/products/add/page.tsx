@@ -1,11 +1,15 @@
+import { allowedRoles } from "@/auth/allowedRoles"
 import ServerPageCard from "@/components/shared/ServerPageCard"
 import { getAllClassesForProductPage } from "@/dl/class.data"
 import { getAllColorsForProductPage } from "@/dl/color.data"
 import { getAllFactoriesForProductPage } from "@/dl/factory.data"
 import { getAllStylesForProductPage } from "@/dl/styles.data"
 import AddProduct from "@/forms/AddProduct"
+import { Role } from "@/generated/prisma/enums"
 
 export default async function AddColorPage() {
+	await allowedRoles([Role.admin, Role.owner])
+
 	const colors = await getAllColorsForProductPage()
 	const styles = await getAllStylesForProductPage()
 	const factories = await getAllFactoriesForProductPage()

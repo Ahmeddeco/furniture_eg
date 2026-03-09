@@ -3,8 +3,12 @@ import ServerPageCard from "@/components/shared/ServerPageCard"
 import EmptyCard from "@/components/shared/EmptyCard"
 import EditColor from "@/forms/EditColor"
 import { getOneColor } from "@/dl/color.data"
+import { allowedRoles } from "@/auth/allowedRoles"
+import { Role } from "@/generated/prisma/enums"
 
 export default async function EditUserPage({ params }: { params: Promise<{ slug: string }> }) {
+	await allowedRoles([Role.admin, Role.owner])
+
 	const slug = (await params).slug
 	const color = await getOneColor(slug)
 

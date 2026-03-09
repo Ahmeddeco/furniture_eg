@@ -5,8 +5,12 @@ import { getOneFactory } from "@/dl/factory.data"
 import EditFactory from "@/forms/EditFactory"
 import { getOneStyle } from "@/dl/styles.data"
 import EditStyle from "@/forms/EditStyle"
+import { allowedRoles } from "@/auth/allowedRoles"
+import { Role } from "@/generated/prisma/enums"
 
 export default async function EditClassPage({ params }: { params: Promise<{ slug: string }> }) {
+	await allowedRoles([Role.admin, Role.owner])
+
 	const slug = (await params).slug
 	const oneStyle = await getOneStyle(slug)
 

@@ -30,8 +30,12 @@ import { getAllStyles } from "@/dl/styles.data"
 import { deleteStyleAction } from "@/actions/style.action"
 import { getAllUsers } from "@/dl/users.data"
 import { deleteUserAction } from "@/actions/user.action"
+import { allowedRoles } from "@/auth/allowedRoles"
+import { Role } from "@/generated/prisma/enums"
 
 export default async function StylesPage({ searchParams }: { searchParams: Promise<{ page: string; size: string }> }) {
+	await allowedRoles([Role.admin, Role.owner])
+
 	const { page, size } = await searchParams
 	const pageNumber = +page > 1 ? +page : 1
 	const pageSize = +size || 10

@@ -10,6 +10,7 @@ import SubmitButton from "@/components/shared/SubmitButton"
 import { addClassAction } from "@/actions/class.action"
 import ClassSchema from "@/schemas/ClassSchema"
 import { Textarea } from "@/components/ui/textarea"
+import { UploadOneImagesDropZone } from "@/components/shared/UploadImagesDropZone"
 
 export default function AddClass() {
 	const [lastResult, action] = useActionState(addClassAction, undefined)
@@ -46,6 +47,9 @@ export default function AddClass() {
 				/>
 				<FieldError>{fields.description.errors}</FieldError>
 			</Field>
+
+			{/* ---------------------------------- image --------------------------------- */}
+			<UploadOneImagesDropZone imageName={fields.image.name} errors={fields.image.errors} />
 
 			{/* ----------------------------- SubmitButton ---------------------------- */}
 			<SubmitButton text={"add Class"} />

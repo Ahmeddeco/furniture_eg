@@ -9,6 +9,7 @@ export const StyleSchema = z.object({
   title: z.string(),
   slug: z.string(),
   description: z.string().nullish(),
+  image: z.string().nullish(),
 })
 
 export type Style = z.infer<typeof StyleSchema>

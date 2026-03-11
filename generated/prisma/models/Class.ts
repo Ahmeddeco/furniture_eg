@@ -28,6 +28,7 @@ export type ClassMinAggregateOutputType = {
   id: string | null
   title: string | null
   slug: string | null
+  image: string | null
   description: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -37,6 +38,7 @@ export type ClassMaxAggregateOutputType = {
   id: string | null
   title: string | null
   slug: string | null
+  image: string | null
   description: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -46,6 +48,7 @@ export type ClassCountAggregateOutputType = {
   id: number
   title: number
   slug: number
+  image: number
   description: number
   createdAt: number
   updatedAt: number
@@ -57,6 +60,7 @@ export type ClassMinAggregateInputType = {
   id?: true
   title?: true
   slug?: true
+  image?: true
   description?: true
   createdAt?: true
   updatedAt?: true
@@ -66,6 +70,7 @@ export type ClassMaxAggregateInputType = {
   id?: true
   title?: true
   slug?: true
+  image?: true
   description?: true
   createdAt?: true
   updatedAt?: true
@@ -75,6 +80,7 @@ export type ClassCountAggregateInputType = {
   id?: true
   title?: true
   slug?: true
+  image?: true
   description?: true
   createdAt?: true
   updatedAt?: true
@@ -157,6 +163,7 @@ export type ClassGroupByOutputType = {
   id: string
   title: string
   slug: string
+  image: string | null
   description: string | null
   createdAt: Date
   updatedAt: Date
@@ -187,6 +194,7 @@ export type ClassWhereInput = {
   id?: Prisma.StringFilter<"Class"> | string
   title?: Prisma.StringFilter<"Class"> | string
   slug?: Prisma.StringFilter<"Class"> | string
+  image?: Prisma.StringNullableFilter<"Class"> | string | null
   description?: Prisma.StringNullableFilter<"Class"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Class"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Class"> | Date | string
@@ -197,6 +205,7 @@ export type ClassOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   slug?: Prisma.SortOrder
+  image?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -210,6 +219,7 @@ export type ClassWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.ClassWhereInput | Prisma.ClassWhereInput[]
   OR?: Prisma.ClassWhereInput[]
   NOT?: Prisma.ClassWhereInput | Prisma.ClassWhereInput[]
+  image?: Prisma.StringNullableFilter<"Class"> | string | null
   description?: Prisma.StringNullableFilter<"Class"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Class"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Class"> | Date | string
@@ -220,6 +230,7 @@ export type ClassOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   slug?: Prisma.SortOrder
+  image?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -235,6 +246,7 @@ export type ClassScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Class"> | string
   title?: Prisma.StringWithAggregatesFilter<"Class"> | string
   slug?: Prisma.StringWithAggregatesFilter<"Class"> | string
+  image?: Prisma.StringNullableWithAggregatesFilter<"Class"> | string | null
   description?: Prisma.StringNullableWithAggregatesFilter<"Class"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Class"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Class"> | Date | string
@@ -244,6 +256,7 @@ export type ClassCreateInput = {
   id?: string
   title: string
   slug: string
+  image?: string | null
   description?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -254,6 +267,7 @@ export type ClassUncheckedCreateInput = {
   id?: string
   title: string
   slug: string
+  image?: string | null
   description?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -264,6 +278,7 @@ export type ClassUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -274,6 +289,7 @@ export type ClassUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -284,6 +300,7 @@ export type ClassCreateManyInput = {
   id?: string
   title: string
   slug: string
+  image?: string | null
   description?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -293,6 +310,7 @@ export type ClassUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -302,6 +320,7 @@ export type ClassUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -311,6 +330,7 @@ export type ClassCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   slug?: Prisma.SortOrder
+  image?: Prisma.SortOrder
   description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -320,6 +340,7 @@ export type ClassMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   slug?: Prisma.SortOrder
+  image?: Prisma.SortOrder
   description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -329,6 +350,7 @@ export type ClassMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   slug?: Prisma.SortOrder
+  image?: Prisma.SortOrder
   description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -359,6 +381,7 @@ export type ClassCreateWithoutProductInput = {
   id?: string
   title: string
   slug: string
+  image?: string | null
   description?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -368,6 +391,7 @@ export type ClassUncheckedCreateWithoutProductInput = {
   id?: string
   title: string
   slug: string
+  image?: string | null
   description?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -393,6 +417,7 @@ export type ClassUpdateWithoutProductInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -402,6 +427,7 @@ export type ClassUncheckedUpdateWithoutProductInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -442,6 +468,7 @@ export type ClassSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   id?: boolean
   title?: boolean
   slug?: boolean
+  image?: boolean
   description?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -453,6 +480,7 @@ export type ClassSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   id?: boolean
   title?: boolean
   slug?: boolean
+  image?: boolean
   description?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -462,6 +490,7 @@ export type ClassSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   id?: boolean
   title?: boolean
   slug?: boolean
+  image?: boolean
   description?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -471,12 +500,13 @@ export type ClassSelectScalar = {
   id?: boolean
   title?: boolean
   slug?: boolean
+  image?: boolean
   description?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ClassOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "slug" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["class"]>
+export type ClassOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "slug" | "image" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["class"]>
 export type ClassInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   product?: boolean | Prisma.Class$productArgs<ExtArgs>
   _count?: boolean | Prisma.ClassCountOutputTypeDefaultArgs<ExtArgs>
@@ -493,6 +523,7 @@ export type $ClassPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     id: string
     title: string
     slug: string
+    image: string | null
     description: string | null
     createdAt: Date
     updatedAt: Date
@@ -923,6 +954,7 @@ export interface ClassFieldRefs {
   readonly id: Prisma.FieldRef<"Class", 'String'>
   readonly title: Prisma.FieldRef<"Class", 'String'>
   readonly slug: Prisma.FieldRef<"Class", 'String'>
+  readonly image: Prisma.FieldRef<"Class", 'String'>
   readonly description: Prisma.FieldRef<"Class", 'String'>
   readonly createdAt: Prisma.FieldRef<"Class", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Class", 'DateTime'>

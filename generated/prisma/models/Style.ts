@@ -29,6 +29,7 @@ export type StyleMinAggregateOutputType = {
   title: string | null
   slug: string | null
   description: string | null
+  image: string | null
 }
 
 export type StyleMaxAggregateOutputType = {
@@ -36,6 +37,7 @@ export type StyleMaxAggregateOutputType = {
   title: string | null
   slug: string | null
   description: string | null
+  image: string | null
 }
 
 export type StyleCountAggregateOutputType = {
@@ -43,6 +45,7 @@ export type StyleCountAggregateOutputType = {
   title: number
   slug: number
   description: number
+  image: number
   _all: number
 }
 
@@ -52,6 +55,7 @@ export type StyleMinAggregateInputType = {
   title?: true
   slug?: true
   description?: true
+  image?: true
 }
 
 export type StyleMaxAggregateInputType = {
@@ -59,6 +63,7 @@ export type StyleMaxAggregateInputType = {
   title?: true
   slug?: true
   description?: true
+  image?: true
 }
 
 export type StyleCountAggregateInputType = {
@@ -66,6 +71,7 @@ export type StyleCountAggregateInputType = {
   title?: true
   slug?: true
   description?: true
+  image?: true
   _all?: true
 }
 
@@ -146,6 +152,7 @@ export type StyleGroupByOutputType = {
   title: string
   slug: string
   description: string | null
+  image: string | null
   _count: StyleCountAggregateOutputType | null
   _min: StyleMinAggregateOutputType | null
   _max: StyleMaxAggregateOutputType | null
@@ -174,6 +181,7 @@ export type StyleWhereInput = {
   title?: Prisma.StringFilter<"Style"> | string
   slug?: Prisma.StringFilter<"Style"> | string
   description?: Prisma.StringNullableFilter<"Style"> | string | null
+  image?: Prisma.StringNullableFilter<"Style"> | string | null
   product?: Prisma.ProductListRelationFilter
 }
 
@@ -182,6 +190,7 @@ export type StyleOrderByWithRelationInput = {
   title?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
+  image?: Prisma.SortOrderInput | Prisma.SortOrder
   product?: Prisma.ProductOrderByRelationAggregateInput
 }
 
@@ -193,6 +202,7 @@ export type StyleWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.StyleWhereInput[]
   NOT?: Prisma.StyleWhereInput | Prisma.StyleWhereInput[]
   description?: Prisma.StringNullableFilter<"Style"> | string | null
+  image?: Prisma.StringNullableFilter<"Style"> | string | null
   product?: Prisma.ProductListRelationFilter
 }, "id" | "title" | "slug">
 
@@ -201,6 +211,7 @@ export type StyleOrderByWithAggregationInput = {
   title?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
+  image?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.StyleCountOrderByAggregateInput
   _max?: Prisma.StyleMaxOrderByAggregateInput
   _min?: Prisma.StyleMinOrderByAggregateInput
@@ -214,6 +225,7 @@ export type StyleScalarWhereWithAggregatesInput = {
   title?: Prisma.StringWithAggregatesFilter<"Style"> | string
   slug?: Prisma.StringWithAggregatesFilter<"Style"> | string
   description?: Prisma.StringNullableWithAggregatesFilter<"Style"> | string | null
+  image?: Prisma.StringNullableWithAggregatesFilter<"Style"> | string | null
 }
 
 export type StyleCreateInput = {
@@ -221,6 +233,7 @@ export type StyleCreateInput = {
   title: string
   slug: string
   description?: string | null
+  image?: string | null
   product?: Prisma.ProductCreateNestedManyWithoutStyleInput
 }
 
@@ -229,6 +242,7 @@ export type StyleUncheckedCreateInput = {
   title: string
   slug: string
   description?: string | null
+  image?: string | null
   product?: Prisma.ProductUncheckedCreateNestedManyWithoutStyleInput
 }
 
@@ -237,6 +251,7 @@ export type StyleUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   product?: Prisma.ProductUpdateManyWithoutStyleNestedInput
 }
 
@@ -245,6 +260,7 @@ export type StyleUncheckedUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   product?: Prisma.ProductUncheckedUpdateManyWithoutStyleNestedInput
 }
 
@@ -253,6 +269,7 @@ export type StyleCreateManyInput = {
   title: string
   slug: string
   description?: string | null
+  image?: string | null
 }
 
 export type StyleUpdateManyMutationInput = {
@@ -260,6 +277,7 @@ export type StyleUpdateManyMutationInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type StyleUncheckedUpdateManyInput = {
@@ -267,6 +285,7 @@ export type StyleUncheckedUpdateManyInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type StyleCountOrderByAggregateInput = {
@@ -274,6 +293,7 @@ export type StyleCountOrderByAggregateInput = {
   title?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  image?: Prisma.SortOrder
 }
 
 export type StyleMaxOrderByAggregateInput = {
@@ -281,6 +301,7 @@ export type StyleMaxOrderByAggregateInput = {
   title?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  image?: Prisma.SortOrder
 }
 
 export type StyleMinOrderByAggregateInput = {
@@ -288,6 +309,7 @@ export type StyleMinOrderByAggregateInput = {
   title?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  image?: Prisma.SortOrder
 }
 
 export type StyleNullableScalarRelationFilter = {
@@ -316,6 +338,7 @@ export type StyleCreateWithoutProductInput = {
   title: string
   slug: string
   description?: string | null
+  image?: string | null
 }
 
 export type StyleUncheckedCreateWithoutProductInput = {
@@ -323,6 +346,7 @@ export type StyleUncheckedCreateWithoutProductInput = {
   title: string
   slug: string
   description?: string | null
+  image?: string | null
 }
 
 export type StyleCreateOrConnectWithoutProductInput = {
@@ -346,6 +370,7 @@ export type StyleUpdateWithoutProductInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type StyleUncheckedUpdateWithoutProductInput = {
@@ -353,6 +378,7 @@ export type StyleUncheckedUpdateWithoutProductInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -391,6 +417,7 @@ export type StyleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   title?: boolean
   slug?: boolean
   description?: boolean
+  image?: boolean
   product?: boolean | Prisma.Style$productArgs<ExtArgs>
   _count?: boolean | Prisma.StyleCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["style"]>
@@ -400,6 +427,7 @@ export type StyleSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   title?: boolean
   slug?: boolean
   description?: boolean
+  image?: boolean
 }, ExtArgs["result"]["style"]>
 
 export type StyleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -407,6 +435,7 @@ export type StyleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   title?: boolean
   slug?: boolean
   description?: boolean
+  image?: boolean
 }, ExtArgs["result"]["style"]>
 
 export type StyleSelectScalar = {
@@ -414,9 +443,10 @@ export type StyleSelectScalar = {
   title?: boolean
   slug?: boolean
   description?: boolean
+  image?: boolean
 }
 
-export type StyleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "slug" | "description", ExtArgs["result"]["style"]>
+export type StyleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "slug" | "description" | "image", ExtArgs["result"]["style"]>
 export type StyleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   product?: boolean | Prisma.Style$productArgs<ExtArgs>
   _count?: boolean | Prisma.StyleCountOutputTypeDefaultArgs<ExtArgs>
@@ -434,6 +464,7 @@ export type $StylePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     title: string
     slug: string
     description: string | null
+    image: string | null
   }, ExtArgs["result"]["style"]>
   composites: {}
 }
@@ -862,6 +893,7 @@ export interface StyleFieldRefs {
   readonly title: Prisma.FieldRef<"Style", 'String'>
   readonly slug: Prisma.FieldRef<"Style", 'String'>
   readonly description: Prisma.FieldRef<"Style", 'String'>
+  readonly image: Prisma.FieldRef<"Style", 'String'>
 }
     
 

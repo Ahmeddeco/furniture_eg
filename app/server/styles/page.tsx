@@ -1,4 +1,4 @@
-import { MoreVertical, PlusCircle } from "lucide-react"
+import { ImageOff, MoreVertical, PlusCircle } from "lucide-react"
 import ServerPageCard from "@/components/shared/ServerPageCard"
 import EmptyCard from "@/components/shared/EmptyCard"
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
@@ -28,6 +28,7 @@ import { getAllStyles } from "@/dl/styles.data"
 import { deleteStyleAction } from "@/actions/style.action"
 import { allowedRoles } from "@/auth/allowedRoles"
 import { Role } from "@/generated/prisma/enums"
+import Image from "next/image"
 
 export default async function StylesPage({ searchParams }: { searchParams: Promise<{ page: string; size: string }> }) {
 	await allowedRoles([Role.admin, Role.owner])
@@ -52,6 +53,7 @@ export default async function StylesPage({ searchParams }: { searchParams: Promi
 					{/* ---------------------------- TableHeader ---------------------------- */}
 					<TableHeader>
 						<TableRow>
+							<TableHead>image</TableHead>
 							<TableHead>title</TableHead>
 							<TableHead>slug</TableHead>
 							<TableHead>mobile</TableHead>
@@ -60,11 +62,18 @@ export default async function StylesPage({ searchParams }: { searchParams: Promi
 					</TableHeader>
 					{/* ----------------------------- TableBody ----------------------------- */}
 					<TableBody>
-						{styles.data.map(({ id, description, title, slug }) => (
+						{styles.data.map(({ id, description, title, slug, image }) => (
 							<TableRow key={id}>
+								<TableCell className="relative rounded-lg size-12 ">
+									{image ? (
+										<Image src={image} alt={title} fill className="rounded-lg object-cover" />
+									) : (
+										<ImageOff size={32} />
+									)}
+								</TableCell>
 								<TableCell className="capitalize ">{title}</TableCell>
 								<TableCell>{slug}</TableCell>
-								<TableCell>{description}</TableCell>
+								<TableCell className="line-clamp-2">{description}</TableCell>
 
 								{/* -------------------------------- settings -------------------------------- */}
 								<TableCell className="text-left">

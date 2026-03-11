@@ -105,6 +105,7 @@ model Class {
   id          String    @id @default(cuid())
   title       String    @unique
   slug        String    @unique
+  image       String?
   description String?   @db.Text
   product     Product[]
 
@@ -119,6 +120,7 @@ model Style {
   title       String    @unique
   slug        String    @unique
   description String?
+  image       String?
   product     Product[]
 }
 

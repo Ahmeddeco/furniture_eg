@@ -1,4 +1,4 @@
-import { MoreVertical } from "lucide-react"
+import { ImageOff, MoreVertical, PlusCircle } from "lucide-react"
 import ServerPageCard from "@/components/shared/ServerPageCard"
 import EmptyCard from "@/components/shared/EmptyCard"
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
@@ -28,8 +28,9 @@ import { getAllClasses } from "@/dl/class.data"
 import { deleteClassAction } from "@/actions/class.action"
 import { allowedRoles } from "@/auth/allowedRoles"
 import { Role } from "@/generated/prisma/enums"
+import Image from "next/image"
 
-export default async function ColorsPage({ searchParams }: { searchParams: Promise<{ page: string; size: string }> }) {
+export default async function ClassPage({ searchParams }: { searchParams: Promise<{ page: string; size: string }> }) {
 	await allowedRoles([Role.admin, Role.owner])
 
 	const { page, size } = await searchParams
@@ -38,7 +39,13 @@ export default async function ColorsPage({ searchParams }: { searchParams: Promi
 	const classes = await getAllClasses(pageSize, pageNumber)
 
 	return (
-		<ServerPageCard title={"all classes"} description={"All classes in the database."} href={"/server/classes/add"}>
+		<ServerPageCard
+			title={"all classes"}
+			description={"All classes in the database."}
+			icon={PlusCircle}
+			href={"/server/classes/add"}
+			btnTitle="add class"
+		>
 			{!classes?.data.length ? (
 				<EmptyCard href={"/server/classes/add"} linkTitle={"add class"} />
 			) : (
@@ -46,6 +53,7 @@ export default async function ColorsPage({ searchParams }: { searchParams: Promi
 					{/* ---------------------------- TableHeader ---------------------------- */}
 					<TableHeader>
 						<TableRow>
+							<TableHead>image</TableHead>
 							<TableHead>title</TableHead>
 							<TableHead>slug</TableHead>
 							<TableHead>description</TableHead>
@@ -54,11 +62,18 @@ export default async function ColorsPage({ searchParams }: { searchParams: Promi
 					</TableHeader>
 					{/* ----------------------------- TableBody ----------------------------- */}
 					<TableBody>
-						{classes.data.map(({ id, title, description, slug }) => (
+						{classes.data.map(({ id, title, description, slug, image }) => (
 							<TableRow key={id}>
+								<TableCell className="relative rounded-lg size-12 ">
+									{image ? (
+										<Image src={image} alt={title} fill className="rounded-lg object-cover" />
+									) : (
+										<ImageOff size={32} />
+									)}
+								</TableCell>
 								<TableCell className="capitalize ">{title}</TableCell>
 								<TableCell>{slug}</TableCell>
-								<TableCell>{description}</TableCell>
+								<TableCell className="line-clamp-2">{description}</TableCell>
 
 								{/* -------------------------------- settings -------------------------------- */}
 								<TableCell className="text-left">

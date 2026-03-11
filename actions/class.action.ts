@@ -20,9 +20,15 @@ export const addClassAction = async (prevState: unknown, formData: FormData) => 
 	try {
 		await prisma.class.upsert({
 			where: { title: submission.value.title }, create: {
-				title: submission.value.title, slug: generatedSlug, description: submission.value.description
+				title: submission.value.title,
+				slug: generatedSlug,
+				description: submission.value.description,
+				image: submission.value.image
 			}, update: {
-				title: submission.value.title, slug: generatedSlug, description: submission.value.description
+				title: submission.value.title,
+				slug: generatedSlug,
+				description: submission.value.description,
+				image: submission.value.image
 			}
 		})
 	} catch (error) {
@@ -47,14 +53,14 @@ export const editClassAction = async (prevState: unknown, formData: FormData) =>
 			where: {
 				id: submission.value.id!
 			}, data: {
-				title: submission.value.title, slug: generatedSlug, description: submission.value.description
+				title: submission.value.title,
+				slug: generatedSlug,
+				description: submission.value.description,
+				image: submission.value.image
 			}
 		})
 	} catch (error) {
 		console.error(error)
-		return submission.reply({
-			formErrors: ["فشل تحديث البيانات، تأكد من أن المعرف صحيح"]
-		})
 	}
 	redirect("/server/classes")
 }

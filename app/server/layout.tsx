@@ -7,7 +7,7 @@ export default function ServerLayout({ children }: { children: React.ReactNode }
 			<ServerSidebar />
 			<div className="w-full p-6 ">
 				<SidebarTrigger />
-				<div className="min-h-[80vh]">{children}</div>
+				{children}
 			</div>
 		</SidebarProvider>
 	)

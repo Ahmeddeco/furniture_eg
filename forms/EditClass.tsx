@@ -11,6 +11,7 @@ import { Class } from "@/generated/modelSchema/ClassSchema"
 import ClassSchema from "@/schemas/ClassSchema"
 import { Textarea } from "@/components/ui/textarea"
 import { editClassAction } from "@/actions/class.action"
+import { UploadOneImagesDropZone } from "@/components/shared/UploadImagesDropZone"
 
 type Props = {
 	data: Class
@@ -49,6 +50,9 @@ export default function EditClass({ data }: Props) {
 				<Textarea key={fields.description.key} name={fields.description.name} defaultValue={data.description ?? ""} />
 				<FieldError>{fields.description.errors}</FieldError>
 			</Field>
+
+			{/* ---------------------------------- image --------------------------------- */}
+			<UploadOneImagesDropZone imageName={fields.image.name} errors={fields.image.errors} dbImage={data.image ?? ""} />
 
 			<SubmitButton text={"edit class"} />
 		</Form>

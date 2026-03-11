@@ -10,6 +10,7 @@ import SubmitButton from "@/components/shared/SubmitButton"
 import { addStyleAction } from "@/actions/style.action"
 import { Textarea } from "@/components/ui/textarea"
 import StyleSchema from "@/schemas/StyleSchema"
+import { UploadOneImagesDropZone } from "@/components/shared/UploadImagesDropZone"
 
 export default function AddStyle() {
 	const [lastResult, action] = useActionState(addStyleAction, undefined)
@@ -46,6 +47,9 @@ export default function AddStyle() {
 				/>
 				<FieldError>{fields.description.errors}</FieldError>
 			</Field>
+
+			{/* ---------------------------------- image --------------------------------- */}
+			<UploadOneImagesDropZone imageName={fields.image.name} errors={fields.image.errors} />
 
 			<SubmitButton text={"add style"} />
 		</Form>

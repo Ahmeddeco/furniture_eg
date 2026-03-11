@@ -24,12 +24,14 @@ export const addStyleAction = async (prevState: unknown, formData: FormData) => 
       create: {
         title: submission.value.title,
         slug: generatedSlug,
-        description: submission.value.description
+        description: submission.value.description,
+        image: submission.value.image
       },
       update: {
         title: submission.value.title,
         slug: generatedSlug,
-        description: submission.value.description
+        description: submission.value.description,
+        image: submission.value.image
       }
     })
   } catch (error) {
@@ -58,7 +60,8 @@ export const editStyleAction = async (prevState: unknown, formData: FormData) =>
       data: {
         title: submission.value.title,
         slug: generatedSlug,
-        description: submission.value.description
+        description: submission.value.description,
+        image: submission.value.image
       }
     })
   } catch (error) {

@@ -1242,6 +1242,7 @@ export const ClassScalarFieldEnum = {
   id: 'id',
   title: 'title',
   slug: 'slug',
+  image: 'image',
   description: 'description',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -1254,7 +1255,8 @@ export const StyleScalarFieldEnum = {
   id: 'id',
   title: 'title',
   slug: 'slug',
-  description: 'description'
+  description: 'description',
+  image: 'image'
 } as const
 
 export type StyleScalarFieldEnum = (typeof StyleScalarFieldEnum)[keyof typeof StyleScalarFieldEnum]

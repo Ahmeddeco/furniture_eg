@@ -10,6 +10,7 @@ import SubmitButton from "@/components/shared/SubmitButton"
 import { Textarea } from "@/components/ui/textarea"
 import StyleSchema, { Style } from "@/schemas/StyleSchema"
 import { editStyleAction } from "@/actions/style.action"
+import { UploadOneImagesDropZone } from "@/components/shared/UploadImagesDropZone"
 
 type Props = {
 	style: Style
@@ -48,6 +49,9 @@ export default function EditStyle({ style }: Props) {
 				<Textarea key={fields.description.key} name={fields.description.name} defaultValue={style.description ?? ""} />
 				<FieldError>{fields.description.errors}</FieldError>
 			</Field>
+
+			{/* ---------------------------------- image --------------------------------- */}
+			<UploadOneImagesDropZone imageName={fields.image.name} errors={fields.image.errors} dbImage={style.image ?? ""} />
 
 			<SubmitButton text={"edit style"} />
 		</Form>

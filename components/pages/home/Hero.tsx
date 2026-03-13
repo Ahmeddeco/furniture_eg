@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Phone, ShoppingBag } from "lucide-react"
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
+import { Phone } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import ceilingLamp from "@/public/images/ceilingLamp.webp"
+import { ShopNowButton } from "@/components/shared/CustomButton"
 
 export default function Hero() {
 	return (
@@ -38,29 +39,22 @@ export default function Hero() {
 
 			{/* -------------------------------- Text -------------------------------- */}
 			<div className="h-full w-full z-20 flex items-start lg:items-center justify-center">
-				<Card className=" w-fit! m-8 flex flex-col gap-4 justify-center  bg-card/50 shadow-none backdrop-blur-md ">
-					<CardHeader>
-						<CardTitle>
-							<h5>discover timeless comfort and style</h5>
-							<h1>furniture</h1>
-						</CardTitle>
+				<Card className=" w-fit! m-8 flex flex-col gap-4 justify-center lg:items-start items-center bg-card/50 shadow-none backdrop-blur-md ">
+					<CardHeader className="w-full">
+						<h5>إستكشف الراحة والأناقة في</h5>
+						<h1 className="mt-4">الأثاث الراقي</h1>
 					</CardHeader>
 					<CardContent>
-						<h6 className="max-w-md">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut dolores ad doloribus ducimus beatae provident
-							corrupti ullam nulla vel illo iste porro architecto, perspiciatis dignissimos voluptas exercitationem
-							tempore voluptates et?
-						</h6>
+						<h5 className="max-w-md ">
+							الأثاث مش بس قطعة ديكور، ده استثمار في راحتك, علشان كده احنا بنستخدم أجود أنواع الخشب الطبيعي، وأقمشة تعيش
+							معاك وتتحمل، بتصميمات بتجمع بين رقي المودرن ودفء البيت المصري الأصيل.
+						</h5>
 					</CardContent>
 					<CardFooter className="gap-4">
-						<Button asChild>
-							<Link href={"/shop"}>
-								shop now <ShoppingBag />
-							</Link>
-						</Button>
+						<ShopNowButton />
 						<Button asChild variant={"outline"}>
 							<Link href={"/contact"}>
-								contact us <Phone />
+								إتصل بنا <Phone />
 							</Link>
 						</Button>
 					</CardFooter>

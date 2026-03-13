@@ -3,7 +3,6 @@ import Logo from "./Logo"
 import MobileMenu from "./MobileMenu"
 import { ThemeButton } from "../theme/ThemeButton"
 import FrontNavigation from "./FrontNavigation"
-import ServerButton from "./ServerButton"
 
 export default function NavBar() {
 	return (
@@ -21,7 +20,6 @@ export default function NavBar() {
 			{/* ------------------------------ Socials ----------------------------- */}
 			<div className="lg:flex hidden items-center gap-2">
 				<ThemeButton />
-				<ServerButton />
 				<UserButton />
 			</div>
 		</header>

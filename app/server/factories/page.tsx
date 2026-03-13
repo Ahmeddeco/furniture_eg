@@ -69,7 +69,7 @@ export default async function FactoriesPage({
 					</TableHeader>
 					{/* ----------------------------- TableBody ----------------------------- */}
 					<TableBody>
-						{factories.data.map(({ id, slug, name, logo, country, state, mobile, owner }) => (
+						{factories.data.map(({ id, slug, name, logo, country, state, mobile, owner, city }) => (
 							<TableRow key={id}>
 								<TableCell className="relative rounded-lg size-16 ">
 									{logo ? (
@@ -84,6 +84,7 @@ export default async function FactoriesPage({
 								<TableCell>{mobile}</TableCell>
 								<TableCell>
 									{country} - {state}
+									{city ? ` - ${city}` : ""}
 								</TableCell>
 
 								{/* -------------------------------- settings -------------------------------- */}

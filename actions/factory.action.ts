@@ -1,10 +1,10 @@
 "use server"
 
 import prisma from "@/lib/prisma"
-import {splittedItems} from "@/helpers/splittedItems"
+import { splittedItems } from "@/logic/splittedItems"
 import FactorySchema from "@/schemas/FactorySchema"
-import {parseWithZod} from "@conform-to/zod"
-import {redirect} from "next/navigation"
+import { parseWithZod } from "@conform-to/zod"
+import { redirect } from "next/navigation"
 import slugify from "slugify"
 
 /* ----------------------------- addFactoriesAction ----------------------------- */
@@ -16,12 +16,12 @@ export const addFactoryAction = async (prevState: unknown, formData: FormData) =
 		return submission.reply()
 	}
 	// generatedSlug
-	const generatedSlug = slugify(submission.value.name, {lower: true, strict: true, locale: "ar"})
+	const generatedSlug = slugify(submission.value.name, { lower: true, strict: true, locale: "ar" })
 	const splittedOwnerData = splittedItems(JSON.parse(submission.value.users[0]).join(","))
 
 	try {
 		await prisma.factory.upsert({
-			where: {slug: generatedSlug}, create: {
+			where: { slug: generatedSlug }, create: {
 				name: submission.value.name,
 				slug: generatedSlug,
 				info: submission.value.info,
@@ -31,7 +31,7 @@ export const addFactoryAction = async (prevState: unknown, formData: FormData) =
 				state: submission.value.state,
 				city: submission.value.city,
 				logo: submission.value.logo,
-				owner: {connect: splittedOwnerData.map((id: string) => ({id}))}
+				owner: { connect: splittedOwnerData.map((id: string) => ({ id })) }
 
 			}, update: {
 				name: submission.value.name,
@@ -43,7 +43,7 @@ export const addFactoryAction = async (prevState: unknown, formData: FormData) =
 				state: submission.value.state,
 				city: submission.value.city,
 				logo: submission.value.logo,
-				owner: {set: splittedOwnerData.map((id: string) => ({id}))}
+				owner: { set: splittedOwnerData.map((id: string) => ({ id })) }
 
 			}
 		})
@@ -62,7 +62,7 @@ export const editFactoryAction = async (prevState: unknown, formData: FormData) 
 		return submission.reply()
 	}
 
-	const generatedSlug = slugify(submission.value.name, {lower: true, strict: true, locale: "ar"})
+	const generatedSlug = slugify(submission.value.name, { lower: true, strict: true, locale: "ar" })
 	const splittedOwnerData = splittedItems(JSON.parse(submission.value.users[0]).join(","))
 
 	try {
@@ -79,7 +79,7 @@ export const editFactoryAction = async (prevState: unknown, formData: FormData) 
 				state: submission.value.state,
 				city: submission.value.city,
 				logo: submission.value.logo,
-				owner: {set: splittedOwnerData.map((id: string) => ({id}))}
+				owner: { set: splittedOwnerData.map((id: string) => ({ id })) }
 			}
 		})
 	} catch (error) {

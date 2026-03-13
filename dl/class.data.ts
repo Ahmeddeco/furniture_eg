@@ -37,7 +37,7 @@ export const getAllClassesForProductPage = async () => {
   try {
     const data = await prisma.class.findMany({
       select: { id: true, title: true, image: true, slug: true },
-      orderBy: { title: "asc" },
+      orderBy: { title: "desc" },
     })
     return data
   } catch (error) {

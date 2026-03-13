@@ -4,7 +4,7 @@ import { useState } from "react"
 import { CitySelect, CountrySelect, StateSelect } from "react-country-state-city"
 import "react-country-state-city/dist/react-country-state-city.css"
 import { Input } from "../ui/input"
-import { City, Country, State } from "@/types/address"
+import { City, Country, State } from "@/types/address.type"
 import { Field, FieldLabel } from "../ui/field"
 
 type CountryProps = {

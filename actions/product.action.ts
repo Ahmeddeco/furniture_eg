@@ -1,10 +1,10 @@
 "use server"
 
 import prisma from "@/lib/prisma"
-import {splittedItems} from "@/helpers/splittedItems"
+import { splittedItems } from "@/logic/splittedItems"
 import ProductSchema from "@/schemas/ProductSchema"
-import {parseWithZod} from "@conform-to/zod"
-import {redirect} from "next/navigation"
+import { parseWithZod } from "@conform-to/zod"
+import { redirect } from "next/navigation"
 
 /* ----------------------------- addProductAction ----------------------------- */
 export const addProductAction = async (prevState: unknown, formData: FormData) => {
@@ -20,7 +20,7 @@ export const addProductAction = async (prevState: unknown, formData: FormData) =
 
 	try {
 		await prisma.product.upsert({
-			where: {model: submission.value.model}, create: {
+			where: { model: submission.value.model }, create: {
 				title: submission.value.title,
 				model: submission.value.model,
 				miniDescription: submission.value.miniDescription,
@@ -36,7 +36,7 @@ export const addProductAction = async (prevState: unknown, formData: FormData) =
 				factoryId: submission.value.factoryId,
 				styleId: submission.value.styleId,
 				classId: submission.value.classId,
-				color: {connect: splittedColorsData.map((id: string) => ({id}))}
+				color: { connect: splittedColorsData.map((id: string) => ({ id })) }
 			}, update: {
 				title: submission.value.title,
 				model: submission.value.model,
@@ -53,7 +53,7 @@ export const addProductAction = async (prevState: unknown, formData: FormData) =
 				factoryId: submission.value.factoryId,
 				styleId: submission.value.styleId,
 				classId: submission.value.classId,
-				color: {set: splittedColorsData.map((id: string) => ({id}))}
+				color: { set: splittedColorsData.map((id: string) => ({ id })) }
 			}
 		})
 	} catch (error) {
@@ -93,7 +93,7 @@ export const editProductAction = async (prevState: unknown, formData: FormData) 
 				factoryId: submission.value.factoryId,
 				styleId: submission.value.styleId,
 				classId: submission.value.classId,
-				color: {set: submission.value.colors.map((id: string) => ({id}))}
+				color: { set: submission.value.colors.map((id: string) => ({ id })) }
 			}
 		})
 	} catch (error) {

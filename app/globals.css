@@ -193,25 +193,25 @@
 		letter-spacing: var(--tracking-normal);
 	}
 	h1 {
-		@apply text-3xl lg:text-4xl font-black lg:text-start text-center capitalize;
+		@apply text-3xl lg:text-4xl font-black  capitalize lg:text-start text-center;
 	}
 	h2 {
-		@apply text-2xl lg:text-3xl font-bold lg:text-start text-center capitalize;
+		@apply text-2xl lg:text-3xl font-bold  capitalize lg:text-start text-center;
 	}
 	h3 {
-		@apply text-xl lg:text-2xl font-semibold lg:text-start text-center capitalize;
+		@apply text-xl lg:text-2xl font-semibold  capitalize lg:text-start text-center;
 	}
 	h4 {
-		@apply text-lg lg:text-xl font-medium lg:text-start text-center capitalize;
+		@apply text-lg lg:text-xl font-medium  capitalize lg:text-start text-center;
 	}
 	h5 {
-		@apply text-base lg:text-lg font-normal lg:text-start text-center capitalize;
+		@apply text-base lg:text-lg font-normal text-pretty  capitalize lg:text-start text-center;
 	}
 	h6 {
-		@apply text-sm lg:text-base font-light text-pretty  lg:text-start text-center;
+		@apply text-sm lg:text-base font-light text-pretty lg:text-start text-center;
 	}
 	p {
-		@apply text-xs lg:text-sm font-extralight text-muted-foreground;
+		@apply text-xs lg:text-sm font-extralight text-muted-foreground text-balance;
 	}
 	section {
 		@apply py-8;

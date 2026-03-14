@@ -12,7 +12,7 @@ type Props = {
 
 export default function ProductCard({ product }: Props) {
 	return (
-		<Link href={`/shop/${product.id}`} className="w-full  max-w-md min-w-sm">
+		<Link href={`/shop/${product.id}`} className="w-full  max-w-lg min-w-sm">
 			<Card className="w-full">
 				<CardHeader className="flex items-center justify-between w-full">
 					<Badge>{product.discount} %</Badge>

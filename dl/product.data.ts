@@ -81,6 +81,7 @@ export const getOurLatestProducts = async () => {
 }
 
 /* ------------------------ getTheMostFavoriteProduct ----------------------- */
+// TODO filter by the most favorite
 export const getTheMostFavoriteProduct = async () => {
   try {
     const data = await prisma.product.findFirst({

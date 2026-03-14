@@ -13,7 +13,7 @@ export function ShopNowButton({
 	variant?: VariantProps<typeof buttonVariants>["variant"]
 }) {
 	return (
-		<Button asChild variant={variant || "secondary"} size="sm">
+		<Button asChild variant={variant || "secondary"} size="lg">
 			<Link href={id ? `/shop/${id}` : `/shop`}>
 				<ShoppingBag />
 				إشتري الآن

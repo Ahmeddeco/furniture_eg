@@ -10,7 +10,7 @@ export default async function FindWhatYouNeed() {
 	return (
 		<section className="container mx-auto flex flex-col items-center justify-center gap-8 mb-8">
 			<div className="flex flex-col items-center justify-center gap-2">
-				<h4 className="text-secondary">تسوق بنوع المنتج</h4>
+				<h4 className="dark:text-secondary">تسوق بنوع المنتج</h4>
 				<h2>ستجد لدينا كل ما تحتاجه</h2>
 			</div>
 			<div className="w-full ">
@@ -19,14 +19,14 @@ export default async function FindWhatYouNeed() {
 						{classes!.map(({ image, title, id, slug }) => (
 							<CarouselItem key={id} className="basis-1/2 md:basis-1/4 lg:basis-1/6 flex justify-center">
 								<Link
-									className="w-fit flex flex-col items-center justify-center gap-2 hover:scale-95 duration-500 ease-in-out"
+									className="w-fit flex flex-col items-center justify-center gap-2 hover:scale-95 duration-500 ease-in-out "
 									href={`/shop/?class=${slug}`}
 									key={id}
 								>
 									<div className="flex flex-col gap-4 items-center justify-center">
-										<div className="relative rounded-full size-32">
+										<div className="relative rounded-2xl  shadow-lg size-44 ">
 											{image ? (
-												<Image src={image} alt={title} fill className="object-cover rounded-full" />
+												<Image src={image} alt={title} fill className="object-cover rounded-2xl" />
 											) : (
 												<ImageOff />
 											)}

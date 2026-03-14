@@ -8,6 +8,10 @@ export const frontNav = [
     href: "/articles"
   },
   {
+    title: "من نحن",
+    href: "/information"
+  },
+  {
     title: "تواصل معنا",
     href: "/contact"
   },

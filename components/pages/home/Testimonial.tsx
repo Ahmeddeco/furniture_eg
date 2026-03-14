@@ -1,6 +1,5 @@
 import { ShopNowButton } from "@/components/shared/CustomButton"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Item, ItemActions, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item"
 import { testimonialData } from "@/constants/testimonial"
@@ -11,27 +10,27 @@ export default function Testimonial() {
 		<section className="container mx-auto flex flex-col items-center justify-center gap-8">
 			{/* ------------------------------- Title ------------------------------ */}
 			<div className="flex flex-col items-center justify-center gap-2">
-				<h6 className="text-secondary">آراء العملاء</h6>
+				<h4 className="dark:text-secondary">آراء العملاء</h4>
 				<h2>آراء عائلتنا من العملاء</h2>
 			</div>
 
 			{/* ------------------------------- Cards ------------------------------ */}
-			<div className="flex flex-wrap items-center justify-center lg:justify-evenly gap-4 lg:gap-0 w-full">
+			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center  gap-4  w-full">
 				{testimonialData.map(({ avatar, job, name, sentence }, index) => (
 					<Card
 						key={index}
-						className={`${index % 2 === 0 ? "bg-card text-card-foreground" : "bg-secondary text-secondary-foreground!"}  w-full lg:w-md`}
+						className={`${index % 2 === 0 ? "bg-card text-card-foreground" : "bg-secondary text-secondary-foreground!"}  w-full `}
 					>
 						<CardHeader>
 							<Quote fill={index % 2 === 0 ? "var(--card-foreground )" : "var(--secondary-foreground )"} size={40} />
 						</CardHeader>
-						<CardContent>{sentence}</CardContent>
+						<CardContent className="line-clamp-3">{sentence}</CardContent>
 						<CardFooter>
 							<Item variant="default" className="w-full p-0">
 								<ItemMedia>
 									<Avatar className="size-10">
 										<AvatarImage src={avatar} />
-										<AvatarFallback>ER</AvatarFallback>
+										<AvatarFallback>{name[0]}</AvatarFallback>
 									</Avatar>
 								</ItemMedia>
 								<ItemContent>

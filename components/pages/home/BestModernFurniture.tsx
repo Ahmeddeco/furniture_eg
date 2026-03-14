@@ -17,7 +17,7 @@ export default async function BestModernFurniture({
 				<h2>أفضل الأثاث المودرن</h2>
 				<FilterTabs searchParams={searchParams} />
 			</div>
-			<div className="flex flex-wrap items-center justify-center gap-6">
+			<div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 items-center justify-center gap-6 w-full">
 				{products.map((product) => (
 					<ProductCard product={product} key={product.id} />
 				))}

@@ -8,12 +8,11 @@ export default async function BestModernFurniture({
 }: {
 	searchParams: Promise<{ filter: ProductFilterType }>
 }) {
-	const products = await getFilteredProducts("best")
-
-	console.log("products from BestModernFurniture", products)
+	const filter = (await searchParams).filter
+	const products = await getFilteredProducts(filter)
 
 	return (
-		<section className="container mx-auto flex flex-col items-center justify-center gap-4 lg:gap-12 ">
+		<section className="container mx-auto hidden lg:flex flex-col items-center justify-center gap-4 lg:gap-12 ">
 			<div className="flex flex-col lg:flex-row items-center lg:justify-between justify-center gap-4 w-full">
 				<h2>أفضل الأثاث المودرن</h2>
 				<FilterTabs searchParams={searchParams} />

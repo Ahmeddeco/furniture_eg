@@ -1,12 +1,19 @@
+/* */
 import Link from "next/link"
 import { Button, buttonVariants } from "../ui/button"
 import { ShoppingBag } from "lucide-react"
 import { VariantProps } from "class-variance-authority"
 
 /* ------------------------------ ShopNowButton ----------------------------- */
-export function ShopNowButton({ id }: { id?: string }) {
+export function ShopNowButton({
+	id,
+	variant,
+}: {
+	id?: string
+	variant?: VariantProps<typeof buttonVariants>["variant"]
+}) {
 	return (
-		<Button asChild>
+		<Button asChild variant={variant || "secondary"} size="sm">
 			<Link href={id ? `/shop/${id}` : `/shop`}>
 				<ShoppingBag />
 				إشتري الآن
@@ -24,7 +31,7 @@ export function ShopByQueryButton({
 	variant?: VariantProps<typeof buttonVariants>["variant"]
 }) {
 	return (
-		<Button asChild variant={variant || "secondary"} size={"sm"}>
+		<Button asChild variant={variant || "secondary"} size="sm">
 			<Link href={`/shop?${query}`}>
 				<ShoppingBag />
 				إشتري الآن

@@ -14,7 +14,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
 			<FindWhatYouNeed />
 			<OurLatestProducts />
 			<TheMostFavorite />
-			<BestModernFurniture searchParams={searchParams} />
+			{/* <BestModernFurniture searchParams={searchParams} /> */}
 			<OffersBanner />
 			<Testimonial />
 		</>

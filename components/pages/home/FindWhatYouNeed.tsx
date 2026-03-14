@@ -10,7 +10,7 @@ export default async function FindWhatYouNeed() {
 	return (
 		<section className="container mx-auto flex flex-col items-center justify-center gap-8 mb-8">
 			<div className="flex flex-col items-center justify-center gap-2">
-				<h4 className="text-muted-foreground">تسوق بنوع المنتج</h4>
+				<h4 className="text-secondary">تسوق بنوع المنتج</h4>
 				<h2>ستجد لدينا كل ما تحتاجه</h2>
 			</div>
 			<div className="w-full ">

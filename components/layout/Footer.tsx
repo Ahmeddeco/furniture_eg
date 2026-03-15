@@ -11,9 +11,9 @@ export default function Footer() {
 	return (
 		<footer className="bg-foreground text-background py-16 px-6">
 			<div className="container mx-auto">
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12 text-right" dir="rtl">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 items-center mb-12 text-right" dir="rtl">
 					{/* 1. قسم من نحن */}
-					<div className="flex flex-col gap-6 items-start">
+					<div className="flex flex-col gap-6 items-center">
 						<Logo />
 						<h6 className="text-sm leading-relaxed opacity-80 max-w-xs">
 							نحن في فرنش اسم موثوق في عالم الأثاث عالي الجودة منذ عام 1994، نقدم قطعاً مصنوعة بعناية لتضفي الراحة
@@ -35,7 +35,7 @@ export default function Footer() {
 					</div>
 
 					{/* 3. روابط سريعة */}
-					<div className="flex flex-col gap-4">
+					<div className="flex flex-col items-center gap-4">
 						<h4 className="font-bold text-lg">روابط سريعة</h4>
 						<nav className="flex flex-col gap-2 ">
 							{speedLinks.map(({ href, title }, index) => (
@@ -47,7 +47,7 @@ export default function Footer() {
 					</div>
 
 					{/* 4. انضم لعائلتنا مع Button asChild */}
-					<div className="flex flex-col gap-6">
+					<div className="flex flex-col items-center gap-6">
 						<h4 className="font-bold text-lg">انضم لعائلتنا</h4>
 						<h6 className="text-sm opacity-80 leading-relaxed">
 							تابعنا للحصول على إلهام يومي لتصميم منزلك وأحدث العروض الحصرية.

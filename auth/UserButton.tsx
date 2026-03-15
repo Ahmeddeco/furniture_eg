@@ -1,4 +1,3 @@
-import { session } from "@/auth/session"
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -10,9 +9,10 @@ import {
 import Image from "next/image"
 import SignOut from "./signOut"
 import SignIn from "./SignIn"
+import { isSession } from "./session"
 
 export default async function UserButton() {
-	const Session = await session()
+	const Session = await isSession()
 	const user = Session?.user
 
 	return (

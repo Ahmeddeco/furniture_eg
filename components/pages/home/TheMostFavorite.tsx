@@ -1,4 +1,4 @@
-import { ShopNowButton } from "@/components/shared/CustomButton"
+import { ShopNowButton } from "@/components/shared/CustomButtons"
 import { getTheMostFavoriteProduct } from "@/dl/product.data"
 import { ImageOff } from "lucide-react"
 import Image from "next/image"

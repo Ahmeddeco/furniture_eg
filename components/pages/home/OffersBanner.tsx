@@ -1,4 +1,4 @@
-import { ShopByQueryButton } from "@/components/shared/CustomButton"
+import { ShopByQueryButton } from "@/components/shared/CustomButtons"
 
 export default function OffersBanner() {
 	return (

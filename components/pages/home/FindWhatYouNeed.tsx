@@ -24,9 +24,9 @@ export default async function FindWhatYouNeed() {
 									key={id}
 								>
 									<div className="flex flex-col gap-4 items-center justify-center">
-										<div className="relative rounded-2xl  shadow-lg size-44 ">
+										<div className="relative rounded-full  shadow-lg size-44 ">
 											{image ? (
-												<Image src={image} alt={title} fill className="object-cover rounded-2xl" />
+												<Image src={image} alt={title} fill className="object-cover rounded-full" />
 											) : (
 												<ImageOff />
 											)}

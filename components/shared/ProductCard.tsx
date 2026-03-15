@@ -1,13 +1,14 @@
-import { ProductDiscoverType } from "@/types/product.type"
 import Link from "next/link"
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card"
 import { Badge } from "../ui/badge"
 import FavoriteButton from "./FavoriteButton"
 import Image from "next/image"
 import { priceAfterDiscount } from "@/logic/currency"
+import { AddToCart } from "./CustomButtons"
+import { ProductCartType } from "@/types/product.type"
 
 type Props = {
-	product: ProductDiscoverType
+	product: ProductCartType
 }
 
 export default function ProductCard({ product }: Props) {
@@ -26,6 +27,7 @@ export default function ProductCard({ product }: Props) {
 				<CardFooter className="flex flex-col gap-1 items-start ">
 					<h5 className="line-clamp-1">{product.title}</h5>
 					<h6>{priceAfterDiscount(product.price, product.discount!)}</h6>
+					<AddToCart product={product} />
 				</CardFooter>
 			</Card>
 		</Link>

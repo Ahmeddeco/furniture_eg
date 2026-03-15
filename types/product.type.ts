@@ -3,7 +3,7 @@ import { getOneProduct, getOurLatestProducts, } from "@/dl/product.data"
 export type getOneProductType = Awaited<ReturnType<typeof getOneProduct>>
 export type getOurLatestProductsType = Awaited<ReturnType<typeof getOurLatestProducts>>
 
-export type ProductDiscoverType = {
+export type ProductCartType = {
   id: string
   title: string
   price: number

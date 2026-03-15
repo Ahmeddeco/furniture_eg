@@ -1,4 +1,4 @@
-import { ShopNowButton } from "@/components/shared/CustomButton"
+import { ShopNowButton } from "@/components/shared/CustomButtons"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Item, ItemActions, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item"

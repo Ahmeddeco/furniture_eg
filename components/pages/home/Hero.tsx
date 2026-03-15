@@ -4,8 +4,7 @@ import { Phone } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import ceilingLamp from "@/public/images/ceilingLamp.webp"
-import { ShopNowButton } from "@/components/shared/CustomButton"
-import { size } from "better-auth"
+import { ShopNowButton } from "@/components/shared/CustomButtons"
 
 export default function Hero() {
 	return (

@@ -1,7 +1,6 @@
 import Link from "next/link"
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card"
 import { Badge } from "../ui/badge"
-import FavoriteButton from "./FavoriteButton"
 import Image from "next/image"
 import { priceAfterDiscount } from "@/logic/currency"
 import { AddToCart } from "./CustomButtons"
@@ -17,7 +16,8 @@ export default function ProductCard({ product }: Props) {
 			<Card className="w-full">
 				<CardHeader className="flex items-center justify-between w-full">
 					<Badge>{product.discount} %</Badge>
-					<FavoriteButton />
+					{/* TODO add Favorite Button */}
+					Favorite
 				</CardHeader>
 				<CardContent>
 					<div className="aspect-video relative rounded-lg">

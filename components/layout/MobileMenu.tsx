@@ -4,7 +4,6 @@ import Logo from "./Logo"
 import { ThemeButton } from "../theme/ThemeButton"
 import UserButton from "@/auth/UserButton"
 import FrontNavigation from "./FrontNavigation"
-import { Button } from "../ui/button"
 
 export default function MobileMenu() {
 	return (

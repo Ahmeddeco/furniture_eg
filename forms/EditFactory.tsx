@@ -13,7 +13,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { UploadOneImagesDropZone } from "@/components/shared/UploadImagesDropZone"
 import Phone from "@/components/shared/Phone"
 import CountryInput from "@/components/shared/CountryInput"
-import { Factory } from "@/generated/modelSchema/FactorySchema"
 import MultiSelect from "@/components/shared/MultiSelect"
 
 type Props = {

@@ -24,8 +24,8 @@ export default async function NavBar() {
 			{/* ------------------------------ Socials ----------------------------- */}
 			<div className="lg:flex hidden items-center gap-4">
 				<ThemeButton />
-				<UserButton />
 				{session && <Cart />}
+				<UserButton />
 			</div>
 		</header>
 	)

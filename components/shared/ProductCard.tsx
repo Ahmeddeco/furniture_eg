@@ -1,10 +1,10 @@
-import Link from "next/link"
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card"
 import { Badge } from "../ui/badge"
 import Image from "next/image"
 import { priceAfterDiscount } from "@/logic/currency"
-import { AddToCart } from "./CustomButtons"
+import { AddToCart, SeeProductButton } from "./CustomButtons"
 import { ProductCartType } from "@/types/product.type"
+import { Heart } from "lucide-react"
 
 type Props = {
 	product: ProductCartType
@@ -12,24 +12,27 @@ type Props = {
 
 export default function ProductCard({ product }: Props) {
 	return (
-		<Link href={`/shop/${product.id}`} className="w-full  max-w-lg min-w-sm">
-			<Card className="w-full">
-				<CardHeader className="flex items-center justify-between w-full">
-					<Badge>{product.discount} %</Badge>
-					{/* TODO add Favorite Button */}
-					Favorite
-				</CardHeader>
-				<CardContent>
-					<div className="aspect-video relative rounded-lg">
-						<Image src={product.mainImage} alt={product.title} fill className="object-cover rounded-lg" />
-					</div>
-				</CardContent>
-				<CardFooter className="flex flex-col gap-1 items-start ">
-					<h5 className="line-clamp-1">{product.title}</h5>
-					<h6>{priceAfterDiscount(product.price, product.discount!)}</h6>
+		<Card className="w-full">
+			<CardHeader className="flex items-center justify-between w-full">
+				<Badge>{product.discount} %</Badge>
+				{/* TODO add Favorite Button */}
+				<Heart />
+			</CardHeader>
+			<CardContent>
+				<div className="aspect-video relative rounded-lg">
+					<Image src={product.mainImage} alt={product.title} fill className="object-cover rounded-lg" />
+				</div>
+			</CardContent>
+			<CardFooter className="flex flex-col gap-1 items-start ">
+				<h5 className="line-clamp-1">{product.title}</h5>
+				<h6>{priceAfterDiscount(product.price, product.discount!)}</h6>
+
+				{/* ------------------------------ AddToCart ----------------------------- */}
+				<div className="flex flex-col mt-4 items-center justify-center gap-4  w-full">
 					<AddToCart product={product} />
-				</CardFooter>
-			</Card>
-		</Link>
+					<SeeProductButton id={product.id} />
+				</div>
+			</CardFooter>
+		</Card>
 	)
 }

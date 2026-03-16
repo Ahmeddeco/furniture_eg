@@ -2,7 +2,7 @@
 
 import { useFormStatus } from "react-dom"
 import { Button, buttonVariants } from "../ui/button"
-import { Loader2, ShoppingCart } from "lucide-react"
+import { Eye, Loader2, ShoppingCart } from "lucide-react"
 import { useCartStore } from "@/store/cartStore"
 import { VariantProps } from "class-variance-authority"
 import Link from "next/link"
@@ -81,11 +81,11 @@ export function AddToCart({ product }: { product: ProductCartType }) {
 	return (
 		<>
 			{pending ? (
-				<Button disabled>
+				<Button size={"full"} disabled>
 					<Loader2 className="size-5 animate-spin" /> please wait
 				</Button>
 			) : (
-				<Button type="button" onClick={() => addToCart(product)}>
+				<Button size={"full"} type="button" onClick={() => addToCart(product)}>
 					<ShoppingCart className="size-5" /> أضف الى العربة
 				</Button>
 			)}
@@ -93,6 +93,17 @@ export function AddToCart({ product }: { product: ProductCartType }) {
 	)
 }
 
+/* ---------------------------- SeeProductButton ---------------------------- */
+
+export const SeeProductButton = ({ id }: { id: string }) => {
+	return (
+		<Button asChild size={"full"} variant={"outline"}>
+			<Link href={`/shop/${id}`}>
+				<Eye /> شاهد تفاصيل المنتج
+			</Link>
+		</Button>
+	)
+}
 /* ----------------------------- CheckOutButton ----------------------------- */
 
 export const CheckOutButton = () => {

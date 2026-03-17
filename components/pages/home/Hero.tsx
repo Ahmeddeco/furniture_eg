@@ -14,12 +14,12 @@ export default function Hero() {
 			<div className="bg-card h-full  rounded-bl-4xl  absolute w-1/2 lg:w-2/3 top-0 left-0 z-10" />
 
 			{/* ----------------------------- ceilingLamp ----------------------------- */}
-			<div className="absolute z-20 lg:-top-28 top-12 lg:right-96 left-2 ">
+			<div className="absolute z-20 lg:-top-28 top-12 lg:right-96 left-2 lg:scale-100 scale-[70%]">
 				<Image src={ceilingLamp} alt={"ceiling Lamp"} className="object-contain  " />
 			</div>
 
 			{/* ----------------------------- leftLamp ----------------------------- */}
-			<div className="absolute lg:block hidden z-20  top-12 left-60 ">
+			<div className="absolute lg:block hidden z-20  top-12 left-60  ">
 				<Image src={ceilingLamp} alt={"ceiling Lamp"} className="object-contain  " />
 			</div>
 

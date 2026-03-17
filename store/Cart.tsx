@@ -10,7 +10,7 @@ import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import { Currency, formatCurrency } from "@/logic/currency"
 import { CheckOutButton } from "@/components/shared/CustomButtons"
-import { Badge } from "@/components/ui/badge"
+import { priceInfo, totalPrice } from "@/logic/price.logic"
 
 type Props = {
 	tax?: number
@@ -19,10 +19,10 @@ type Props = {
 export default function Cart({ tax = 10 }: Props) {
 	const { items, removeFromCart, updateQuantity } = useCartStore((state) => state)
 
-	const subTotal = items.reduce((total, item) => total + item.price * item.quantity, 0)
-	const taxValue = subTotal * tax
-	const total = subTotal + taxValue
-
+	// const subTotal = items.reduce((total, item) => total + item.price * item.quantity, 0)
+	// const taxValue = subTotal * tax
+	// const total = subTotal + taxValue
+	const { subTotal, taxValue, total } = priceInfo(items, tax)
 	return (
 		<Sheet>
 			<SheetTrigger>
@@ -86,7 +86,7 @@ export default function Cart({ tax = 10 }: Props) {
 										<Button size={"icon-sm"} type="button" className="rounded-full" onClick={() => removeFromCart(id)}>
 											<X />
 										</Button>
-										<p className="text-primary dark:text-secondary font-semibold">{formatCurrency(price * quantity)}</p>
+										<p className="text-primary dark:text-secondary font-semibold">{totalPrice(price, quantity)}</p>
 									</div>
 								</div>
 							</div>
@@ -103,7 +103,7 @@ export default function Cart({ tax = 10 }: Props) {
 							<Separator />
 							<div className="flex items-center justify-between">
 								<h6>الضريبة</h6>
-								<p>{Currency(tax)}</p>
+								<p>{Currency(taxValue)}</p>
 							</div>
 							<Separator />
 							<div className="flex items-center justify-between">

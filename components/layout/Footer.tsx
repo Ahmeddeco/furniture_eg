@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Logo from "./Logo"
 import { Separator } from "../ui/separator"
-import { Copyright, ExternalLink, SquareArrowOutUpRight } from "lucide-react"
+import { Copyright, ExternalLink, Link2 } from "lucide-react"
 import Socials from "./Socials"
 import { Button } from "../ui/button"
 import { ourProducts, speedLinks } from "@/constants/footer"
@@ -11,9 +11,9 @@ export default function Footer() {
 	return (
 		<footer className="bg-foreground text-background py-16 px-6">
 			<div className="container mx-auto">
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 items-center mb-12 text-right" dir="rtl">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12  mb-12 text-right" dir="rtl">
 					{/* 1. قسم من نحن */}
-					<div className="flex flex-col gap-6 items-center">
+					<div className="flex flex-col gap-6 items-center lg:items-start">
 						<Logo />
 						<h6 className="text-sm leading-relaxed opacity-80 max-w-xs">
 							نحن في فرنش اسم موثوق في عالم الأثاث عالي الجودة منذ عام 1994، نقدم قطعاً مصنوعة بعناية لتضفي الراحة
@@ -28,7 +28,7 @@ export default function Footer() {
 								{ourProducts.map(({ href, title }) => (
 									<Button asChild variant={"link"} className="justify-start  " key={href} size={"sm"}>
 										<Link href={href}>
-											<SquareArrowOutUpRight />
+											<Link2 />
 											{title}
 										</Link>
 									</Button>
@@ -43,7 +43,7 @@ export default function Footer() {
 								{speedLinks.map(({ href, title }, index) => (
 									<Button asChild variant={"link"} className="justify-start  " key={index} size={"sm"}>
 										<Link href={href}>
-											<SquareArrowOutUpRight />
+											<Link2 />
 											{title}
 										</Link>
 									</Button>
@@ -53,13 +53,9 @@ export default function Footer() {
 					</div>
 
 					{/* 4. انضم لعائلتنا مع Button asChild */}
-					<div className="flex flex-col items-center gap-6">
-						<h4 className="font-bold text-lg">انضم لعائلتنا</h4>
-						<h6 className="text-sm opacity-80 leading-relaxed">
-							تابعنا للحصول على إلهام يومي لتصميم منزلك وأحدث العروض الحصرية.
-						</h6>
-
-						{/* استخدام Button بداخله Link عبر خاصية asChild */}
+					<div className="flex flex-col items-center lg:items-start gap-6" dir="ltr">
+						<h4>انضم لعائلتنا</h4>
+						<h6 className="">تابعنا للحصول على إلهام يومي لتصميم منزلك وأحدث العروض الحصرية.</h6>
 						<Button asChild variant="secondary">
 							<Link href="/information">
 								تعرف علينا أكثر

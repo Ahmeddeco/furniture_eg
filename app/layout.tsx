@@ -41,8 +41,8 @@ export default function RootLayout({
 								error: <CircleX />,
 							}}
 						/>
-						<Footer />
 					</TooltipProvider>
+					<Footer />
 				</ThemeProvider>
 			</body>
 		</html>

@@ -12,11 +12,11 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
 		<>
 			<Hero />
 			<FindWhatYouNeed />
-			<OffersBanner />
 			<OurLatestProducts />
+			<BestModernFurniture searchParams={searchParams} />
+			<OffersBanner />
 			<TheMostFavorite />
 			<Testimonial />
-			<BestModernFurniture searchParams={searchParams} />
 		</>
 	)
 }

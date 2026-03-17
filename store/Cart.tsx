@@ -10,6 +10,7 @@ import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import { Currency, formatCurrency } from "@/logic/currency"
 import { CheckOutButton } from "@/components/shared/CustomButtons"
+import { Badge } from "@/components/ui/badge"
 
 type Props = {
 	tax?: number
@@ -33,15 +34,13 @@ export default function Cart({ tax = 10 }: Props) {
 				</div>
 			</SheetTrigger>
 			<SheetContent className="max-w-lg w-[90vw]">
-				<SheetHeader className="h-[5vh]">
-					<Button asChild size={"full"} disabled>
-						<SheetTitle>
-							<ShoppingCart /> سلة المشتريات
-						</SheetTitle>
-					</Button>
+				<SheetHeader className="h-[8vh]">
+					<SheetTitle className="flex items-center justify-center gap-2 ">
+						<ShoppingCart className="text-primary dark:text-secondary" /> سلة المشتريات
+					</SheetTitle>
 				</SheetHeader>
 				<Separator />
-				<ScrollArea className="flex flex-col gap-4 p-4 w-full h-full max-h-[60vh]">
+				<ScrollArea dir="rtl" className="flex flex-col gap-4 p-4 w-full h-full max-h-[55vh] ">
 					{items.map(({ id, image, price, quantity, title }) => (
 						<div key={id} className="h-full mb-4 border rounded-xl">
 							<div className="flex items-start p-2 gap-4  justify-between h-full">
@@ -83,13 +82,11 @@ export default function Cart({ tax = 10 }: Props) {
 									</div>
 
 									{/* ---------------------------------- Total --------------------------------- */}
-									<div className="flex flex-col items-center justify-end gap-6 h-full">
+									<div className="flex flex-col items-end gap-8">
 										<Button size={"icon-sm"} type="button" className="rounded-full" onClick={() => removeFromCart(id)}>
 											<X />
 										</Button>
-										<p className="text-sm font-medium text-foreground">
-											<span className="text-primary dark:text-secondary">{price * quantity}</span>
-										</p>
+										<p className="text-primary dark:text-secondary font-semibold">{formatCurrency(price * quantity)}</p>
 									</div>
 								</div>
 							</div>

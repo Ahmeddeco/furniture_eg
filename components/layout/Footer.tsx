@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Logo from "./Logo"
 import { Separator } from "../ui/separator"
-import { Copyright, ExternalLink } from "lucide-react"
+import { Copyright, ExternalLink, SquareArrowOutUpRight } from "lucide-react"
 import Socials from "./Socials"
 import { Button } from "../ui/button"
 import { ourProducts, speedLinks } from "@/constants/footer"
@@ -19,31 +19,37 @@ export default function Footer() {
 							نحن في فرنش اسم موثوق في عالم الأثاث عالي الجودة منذ عام 1994، نقدم قطعاً مصنوعة بعناية لتضفي الراحة
 							والأناقة على منزلك.
 						</h6>
-						<Socials />
 					</div>
+					<div className="col-span-1 lg:col-span-2 flex justify-evenly">
+						{/* 2. قسم منتجاتنا */}
+						<div className="flex flex-col items-center gap-4">
+							<h4>منتجاتنا</h4>
+							<nav className="flex flex-col gap-2 ">
+								{ourProducts.map(({ href, title }) => (
+									<Button asChild variant={"link"} className="justify-start  " key={href} size={"sm"}>
+										<Link href={href}>
+											<SquareArrowOutUpRight />
+											{title}
+										</Link>
+									</Button>
+								))}
+							</nav>
+						</div>
 
-					{/* 2. قسم منتجاتنا */}
-					<div className="flex flex-col items-center gap-4">
-						<h4>منتجاتنا</h4>
-						<nav className="flex flex-col gap-2 ">
-							{ourProducts.map(({ href, title }) => (
-								<Button asChild variant={"ghost"} className="justify-start  " key={href} size={"sm"}>
-									<Link href={href}>أثاث {title}</Link>
-								</Button>
-							))}
-						</nav>
-					</div>
-
-					{/* 3. روابط سريعة */}
-					<div className="flex flex-col items-center gap-4">
-						<h4 className="font-bold text-lg">روابط سريعة</h4>
-						<nav className="flex flex-col gap-2 ">
-							{speedLinks.map(({ href, title }, index) => (
-								<Button asChild variant={"ghost"} className="justify-start  " key={index} size={"sm"}>
-									<Link href={href}> {title}</Link>
-								</Button>
-							))}
-						</nav>
+						{/* 3. روابط سريعة */}
+						<div className="flex flex-col items-center gap-4">
+							<h4 className="font-bold text-lg">روابط سريعة</h4>
+							<nav className="flex flex-col gap-2 ">
+								{speedLinks.map(({ href, title }, index) => (
+									<Button asChild variant={"link"} className="justify-start  " key={index} size={"sm"}>
+										<Link href={href}>
+											<SquareArrowOutUpRight />
+											{title}
+										</Link>
+									</Button>
+								))}
+							</nav>
+						</div>
 					</div>
 
 					{/* 4. انضم لعائلتنا مع Button asChild */}
@@ -62,8 +68,9 @@ export default function Footer() {
 						</Button>
 					</div>
 				</div>
+				<Socials />
 
-				<Separator className="bg-background/20 mb-8" />
+				<Separator className="bg-background/20 my-8" />
 
 				{/* حقوق النشر */}
 				<div className="flex flex-col md:flex-row justify-between items-center gap-4 opacity-75">

@@ -9,6 +9,7 @@ export const getAllProducts = async (size: number, page: number) => {
 		const totalProducts = await prisma.product.count()
 		const totalPages = Math.ceil(totalProducts / size)
 		const data = await prisma.product.findMany({
+			where: { status: "published" },
 			skip: (page * size) - size, take: size,
 			orderBy: { title: "asc" },
 		})
@@ -25,7 +26,9 @@ export const getAllProductsForProductsPage = async (size: number, page: number) 
 		const totalProducts = await prisma.product.count()
 		const totalPages = Math.ceil(totalProducts / size)
 		const data = await prisma.product.findMany({
-			skip: (page * size) - size, take: size, select: {
+			where: { status: "published" },
+			skip: (page * size) - size, take: size,
+			select: {
 				id: true,
 				title: true,
 				model: true,
@@ -49,7 +52,8 @@ export const getAllProductsForProductsPage = async (size: number, page: number) 
 export const getOneProduct = async (id: string) => {
 	try {
 		return await prisma.product.findUnique({
-			where: { id }, include: {
+			where: { id, status: "published" },
+			include: {
 				class: { select: { id: true, title: true } },
 				color: { select: { id: true, title: true } },
 				style: { select: { id: true, title: true } },
@@ -65,6 +69,7 @@ export const getOneProduct = async (id: string) => {
 export const getOurLatestProducts = async () => {
 	try {
 		return await prisma.product.findMany({
+			where: { status: "published" },
 			orderBy: { createdAt: "desc" },
 			take: 6,
 			select: { title: true, price: true, discount: true, id: true, mainImage: true, }

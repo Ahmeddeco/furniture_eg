@@ -18,6 +18,7 @@ type CartState = {
   updateQuantity: (type: 'increment' | 'decrement', id: string) => void
 }
 
+
 export const useCartStore = create<CartState>()(
   persist(
     (set, get) => ({
@@ -43,7 +44,7 @@ export const useCartStore = create<CartState>()(
         if (existingProduct) {
           toast.error("Product Already exists")
         } else {
-          toast.success('Product added to cart successfully.')
+          toast.success('تم إضافة المنتج الى السلة بنجاح.')
         }
       },
 
@@ -52,7 +53,7 @@ export const useCartStore = create<CartState>()(
         set({
           items: get().items.filter((item) => item.id !== id),
         })
-        toast.error('Product deleted from the cart.')
+        toast.error('تم إزالة المنتج من السلة.')
 
       },
 

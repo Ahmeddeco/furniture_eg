@@ -1,11 +1,11 @@
-import { allowedRoles } from "@/auth/allowedRoles"
+import { isAllowedRoles } from "@/auth/isAllowedRoles"
 import ServerPageCard from "@/components/shared/ServerPageCard"
 import { getAllUsersForFactoriesPage } from "@/dl/users.data"
 import AddFactory from "@/forms/AddFactory"
 import { Role } from "@/generated/prisma/enums"
 
 export default async function AddColorPage() {
-	await allowedRoles([Role.admin, Role.owner])
+	await isAllowedRoles([Role.admin, Role.owner])
 
 	const users = await getAllUsersForFactoriesPage()
 

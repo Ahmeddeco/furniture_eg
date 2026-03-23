@@ -28,7 +28,7 @@ import { getAllFactories } from "@/dl/factory.data"
 import Image from "next/image"
 import { deleteFactoryAction } from "@/actions/factory.action"
 import { getAllFactoriesType } from "@/types/factory.type"
-import { allowedRoles } from "@/auth/allowedRoles"
+import { isAllowedRoles } from "@/auth/isAllowedRoles"
 import { Role } from "@/generated/prisma/enums"
 
 export default async function FactoriesPage({
@@ -36,7 +36,7 @@ export default async function FactoriesPage({
 }: {
 	searchParams: Promise<{ page: string; size: string }>
 }) {
-	await allowedRoles([Role.admin, Role.owner])
+	await isAllowedRoles([Role.admin, Role.owner])
 
 	const { page, size } = await searchParams
 	const pageNumber = +page > 1 ? +page : 1

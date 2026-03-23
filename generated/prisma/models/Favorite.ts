@@ -189,15 +189,16 @@ export type FavoriteOrderByWithRelationInput = {
 
 export type FavoriteWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  userId?: string
-  productId?: string
+  userId_productId?: Prisma.FavoriteUserIdProductIdCompoundUniqueInput
   AND?: Prisma.FavoriteWhereInput | Prisma.FavoriteWhereInput[]
   OR?: Prisma.FavoriteWhereInput[]
   NOT?: Prisma.FavoriteWhereInput | Prisma.FavoriteWhereInput[]
+  userId?: Prisma.StringFilter<"Favorite"> | string
+  productId?: Prisma.StringFilter<"Favorite"> | string
   createdAt?: Prisma.DateTimeFilter<"Favorite"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
-}, "id" | "userId" | "productId">
+}, "id" | "userId_productId">
 
 export type FavoriteOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -274,6 +275,11 @@ export type FavoriteListRelationFilter = {
 
 export type FavoriteOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
+}
+
+export type FavoriteUserIdProductIdCompoundUniqueInput = {
+  userId: string
+  productId: string
 }
 
 export type FavoriteCountOrderByAggregateInput = {
@@ -1201,6 +1207,11 @@ export type FavoriteFindManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Skip the first `n` Favorites.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Favorites.
+   */
   distinct?: Prisma.FavoriteScalarFieldEnum | Prisma.FavoriteScalarFieldEnum[]
 }
 

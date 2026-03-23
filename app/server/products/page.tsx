@@ -27,7 +27,7 @@ import { Input } from "@/components/ui/input"
 import Image from "next/image"
 import { getAllProductsForProductsPage } from "@/dl/product.data"
 import { deleteProductAction } from "@/actions/product.action"
-import { allowedRoles } from "@/auth/allowedRoles"
+import { isAllowedRoles } from "@/auth/isAllowedRoles"
 import { Role } from "@/generated/prisma/enums"
 
 export default async function ProductsPage({
@@ -35,7 +35,7 @@ export default async function ProductsPage({
 }: {
 	searchParams: Promise<{ page: string; size: string }>
 }) {
-	await allowedRoles([Role.admin, Role.owner])
+	await isAllowedRoles([Role.admin, Role.owner])
 
 	const { page, size } = await searchParams
 	const pageNumber = +page > 1 ? +page : 1

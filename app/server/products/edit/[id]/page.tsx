@@ -7,11 +7,11 @@ import { getAllColorsForProductPage } from "@/dl/color.data"
 import { getAllStylesForProductPage } from "@/dl/styles.data"
 import { getAllClassesForProductPage } from "@/dl/class.data"
 import { getOneProduct } from "@/dl/product.data"
-import { allowedRoles } from "@/auth/allowedRoles"
+import { isAllowedRoles } from "@/auth/isAllowedRoles"
 import { Role } from "@/generated/prisma/enums"
 
 export default async function EditProductPage({ params }: { params: Promise<{ id: string }> }) {
-	await allowedRoles([Role.admin, Role.owner])
+	await isAllowedRoles([Role.admin, Role.owner])
 
 	const id = (await params).id
 	const colors = await getAllColorsForProductPage()

@@ -15,4 +15,8 @@ export const frontNav = [
     title: "تواصل معنا",
     href: "/contact"
   },
+  {
+    title: "server",
+    href: "/server"
+  },
 ]

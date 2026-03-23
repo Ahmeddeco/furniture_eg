@@ -1,7 +1,7 @@
 "use server"
 
 import prisma from "@/lib/prisma"
-import { splittedItems } from "@/logic/splittedItems"
+import { splittedItems } from "@/helpers/splittedItems"
 import ProductSchema from "@/schemas/ProductSchema"
 import { parseWithZod } from "@conform-to/zod"
 import { redirect } from "next/navigation"

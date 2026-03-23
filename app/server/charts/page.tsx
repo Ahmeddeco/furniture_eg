@@ -1,8 +1,8 @@
-import { allowedRoles } from "@/auth/allowedRoles"
+import { isAllowedRoles } from "@/auth/isAllowedRoles"
 import { Role } from "@/generated/prisma/enums"
 
 export default async function ChartsPage() {
-	await allowedRoles([Role.admin, Role.owner])
+	await isAllowedRoles([Role.admin, Role.owner])
 
 	return <h1>Welcome to Chartspage!</h1>
 }

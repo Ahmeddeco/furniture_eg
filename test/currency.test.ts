@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { Currency, priceAfterDiscount, calculateFinalPrice, formatCurrency } from '../logic/currency'
+import { Currency, priceAfterDiscount, calculateFinalPrice, formatCurrency } from '@/helpers/currency'
 
 describe('Currency Utilities', () => {
 
@@ -53,7 +53,7 @@ describe('Currency Utilities', () => {
     })
 
     it('should round to 2 decimal places as specified', () => {
-      // Testing the .toFixed(2) logic
+      // Testing the .toFixed(2) helpers
       const result = calculateFinalPrice(99.99, 12.5)
       // 99.99 - (99.99 * 0.125) = 87.49125 -> 87.49
       expect(result).toBe(87.49)

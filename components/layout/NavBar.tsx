@@ -3,11 +3,11 @@ import Logo from "./Logo"
 import MobileMenu from "./MobileMenu"
 import { ThemeButton } from "../theme/ThemeButton"
 import FrontNavigation from "./FrontNavigation"
-import { isSession } from "@/auth/session"
 import Cart from "@/store/Cart"
+import { getSession } from "@/auth/getSession"
 
 export default async function NavBar() {
-	const session = await isSession()
+	const session = await getSession()
 	return (
 		<header className="fixed w-full inset-0 mx-auto bg-foreground/80 border drop-shadow-xl text-background backdrop-blur-2xl lg:rounded-full rounded-none px-4 h-14 z-50 container lg:mt-4 mt-0 flex items-center justify-between ">
 			{/* --------------------------------- Logo -------------------------------- */}

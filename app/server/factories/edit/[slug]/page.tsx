@@ -4,11 +4,11 @@ import EmptyCard from "@/components/shared/EmptyCard"
 import { getOneFactory } from "@/dl/factory.data"
 import EditFactory from "@/forms/EditFactory"
 import { getAllUsersForFactoriesPage } from "@/dl/users.data"
-import { allowedRoles } from "@/auth/allowedRoles"
+import { isAllowedRoles } from "@/auth/isAllowedRoles"
 import { Role } from "@/generated/prisma/enums"
 
 export default async function EditClassPage({ params }: { params: Promise<{ slug: string }> }) {
-	await allowedRoles([Role.admin, Role.owner])
+	await isAllowedRoles([Role.admin, Role.owner])
 
 	const slug = (await params).slug
 	const oneFactory = await getOneFactory(slug)

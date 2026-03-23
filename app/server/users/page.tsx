@@ -27,11 +27,11 @@ import { Input } from "@/components/ui/input"
 import Image from "next/image"
 import { getAllUsers } from "@/dl/users.data"
 import { deleteUserAction } from "@/actions/user.action"
-import { allowedRoles } from "@/auth/allowedRoles"
+import { isAllowedRoles } from "@/auth/isAllowedRoles"
 import { Role } from "@/generated/prisma/enums"
 
 export default async function StylesPage({ searchParams }: { searchParams: Promise<{ page: string; size: string }> }) {
-	await allowedRoles([Role.admin, Role.owner])
+	await isAllowedRoles([Role.admin, Role.owner])
 
 	const { page, size } = await searchParams
 	const pageNumber = +page > 1 ? +page : 1

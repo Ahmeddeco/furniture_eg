@@ -1,22 +1,28 @@
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card"
 import { Badge } from "../ui/badge"
 import Image from "next/image"
-import { priceAfterDiscount } from "@/logic/currency"
+import { priceAfterDiscount } from "@/helpers/currency"
 import { AddToCart, SeeProductButton } from "./CustomButtons"
 import { ProductCartType } from "@/types/product.type"
-import { Heart } from "lucide-react"
+import FavoriteButton from "../favorite/FavoriteButton"
+import { isFavorite } from "@/components/favorite/isFavorite"
+import { getSession } from "@/auth/getSession"
 
 type Props = {
 	product: ProductCartType
 }
 
-export default function ProductCard({ product }: Props) {
+export default async function ProductCard({ product }: Props) {
+	const session = await getSession()
+	const isFavorited = await isFavorite(product.id)
+
 	return (
 		<Card className="w-full">
 			<CardHeader className="flex items-center justify-between w-full">
 				<Badge>{product.discount} %</Badge>
-				{/* TODO add Favorite Button */}
-				<Heart />
+
+				{/* ---------------------------- Favorite Button ---------------------------- */}
+				{session && <FavoriteButton productId={product.id} isFavoritedInitial={isFavorited!} />}
 			</CardHeader>
 			<CardContent>
 				<div className="aspect-video relative rounded-lg">

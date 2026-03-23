@@ -1,10 +1,10 @@
-import { allowedRoles } from "@/auth/allowedRoles"
+import { isAllowedRoles } from "@/auth/isAllowedRoles"
 import ServerPageCard from "@/components/shared/ServerPageCard"
 import AddStyle from "@/forms/AddStyle"
 import { Role } from "@/generated/prisma/enums"
 
 export default async function AddColorPage() {
-	await allowedRoles([Role.admin, Role.owner])
+	await isAllowedRoles([Role.admin, Role.owner])
 
 	return (
 		<ServerPageCard title={"Add style"} description={"Add a style to the database."} href="/server/styles">

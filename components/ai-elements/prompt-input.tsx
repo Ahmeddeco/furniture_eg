@@ -969,7 +969,7 @@ export const PromptInputTextarea = ({
       // Call the external onKeyDown handler first
       onKeyDown?.(e);
 
-      // If the external handler prevented default, don't run internal logic
+      // If the external handler prevented default, don't run internal helpers
       if (e.defaultPrevented) {
         return;
       }

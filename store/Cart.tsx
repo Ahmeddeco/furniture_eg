@@ -8,9 +8,9 @@ import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
-import { Currency, formatCurrency } from "@/logic/currency"
+import { Currency, formatCurrency } from "@/helpers/currency"
 import { CheckOutButton } from "@/components/shared/CustomButtons"
-import { priceInfo, totalPrice } from "@/logic/price.logic"
+import { priceInfo, totalPrice } from "@/helpers/price.logic"
 
 type Props = {
 	tax?: number
@@ -111,7 +111,7 @@ export default function Cart({ tax = 10 }: Props) {
 								<p>{Currency(total)}</p>
 							</div>
 
-							{/* TODO Add a checkout method with payment service like paymob or kashir*/}
+							{/*  Add a checkout method with payment service like paymob or kashir*/}
 							<CheckOutButton />
 						</CardContent>
 					</Card>

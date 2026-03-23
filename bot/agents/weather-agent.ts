@@ -5,7 +5,7 @@ import { scorers } from "../scorers/weather-scorer"
 import { ollama } from "ollama-ai-provider-v2"
 
 export const weatherAgent = new Agent({
-	id: "weather-agent", name: "Weather Agent", instructions: `
+	id: "weather-bot", name: "Weather Agent", instructions: `
       You are a helpful weather assistant that provides accurate weather information and can help planning activities based on the weather.
 
       Your primary function is to help users get weather details for specific locations. When responding:

@@ -1,18 +1,8 @@
-import { ImageOff, MoreVertical, PlusCircle } from "lucide-react"
-import ServerPageCard from "@/components/shared/ServerPageCard"
+import { deleteStyleAction } from "@/actions/style.action"
+import { isAllowedRoles } from "@/auth/isAllowedRoles"
 import EmptyCard from "@/components/shared/EmptyCard"
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import {
-	Pagination,
-	PaginationContent,
-	PaginationItem,
-	PaginationLink,
-	PaginationNext,
-	PaginationPrevious,
-} from "@/components/ui/pagination"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import ServerPageCard from "@/components/shared/ServerPageCard"
 import { Button } from "@/components/ui/button"
-import Link from "next/link"
 import {
 	Dialog,
 	DialogClose,
@@ -22,16 +12,26 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog"
-import Form from "next/form"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
+import {
+	Pagination,
+	PaginationContent,
+	PaginationItem,
+	PaginationLink,
+	PaginationNext,
+	PaginationPrevious,
+} from "@/components/ui/pagination"
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { getAllStyles } from "@/dl/styles.data"
-import { deleteStyleAction } from "@/actions/style.action"
-import { allowedRoles } from "@/auth/allowedRoles"
 import { Role } from "@/generated/prisma/enums"
+import { ImageOff, MoreVertical, PlusCircle } from "lucide-react"
+import Form from "next/form"
 import Image from "next/image"
+import Link from "next/link"
 
 export default async function StylesPage({ searchParams }: { searchParams: Promise<{ page: string; size: string }> }) {
-	await allowedRoles([Role.admin, Role.owner])
+	await isAllowedRoles([Role.admin, Role.owner])
 
 	const { page, size } = await searchParams
 	const pageNumber = +page > 1 ? +page : 1
@@ -64,9 +64,9 @@ export default async function StylesPage({ searchParams }: { searchParams: Promi
 					<TableBody>
 						{styles.data.map(({ id, description, title, slug, image }) => (
 							<TableRow key={id}>
-								<TableCell className="relative rounded-lg size-12 ">
+								<TableCell className="relative rounded-lg aspect-video w-24  ">
 									{image ? (
-										<Image src={image} alt={title} fill className="rounded-lg object-cover" />
+										<Image src={image} alt={title} fill className="rounded-lg object-cover  " />
 									) : (
 										<ImageOff size={32} />
 									)}

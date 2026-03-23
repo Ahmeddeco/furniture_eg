@@ -5,116 +5,102 @@ import { subDays } from "date-fns"
 
 /* ----------------------------- getAllProducts ---------------------------- */
 export const getAllProducts = async (size: number, page: number) => {
-  try {
-    const totalProducts = await prisma.product.count()
-    const totalPages = Math.ceil(totalProducts / size)
-    const data = await prisma.product.findMany({
-      skip: (page * size) - size,
-      take: size,
-      orderBy: { title: "asc" },
-    })
-    return { data, totalPages }
-  } catch (error) {
-    console.error(error)
-  }
+	try {
+		const totalProducts = await prisma.product.count()
+		const totalPages = Math.ceil(totalProducts / size)
+		const data = await prisma.product.findMany({
+			skip: (page * size) - size, take: size,
+			orderBy: { title: "asc" },
+		})
+		return { data, totalPages }
+	} catch (error) {
+		console.error(error)
+	}
 }
 
 
 /* ---------------------- getAllProductsForProductsPage --------------------- */
 export const getAllProductsForProductsPage = async (size: number, page: number) => {
-  try {
-    const totalProducts = await prisma.product.count()
-    const totalPages = Math.ceil(totalProducts / size)
-    const data = await prisma.product.findMany({
-      skip: (page * size) - size,
-      take: size,
-      select: {
-        id: true,
-        title: true,
-        model: true,
-        price: true,
-        status: true,
-        mainImage: true,
-        class: { select: { title: true } },
-        style: { select: { title: true } },
-        factory: { select: { name: true } },
-      },
+	try {
+		const totalProducts = await prisma.product.count()
+		const totalPages = Math.ceil(totalProducts / size)
+		const data = await prisma.product.findMany({
+			skip: (page * size) - size, take: size, select: {
+				id: true,
+				title: true,
+				model: true,
+				price: true,
+				status: true,
+				mainImage: true,
+				class: { select: { title: true } },
+				style: { select: { title: true } },
+				factory: { select: { name: true } }
+			},
 
-      orderBy: { title: "asc" },
-    })
-    return { data, totalPages }
-  } catch (error) {
-    console.error(error)
-  }
+			orderBy: { title: "asc" }
+		})
+		return { data, totalPages }
+	} catch (error) {
+		console.error(error)
+	}
 }
 
 /* ---------------------------- getOneProduct ------------------------------ */
 export const getOneProduct = async (id: string) => {
-  try {
-    const data = await prisma.product.findUnique({
-      where: { id },
-      include: {
-        class: { select: { id: true, title: true } },
-        color: { select: { id: true, title: true } },
-        style: { select: { id: true, title: true } },
-        factory: { select: { id: true, name: true } },
-      }
-    })
-    return data
-  } catch (error) {
-    console.error(error)
-  }
+	try {
+		return await prisma.product.findUnique({
+			where: { id }, include: {
+				class: { select: { id: true, title: true } },
+				color: { select: { id: true, title: true } },
+				style: { select: { id: true, title: true } },
+				factory: { select: { id: true, name: true } }
+			}
+		})
+	} catch (error) {
+		console.error(error)
+	}
 }
 
 /* -------------------------- getOurLatestProducts -------------------------- */
 export const getOurLatestProducts = async () => {
-  try {
-    const data = await prisma.product.findMany({
-      orderBy: { createdAt: "desc" },
-      take: 6,
-      select: { title: true, price: true, discount: true, id: true, mainImage: true, }
-    })
-    return data
-  } catch (error) {
-    console.error(error)
-  }
+	try {
+		return await prisma.product.findMany({
+			orderBy: { createdAt: "desc" },
+			take: 6,
+			select: { title: true, price: true, discount: true, id: true, mainImage: true, }
+		})
+	} catch (error) {
+		console.error(error)
+	}
 }
 
 /* ------------------------ getTheMostFavoriteProduct ----------------------- */
-// TODO filter by the most favorite
 export const getTheMostFavoriteProduct = async () => {
-  try {
-    const data = await prisma.product.findFirst({
-      where: { status: "published", discount: { gt: 0 } },
-      orderBy: { discount: "desc" },
-      select: { id: true, title: true, mainImage: true, description: true, discount: true, price: true, miniDescription: true }
-    })
-    return data
-  } catch (error) {
-    console.error(error)
-  }
+	try {
+		return await prisma.product.findFirst({
+			where: { status: "published" },
+			orderBy: { favorites: { _count: "desc" } },
+			select: { id: true, title: true, mainImage: true, description: true, discount: true, price: true, miniDescription: true },
+		})
+	} catch (error) {
+		console.error("Error fetching most favorite products:", error)
+	}
 }
 
 /* --------------------------- getFilteredProducts -------------------------- */
 export const getFilteredProducts = async (filter?: ProductFilterType) => {
-  const where: Prisma.ProductWhereInput = { status: "published" }
+	const where: Prisma.ProductWhereInput = { status: "published" }
 
-  if (filter === "sale") {
-    where.discount = { gt: 0 } // 
-  } else if (filter === "new") {
-    where.createdAt = { gte: subDays(new Date(), 30) }
-  }
+	if (filter === "sale") {
+		where.discount = { gt: 0 } //
+	} else if (filter === "new") {
+		where.createdAt = { gte: subDays(new Date(), 30) }
+	}
 
-  const orderBy: Prisma.ProductOrderByWithRelationInput =
-    filter === "best"
-      ? { favorites: { _count: "desc" } }
-      : { createdAt: "desc" }
+	const orderBy: Prisma.ProductOrderByWithRelationInput = filter === "best" ? { favorites: { _count: "desc" } } : { createdAt: "desc" }
 
-  return await prisma.product.findMany({
-    where,
-    orderBy,
-    take: 6,
-    select: { title: true, price: true, discount: true, id: true, mainImage: true, }
+	return prisma.product.findMany({
+		where, orderBy, take: 6, select: { title: true, price: true, discount: true, id: true, mainImage: true }
 
-  })
+	})
 }

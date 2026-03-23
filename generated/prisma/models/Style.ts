@@ -1090,6 +1090,11 @@ export type StyleFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Skip the first `n` Styles.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Styles.
+   */
   distinct?: Prisma.StyleScalarFieldEnum | Prisma.StyleScalarFieldEnum[]
 }
 

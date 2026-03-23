@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { totalPrice, priceInfo } from '../logic/price.logic'
+import { totalPrice, priceInfo } from '@/helpers/price.logic'
 import type { CartItem } from "../store/cartStore"
 
 describe('Price Logic', () => {

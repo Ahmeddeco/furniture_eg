@@ -102,7 +102,7 @@ const planActivities = createStep({
 
     const agent = mastra?.getAgent('weatherAgent')
     if (!agent) {
-      throw new Error('Weather agent not found')
+      throw new Error('Weather bot not found')
     }
 
     const prompt = `Based on the following weather forecast for ${forecast.location}, suggest appropriate activities:

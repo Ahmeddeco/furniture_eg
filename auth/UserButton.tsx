@@ -9,10 +9,10 @@ import {
 import Image from "next/image"
 import SignOut from "./signOut"
 import SignIn from "./SignIn"
-import { isSession } from "./session"
+import { getSession } from "./getSession"
 
 export default async function UserButton() {
-	const Session = await isSession()
+	const Session = await getSession()
 	const user = Session?.user
 
 	return (

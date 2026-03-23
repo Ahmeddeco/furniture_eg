@@ -1426,6 +1426,11 @@ export type FactoryFindManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Skip the first `n` Factories.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Factories.
+   */
   distinct?: Prisma.FactoryScalarFieldEnum | Prisma.FactoryScalarFieldEnum[]
 }
 

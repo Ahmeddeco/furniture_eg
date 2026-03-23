@@ -26,12 +26,12 @@ import Form from "next/form"
 import { Input } from "@/components/ui/input"
 import { getAllClasses } from "@/dl/class.data"
 import { deleteClassAction } from "@/actions/class.action"
-import { allowedRoles } from "@/auth/allowedRoles"
+import { isAllowedRoles } from "@/auth/isAllowedRoles"
 import { Role } from "@/generated/prisma/enums"
 import Image from "next/image"
 
 export default async function ClassPage({ searchParams }: { searchParams: Promise<{ page: string; size: string }> }) {
-	await allowedRoles([Role.admin, Role.owner])
+	await isAllowedRoles([Role.admin, Role.owner])
 
 	const { page, size } = await searchParams
 	const pageNumber = +page > 1 ? +page : 1

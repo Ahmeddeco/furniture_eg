@@ -5,8 +5,9 @@ import Image from "next/image"
 
 export default async function TheMostFavorite() {
 	const product = await getTheMostFavoriteProduct()
+	console.log("product from TheMostFavorite", product)
 
-	// TODO Reset the database and add a real data with transparent bg for the mainImage
+	//  Reset the database and add a real data with transparent bg for the mainImage
 
 	return (
 		<section className="container  mx-auto flex flex-col items-center justify-center gap-12">

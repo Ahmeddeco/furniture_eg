@@ -3,11 +3,11 @@ import ServerPageCard from "@/components/shared/ServerPageCard"
 import EmptyCard from "@/components/shared/EmptyCard"
 import { getOneStyle } from "@/dl/styles.data"
 import EditStyle from "@/forms/EditStyle"
-import { allowedRoles } from "@/auth/allowedRoles"
+import { isAllowedRoles } from "@/auth/isAllowedRoles"
 import { Role } from "@/generated/prisma/enums"
 
 export default async function EditClassPage({ params }: { params: Promise<{ slug: string }> }) {
-	await allowedRoles([Role.admin, Role.owner])
+	await isAllowedRoles([Role.admin, Role.owner])
 
 	const slug = (await params).slug
 	const oneStyle = await getOneStyle(slug)

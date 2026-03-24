@@ -54,10 +54,10 @@ export const getOneProduct = async (id: string) => {
 		return await prisma.product.findUnique({
 			where: { id, status: "published" },
 			include: {
-				class: { select: { id: true, title: true } },
-				color: { select: { id: true, title: true } },
-				style: { select: { id: true, title: true } },
-				factory: { select: { id: true, name: true } }
+				class: { select: { id: true, title: true, slug: true } },
+				color: { select: { id: true, title: true, slug: true } },
+				style: { select: { id: true, title: true, slug: true } },
+				factory: { select: { id: true, name: true, slug: true } }
 			}
 		})
 	} catch (error) {
@@ -108,4 +108,16 @@ export const getFilteredProducts = async (filter?: ProductFilterType) => {
 		where, orderBy, take: 6, select: { title: true, price: true, discount: true, id: true, mainImage: true }
 
 	})
+}
+/* --------------------- getAllProductsWithSpecificClass -------------------- */
+export const getAllProductsWithSpecificClass = async (classSlug: string) => {
+	try {
+		return await prisma.product.findMany({
+			where: { status: "published", class: { slug: classSlug } },
+			select: { title: true, price: true, discount: true, id: true, mainImage: true, class: { select: { title: true } } },
+			orderBy: { createdAt: "desc" }
+		})
+	} catch (error) {
+		console.error(error)
+	}
 }

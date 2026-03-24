@@ -12,10 +12,6 @@ export const frontNav = [
     href: "/information"
   },
   {
-    title: "تواصل معنا",
-    href: "/contact"
-  },
-  {
     title: "server",
     href: "/server"
   },

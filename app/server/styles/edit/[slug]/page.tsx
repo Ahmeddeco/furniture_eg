@@ -20,11 +20,7 @@ export default async function EditClassPage({ params }: { params: Promise<{ slug
 			btnTitle={"back"}
 			href="/server/styles"
 		>
-			{!oneStyle?.data ? (
-				<EmptyCard href={"/server/styles"} linkTitle={"no style found"} />
-			) : (
-				<EditStyle style={oneStyle.data} />
-			)}
+			{!oneStyle ? <EmptyCard href={"/server/styles"} linkTitle={"no style found"} /> : <EditStyle style={oneStyle} />}
 		</ServerPageCard>
 	)
 }

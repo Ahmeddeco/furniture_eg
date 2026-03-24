@@ -19,7 +19,9 @@ export default function Footer() {
 							نحن في فرنش اسم موثوق في عالم الأثاث عالي الجودة منذ عام 1994، نقدم قطعاً مصنوعة بعناية لتضفي الراحة
 							والأناقة على منزلك.
 						</h6>
+						<Socials />
 					</div>
+
 					<div className="col-span-1 lg:col-span-2 flex justify-evenly">
 						{/* 2. قسم منتجاتنا */}
 						<div className="flex flex-col items-center gap-4">
@@ -64,7 +66,6 @@ export default function Footer() {
 						</Button>
 					</div>
 				</div>
-				<Socials />
 
 				<Separator className="bg-background/20 my-8" />
 

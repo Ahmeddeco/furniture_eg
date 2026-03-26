@@ -12,6 +12,7 @@ import { Currency } from "@/helpers/currency"
 import { CheckOutButton } from "@/components/shared/CustomButtons"
 import { priceInfo, totalPrice } from "@/helpers/price.logic"
 import { Item, ItemActions, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item"
+import { Badge } from "@/components/ui/badge"
 
 type Props = {
 	tax?: number
@@ -26,23 +27,24 @@ export default function Cart({ tax = 10 }: Props) {
 			<SheetTrigger>
 				<div className="relative">
 					<ShoppingCart />
-					<div className="rounded-full bg-primary size-5 absolute -bottom-2 -right-2 flex items-center justify-center">
-						<span className="text-xs font-medium flex items-center justify-center text-foreground">{items.length}</span>
+					<div className="rounded-full bg-primary size-6 absolute -bottom-2 -right-4 flex items-center justify-center">
+						<span className="text-xs font-medium flex items-center justify-center text-neutral-100">
+							{items.length}
+						</span>
 					</div>
 				</div>
 			</SheetTrigger>
 
-			<SheetContent showCloseButton>
-				<SheetHeader className="h-[8vh]">
+			<SheetContent showCloseButton className="w-[90%] overscroll-none">
+				<SheetHeader className="h-[5vh] ">
 					<SheetTitle className="flex items-center justify-center gap-2 ">
 						<ShoppingCart className="text-primary dark:text-secondary" /> سلة المشتريات
 					</SheetTitle>
 				</SheetHeader>
-				<Separator />
 
-				<ScrollArea dir="rtl" className="flex flex-col gap-4 p-4 w-full h-full max-h-[55vh] ">
+				<ScrollArea dir="rtl" className="flex flex-col gap-4 p-4 w-full h-full max-h-[50vh] ">
 					{items.map(({ id, image, price, quantity, title }) => (
-						<Item variant="muted" key={id} className="mb-4">
+						<Item variant="outline" key={id} className="mb-4">
 							<ItemMedia variant="image" className=" relative size-20">
 								<Image src={image} alt={title} fill className="rounded-md object-cover" />
 							</ItemMedia>
@@ -85,25 +87,23 @@ export default function Cart({ tax = 10 }: Props) {
 						</Item>
 					))}
 				</ScrollArea>
-				<SheetFooter className="h-[30vh] ">
+				<SheetFooter className="h-fit ">
 					<Card className="h-full">
 						<CardContent className="flex flex-col gap-4 h-full">
 							<div className="flex items-center justify-between">
-								<h6>المجموع</h6>
-								<p>{Currency(subTotal)}</p>
+								<h5>المجموع</h5>
+								<Badge variant={"outline"}>{Currency(subTotal)}</Badge>
 							</div>
 							<Separator />
 							<div className="flex items-center justify-between">
-								<h6>الضريبة</h6>
-								<p>{Currency(taxValue)}</p>
+								<h5>الضريبة</h5>
+								<Badge variant={"outline"}>{Currency(taxValue)}</Badge>
 							</div>
 							<Separator />
 							<div className="flex items-center justify-between">
-								<h6>الإجمالي</h6>
-								<p>{Currency(total)}</p>
+								<h5>الإجمالي</h5>
+								<Badge variant={"default"}>{Currency(total)}</Badge>
 							</div>
-
-							{/*  Add a checkout method with payment service like paymob or kashir*/}
 							<CheckOutButton />
 						</CardContent>
 					</Card>

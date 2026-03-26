@@ -33,8 +33,8 @@ export default async function ShopPage() {
 						)}
 
 						{/* ---------------------------- Title --------------------------- */}
-						<div className="absolute inset-0 w-full h-full aspect-video rounded-2xl z-20 bg-linear-to-l from-primary/90 to-primary/10 flex flex-col justify-center lg:px-8 px-0 gap-8 ">
-							<h2 className="">{title}</h2>
+						<div className="absolute inset-0 w-full h-full aspect-video rounded-2xl z-20 bg-linear-to-l from-primary/90 to-primary/10 flex flex-col justify-center items-start px-8  ">
+							<h2 className="text-neutral-100">{title}</h2>
 						</div>
 					</Link>
 				))}

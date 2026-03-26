@@ -5,10 +5,9 @@ type Props = {
 	searchParams: Promise<{ class: string }>
 }
 
-export default async function ClassPage({ searchParams }: Props) {
+export default async function ClassesPage({ searchParams }: Props) {
 	const classSlug = (await searchParams).class
 	const products = await getAllProductsWithSpecificClass(classSlug)
-	console.log(products)
 
 	return (
 		<div className="container mx-auto">

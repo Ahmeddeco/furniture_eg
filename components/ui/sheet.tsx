@@ -67,7 +67,7 @@ function SheetContent({
 			>
 				{children}
 				{showCloseButton && (
-					<Button asChild size={"icon-lg"} variant={"ghost"}>
+					<Button asChild size={"icon-xs"} variant={"outline"}>
 						<SheetPrimitive.Close className="absolute top-2 right-2">
 							<X />
 							<span className="sr-only">Close</span>

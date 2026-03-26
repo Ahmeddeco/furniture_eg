@@ -109,13 +109,15 @@ export const getFilteredProducts = async (filter?: ProductFilterType) => {
 
 	})
 }
+
 /* --------------------- getAllProductsWithSpecificClass -------------------- */
 export const getAllProductsWithSpecificClass = async (classSlug: string) => {
 	try {
 		return await prisma.product.findMany({
 			where: { status: "published", class: { slug: classSlug } },
 			select: { title: true, price: true, discount: true, id: true, mainImage: true, class: { select: { title: true } } },
-			orderBy: { createdAt: "desc" }
+			orderBy: { createdAt: "desc" },
+			take: 3
 		})
 	} catch (error) {
 		console.error(error)

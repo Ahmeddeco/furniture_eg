@@ -28,9 +28,9 @@ export default async function ProductPage({ params }: Props) {
 				{/* --------------------------------- Details -------------------------------- */}
 				<div className="flex-1 w-full flex flex-col gap-4">
 					{/* ----------------------------- title ---------------------------- */}
-					<h2 className="dark:text-secondary text-primary">{product?.title}</h2>
+					<h2 className="dark:text-secondary text-primary text-start">{product?.title}</h2>
 					{/* --------------------------- quantity --------------------------- */}
-					<h4>
+					<h4 className="text-start">
 						متاح منه لدينا : <Badge variant={"secondary"}>{product?.quantity}</Badge> قطعة
 					</h4>
 					<div className="flex flex-wrap gap-4">
@@ -51,13 +51,13 @@ export default async function ProductPage({ params }: Props) {
 						</Badge>
 					</div>
 					{/* -------------------------- description ------------------------- */}
-					<h6>{product?.miniDescription}</h6>
+					<h6 className="text-start">{product?.miniDescription}</h6>
 					<p>{product?.description}</p>
 					{/* ------------------------------ discount ----------------------------- */}
 					{product?.discount && product.discount > 0 ? <Badge variant={"default"}>خصم {product.discount}</Badge> : null}
 					{/* ----------------------------- price ---------------------------- */}
 					{product?.discount && product.discount > 0 ? (
-						<h2>
+						<h2 className="text-start">
 							السعر النهائي بعد الخصم
 							<br />
 							<Badge className="ml-4" variant={"secondary"}>
@@ -68,7 +68,7 @@ export default async function ProductPage({ params }: Props) {
 							</Badge>
 						</h2>
 					) : (
-						<h2>
+						<h2 className="text-start">
 							السعر النهائي
 							<br />
 							<Badge variant={"secondary"}> {priceAfterDiscount(product?.price ?? 0, product?.discount ?? 0)}</Badge>

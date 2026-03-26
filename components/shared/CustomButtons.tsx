@@ -43,7 +43,7 @@ export function ShopByQueryButton({
 }) {
 	return (
 		<Button asChild variant={variant || "secondary"} size="sm">
-			<Link href={`/shop?${query}`}>
+			<Link href={`/shop/query?${query}`}>
 				<ShoppingCart />
 				إشتري الآن
 			</Link>
@@ -105,7 +105,7 @@ export const SeeProductButton = ({ id }: { id: string }) => {
 	)
 }
 /* ----------------------------- CheckOutButton ----------------------------- */
-
+// TODO Add a checkout method with payment service like paymob or kashir
 export const CheckOutButton = () => {
 	const { pending } = useFormStatus()
 	return (

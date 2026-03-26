@@ -26,7 +26,7 @@ export default function Testimonial() {
 						</CardHeader>
 						<CardContent className="line-clamp-3">{sentence}</CardContent>
 						<CardFooter>
-							<Item variant="default" className="w-full p-0">
+							<Item variant="default" className="w-full p-0 ">
 								<ItemMedia>
 									<Avatar className="size-10">
 										<AvatarImage src={avatar} />
@@ -37,9 +37,9 @@ export default function Testimonial() {
 									<ItemTitle>{name}</ItemTitle>
 									<ItemDescription>{job}</ItemDescription>
 								</ItemContent>
-								<ItemActions>
+								{/* <ItemActions>
 									<ShopNowButton variant={index % 2 === 0 ? "secondary" : "default"} />
-								</ItemActions>
+								</ItemActions> */}
 							</Item>
 						</CardFooter>
 					</Card>

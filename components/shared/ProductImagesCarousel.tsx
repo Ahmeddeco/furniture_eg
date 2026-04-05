@@ -23,15 +23,15 @@ export default function ProductImagesCarousel({ images, mainImage }: Props) {
 			{/* -------------------------------- images ------------------------------- */}
 			<Carousel className=" w-full  min:h-44 h-fit" opts={{ direction: "rtl", align: "center" }}>
 				<CarouselContent className="w-full h-fit ">
-					{allImages.map((image, index) => (
+					{allImages.map((img, index) => (
 						<CarouselItem key={index} className="basis-1/3 lg:basis-1/6 ">
-							<div className="relative aspect-video w-full">
+							<div className={`relative aspect-video w-full `}>
 								<Image
-									src={image}
+									src={img}
 									alt={"product image"}
 									fill
-									className="object-cover rounded-lg cursor-pointer "
-									onClick={() => setImage(image)}
+									className={`object-cover rounded-lg cursor-pointer ${image === img && "border-2 border-secondary "}`}
+									onClick={() => setImage(img)}
 								/>
 							</div>
 						</CarouselItem>

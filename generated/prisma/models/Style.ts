@@ -158,7 +158,7 @@ export type StyleGroupByOutputType = {
   _max: StyleMaxAggregateOutputType | null
 }
 
-type GetStyleGroupByPayload<T extends StyleGroupByArgs> = Prisma.PrismaPromise<
+export type GetStyleGroupByPayload<T extends StyleGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<StyleGroupByOutputType, T['by']> &
       {

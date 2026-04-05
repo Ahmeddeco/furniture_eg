@@ -111,14 +111,18 @@ export const getFilteredProducts = async (filter?: ProductFilterType) => {
 }
 
 /* --------------------- getAllProductsWithSpecificClass -------------------- */
-export const getAllProductsWithSpecificClass = async (classSlug: string) => {
+export const getAllProductsWithSpecificClass = async (classSlug: string, size: number, page: number) => {
 	try {
-		return await prisma.product.findMany({
+		const totalProducts = (await prisma.product.findMany({ where: { class: { slug: classSlug } } })).length
+		const totalPages = Math.ceil(totalProducts / size)
+		const data = await prisma.product.findMany({
 			where: { status: "published", class: { slug: classSlug } },
+			take: size,
+			skip: (page * size) - size,
 			select: { title: true, price: true, discount: true, id: true, mainImage: true, class: { select: { title: true } } },
 			orderBy: { createdAt: "desc" },
-			take: 3
 		})
+		return { totalProducts, totalPages, data }
 	} catch (error) {
 		console.error(error)
 	}

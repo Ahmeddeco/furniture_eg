@@ -20,7 +20,7 @@ export default async function FindWhatYouNeed() {
 							<CarouselItem key={id} className="basis-1/2 md:basis-1/4 lg:basis-1/6 flex justify-center">
 								<Link
 									className="w-fit flex flex-col items-center justify-center gap-2 hover:scale-95 duration-500 ease-in-out "
-									href={`/shop/classes/?class=${slug}`}
+									href={`/shop/classes/${slug}`}
 									key={id}
 								>
 									<div className="flex flex-col gap-4 items-center justify-center">

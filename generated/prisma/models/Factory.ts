@@ -193,7 +193,7 @@ export type FactoryGroupByOutputType = {
   _max: FactoryMaxAggregateOutputType | null
 }
 
-type GetFactoryGroupByPayload<T extends FactoryGroupByArgs> = Prisma.PrismaPromise<
+export type GetFactoryGroupByPayload<T extends FactoryGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<FactoryGroupByOutputType, T['by']> &
       {

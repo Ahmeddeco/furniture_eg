@@ -111,7 +111,7 @@ export const getFilteredProducts = async (filter?: ProductFilterType) => {
 }
 
 /* --------------------- getAllProductsWithSpecificClass -------------------- */
-export const getAllProductsWithSpecificClass = async (classSlug: string, size: number, page: number) => {
+export const getAllProductsWithSpecificClass = async (classSlug: string, size: number = 10, page: number = 1) => {
 	try {
 		const totalProducts = (await prisma.product.findMany({ where: { class: { slug: classSlug } } })).length
 		const totalPages = Math.ceil(totalProducts / size)

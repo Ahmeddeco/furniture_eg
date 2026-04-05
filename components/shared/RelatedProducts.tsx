@@ -11,7 +11,7 @@ export default async function RelatedProducts({ classSlug }: Props) {
 	return (
 		<>
 			<div className="w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 items-center justify-center gap-8">
-				{products?.map((product) => (
+				{products?.data.map((product) => (
 					<ProductCard product={product} key={product.id} />
 				))}
 			</div>

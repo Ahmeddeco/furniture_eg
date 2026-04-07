@@ -25,7 +25,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang="ar" suppressHydrationWarning dir="rtl">
+		<html lang="ar" dir="rtl" suppressHydrationWarning>
 			<body className={`${Playpen.className} antialiased scroll-smooth`}>
 				<NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>

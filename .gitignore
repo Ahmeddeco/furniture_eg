@@ -45,3 +45,6 @@ next-env.d.ts
 /app/generated/prisma
 TODO.md
 /.idea
+/generated
+bot/public/*.duckdb
+bot/public/*.duckdb_wal

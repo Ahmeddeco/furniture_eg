@@ -33,7 +33,7 @@ export default function OffersBanner() {
 									خصم يصل الى 60% <br />
 									للأثاث والإكسسوارات
 								</h5>
-								<ShopByQueryButton query="discount=30" />
+								<ShopByQueryButton query={`discount=30&class=${"modern"}`} />
 							</div>
 						</div>
 						{/* ----------------------------- LeftBottom ---------------------------- */}

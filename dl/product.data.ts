@@ -127,3 +127,22 @@ export const getAllProductsWithSpecificClass = async (classSlug: string, size: n
 		console.error(error)
 	}
 }
+
+/* ------------------------- getAllDiscountProducts ------------------------- */
+export const getAllDiscountProducts = async (discount: number, size: number = 10, page: number = 1) => {
+	try {
+		const totalProducts = (await prisma.product.findMany({ where: { discount: { lte: discount } } })).length
+		const totalPages = Math.ceil(totalProducts / size)
+		const data = await prisma.product.findMany({
+			where: { discount: { lte: discount } },
+			take: size,
+			skip: (page * size) - size,
+			select: { title: true, price: true, discount: true, id: true, mainImage: true, class: { select: { title: true } } },
+			orderBy: { discount: "desc" },
+		})
+		return { totalProducts, totalPages, data }
+	} catch (error) {
+		console.error(error)
+	}
+}
+

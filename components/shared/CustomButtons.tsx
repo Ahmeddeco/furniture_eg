@@ -2,11 +2,12 @@
 
 import { useFormStatus } from "react-dom"
 import { Button, buttonVariants } from "../ui/button"
-import { Eye, Loader2, ShoppingCart } from "lucide-react"
+import { Eye, Loader2, LogIn, ShoppingCart } from "lucide-react"
 import { useCartStore } from "@/store/cartStore"
 import { VariantProps } from "class-variance-authority"
 import Link from "next/link"
 import { ProductCartType } from "@/types/product.type"
+import { signIn, useSession } from "@/lib/auth-client"
 
 type SubmitButtonType = {
 	title: string
@@ -75,10 +76,21 @@ export function SubmitButton({ title, type = "submit", size = "full", variant }:
 /* -------------------------------- AddToCart ------------------------------- */
 
 export function AddToCart({ product }: { product: ProductCartType }) {
+	const session = useSession()
+	const handleSignIn = async () => {
+		await signIn.social({
+			provider: "google",
+		})
+	}
+
 	const { pending } = useFormStatus()
 	const addToCart = useCartStore((state) => state.addToCart)
 
-	return (
+	return !session.data?.user ? (
+		<Button type="button" size={"full"} onClick={handleSignIn}>
+			<LogIn /> سجل دخولك أولا للإضافة الى السلة
+		</Button>
+	) : (
 		<>
 			{pending ? (
 				<Button size={"full"} disabled>

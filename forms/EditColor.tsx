@@ -46,11 +46,10 @@ export default function EditColor({ color }: Props) {
 			<Field>
 				<FieldLabel htmlFor={fields.colorCode.name}>{fields.colorCode.name}</FieldLabel>
 				<Input
-					type="text"
+					type="color"
 					key={fields.colorCode.key}
 					name={fields.colorCode.name}
 					defaultValue={color.colorCode ?? ""}
-					placeholder="#dc2626"
 				/>
 				<FieldError>{fields.colorCode.errors}</FieldError>
 			</Field>

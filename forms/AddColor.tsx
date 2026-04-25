@@ -39,11 +39,10 @@ export default function AddColor() {
 			<Field>
 				<FieldLabel htmlFor={fields.colorCode.name}>{fields.colorCode.name}</FieldLabel>
 				<Input
-					type="text"
+					type="color"
 					key={fields.colorCode.key}
 					name={fields.colorCode.name}
 					defaultValue={fields.colorCode.initialValue}
-					placeholder="#dc2626"
 				/>
 				<FieldError>{fields.colorCode.errors}</FieldError>
 			</Field>

@@ -1,21 +1,36 @@
 "use client"
 
-import { frontNav } from "@/constants/frontNav"
-import React from "react"
-import { Button } from "../ui/button"
+import { frontNavLinks } from "@/constants/nav"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { Button } from "../ui/button"
+import React from "react"
 
 export default function FrontNavigation() {
 	const pathName = usePathname()
 
 	return (
 		<>
-			{frontNav.map(({ href, title }) => (
-				<Button asChild key={href} variant={pathName === href ? "default" : "ghost"} size={"sm"}>
-					<Link href={href}>{title}</Link>
-				</Button>
-			))}
+			{frontNavLinks.map((link) => {
+				const isActive =
+					pathName === link.href ||
+					(link.href !== "/" && pathName.startsWith(`${link.href}/`)) ||
+					(link.href !== "/" && pathName.startsWith(link.href))
+				return (
+					<Button
+						asChild
+						key={link.title}
+						variant={isActive ? "default" : "ghost"}
+						size={"sm"}
+						className="rounded-full"
+					>
+						<Link href={link.href}>
+							{isActive ? React.createElement(link.icon) : null}
+							{link.title}
+						</Link>
+					</Button>
+				)
+			})}
 		</>
 	)
 }

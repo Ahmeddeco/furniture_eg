@@ -2,10 +2,10 @@
 
 import * as React from "react"
 import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react"
-import { ArrowLeft, ArrowRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -56,8 +56,8 @@ function Carousel({
 		},
 		plugins,
 	)
-	const [canScrollPrev, setCanScrollPrev] = React.useState(() => api?.canScrollPrev() ?? false)
-	const [canScrollNext, setCanScrollNext] = React.useState(() => api?.canScrollNext() ?? false)
+	const [canScrollPrev, setCanScrollPrev] = React.useState(false)
+	const [canScrollNext, setCanScrollNext] = React.useState(false)
 
 	const onSelect = React.useCallback((api: CarouselApi) => {
 		if (!api) return
@@ -93,6 +93,7 @@ function Carousel({
 
 	React.useEffect(() => {
 		if (!api) return
+		onSelect(api)
 		api.on("reInit", onSelect)
 		api.on("select", onSelect)
 
@@ -155,29 +156,32 @@ function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
 function CarouselPrevious({
 	className,
 	variant = "outline",
-	size = "icon",
+	size = "icon-sm",
 	...props
 }: React.ComponentProps<typeof Button>) {
 	const { orientation, scrollPrev, canScrollPrev } = useCarousel()
+	const [mounted, setMounted] = React.useState(false)
+
+	// ننتظر حتى يكتمل تحميل المكون على العميل (Client) لمنع خطأ الـ Hydration
+	React.useEffect(() => {
+		setMounted(true)
+	}, [])
 
 	return (
 		<Button
-			suppressHydrationWarning
 			data-slot="carousel-previous"
 			variant={variant}
 			size={size}
 			className={cn(
-				"absolute size-8 rounded-full",
-				orientation === "horizontal"
-					? "-bottom-8 left-8 translate-y-1/2"
-					: "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+				"absolute touch-manipulation rounded-full",
+				orientation === "horizontal" ? "inset-y-0 -left-12 my-auto" : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
 				className,
 			)}
-			disabled={!canScrollPrev}
+			disabled={mounted ? !canScrollPrev : false}
 			onClick={scrollPrev}
 			{...props}
 		>
-			<ArrowLeft />
+			<ChevronLeftIcon />
 			<span className="sr-only">Previous slide</span>
 		</Button>
 	)
@@ -186,32 +190,35 @@ function CarouselPrevious({
 function CarouselNext({
 	className,
 	variant = "outline",
-	size = "icon",
+	size = "icon-sm",
 	...props
 }: React.ComponentProps<typeof Button>) {
 	const { orientation, scrollNext, canScrollNext } = useCarousel()
+	const [mounted, setMounted] = React.useState(false)
+
+	// ننتظر حتى يكتمل تحميل المكون على العميل (Client) لمنع خطأ الـ Hydration
+	React.useEffect(() => {
+		setMounted(true)
+	}, [])
 
 	return (
 		<Button
-			suppressHydrationWarning
 			data-slot="carousel-next"
 			variant={variant}
 			size={size}
 			className={cn(
-				"absolute size-8 rounded-full",
-				orientation === "horizontal"
-					? "-bottom-8 right-8 translate-y-1/2"
-					: "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+				"absolute touch-manipulation rounded-full",
+				orientation === "horizontal" ? "inset-y-0 -right-12 my-auto" : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
 				className,
 			)}
-			disabled={!canScrollNext}
+			disabled={mounted ? !canScrollNext : false}
 			onClick={scrollNext}
 			{...props}
 		>
-			<ArrowRight />
+			<ChevronRightIcon />
 			<span className="sr-only">Next slide</span>
 		</Button>
 	)
 }
 
-export { type CarouselApi, Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext }
+export { type CarouselApi, Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, useCarousel }

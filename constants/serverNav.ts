@@ -1,38 +1,43 @@
-import { ChartNoAxesCombined, Factory, Palette, Shapes, Sofa, SwatchBook, Users } from "lucide-react"
+import { ChartNoAxesCombined, Factory, Palette, Server, Shapes, Sofa, SwatchBook, Users } from "lucide-react"
 
 export const serverNav = [
   {
-    title: "users",
+    title: "سيرفر",
+    href: "/server",
+    icon: Server
+  },
+  {
+    title: "الأشخاص",
     href: "/server/users",
     icon: Users
   },
   {
-    title: "factories",
+    title: "المصانع",
     href: "/server/factories",
     icon: Factory
   },
   {
-    title: "colors",
+    title: "الألوان",
     href: "/server/colors",
     icon: SwatchBook
   },
   {
-    title: "classes",
+    title: "الفئات",
     href: "/server/classes",
     icon: Shapes
   },
   {
-    title: "styles",
+    title: "الإستايلات",
     href: "/server/styles",
     icon: Palette
   },
   {
-    title: "products",
+    title: "المنتجات",
     href: "/server/products",
     icon: Sofa
   },
   {
-    title: "charts",
+    title: "الإحصائيات",
     href: "/server/charts",
     icon: ChartNoAxesCombined
   },

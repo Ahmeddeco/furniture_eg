@@ -41,7 +41,7 @@ export default function Hero() {
 			<div className="h-full w-full z-20 flex items-start lg:items-center justify-center">
 				<Card className=" w-fit! m-8 flex flex-col gap-4 justify-center lg:items-start items-center bg-card/50 shadow-none backdrop-blur-md ">
 					<CardHeader className="w-full">
-						<h4 className="dark:text-secondary">إستكشف الراحة والأناقة في</h4>
+						<h4 className="dark:text-primary">إستكشف الراحة والأناقة في</h4>
 						<h1 className="mt-4">الأثاث الراقي</h1>
 					</CardHeader>
 					<CardContent>

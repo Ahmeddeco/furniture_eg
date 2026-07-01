@@ -19,7 +19,7 @@ export function ServerSidebar() {
 					<SidebarGroupLabel>
 						<Logo />
 					</SidebarGroupLabel>
-					<SidebarGroupContent className="mt-4">
+					<SidebarGroupContent className="mt-4 ">
 						<ServerNavigation />
 					</SidebarGroupContent>
 				</SidebarGroup>

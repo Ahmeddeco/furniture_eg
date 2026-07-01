@@ -11,10 +11,10 @@ export default function ServerNavigation() {
 	const pathName = usePathname()
 
 	return (
-		<SidebarMenu>
+		<SidebarMenu className="h-full space-y-2">
 			{serverNav.map(({ href, title, icon }) => (
 				<SidebarMenu key={href}>
-					<Button asChild variant={pathName === href ? "default" : "ghost"} size={"full"} className="justify-start">
+					<Button asChild variant={pathName === href ? "default" : "ghost"} size={"full"} className=" justify-start">
 						<Link href={href}>
 							{React.createElement(icon)}
 							{title}

@@ -46,5 +46,6 @@ next-env.d.ts
 TODO.md
 /.idea
 /generated
+bot/public/*
 bot/public/*.duckdb
 bot/public/*.duckdb_wal

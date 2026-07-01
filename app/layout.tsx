@@ -9,6 +9,10 @@ import Footer from "@/components/layout/Footer"
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin"
 import { extractRouterConfig } from "uploadthing/server"
 import { ourFileRouter } from "@/app/api/uploadthing/core"
+import { Inter } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 const Playpen = localFont({
 	src: "../public/Playpen.ttf",
@@ -25,7 +29,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang="ar" dir="rtl" suppressHydrationWarning>
+		<html lang="ar" dir="rtl" suppressHydrationWarning className={cn("font-sans", inter.variable)}>
 			<body className={`${Playpen.className} antialiased scroll-smooth`}>
 				<NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>

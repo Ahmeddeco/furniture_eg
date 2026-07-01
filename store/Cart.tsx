@@ -28,9 +28,9 @@ export default function Cart({ tax = 10 }: Props) {
 				<div className="relative">
 					<ShoppingCart />
 					<div className="rounded-full bg-primary size-6 absolute -bottom-2 -right-4 flex items-center justify-center">
-						<span className="text-xs font-medium flex items-center justify-center text-neutral-100">
+						<p className="text-xs font-medium flex items-center justify-center text-primary-foreground">
 							{items.length}
-						</span>
+						</p>
 					</div>
 				</div>
 			</SheetTrigger>
@@ -38,7 +38,7 @@ export default function Cart({ tax = 10 }: Props) {
 			<SheetContent showCloseButton className="w-[90%] overscroll-none">
 				<SheetHeader className="h-[5vh] ">
 					<SheetTitle className="flex items-center justify-center gap-2 ">
-						<ShoppingCart className="text-primary dark:text-secondary" /> سلة المشتريات
+						<ShoppingCart className="text-primary dark:text-primary" /> سلة المشتريات
 					</SheetTitle>
 				</SheetHeader>
 

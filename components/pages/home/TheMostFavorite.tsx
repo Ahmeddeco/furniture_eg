@@ -23,7 +23,7 @@ export default async function TheMostFavorite() {
 						)}
 					</div>
 					<div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start justify-center lg:justify-start gap-4 ">
-						<h6 className="dark:text-primary">{product?.title}</h6>
+						<h4 className="text-secondary">{product?.title}</h4>
 						<h2 className="max-w-lg line-clamp-4">{product?.miniDescription}</h2>
 						<h6 className="max-w-lg line-clamp-6">{product?.description}</h6>
 						<div className="flex lg:flex-row flex-col items-center gap-4">

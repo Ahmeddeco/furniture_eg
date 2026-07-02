@@ -194,7 +194,7 @@ model Product {
 
   color     Color[]
   favorites Favorite[]
-  factory   Factory    @relation(fields: [factoryId], references: [id], onDelete: Cascade)
+  factory   Factory    @relation(fields: [factoryId], references: [id])
   factoryId String
   style     Style?     @relation(fields: [styleId], references: [id])
   styleId   String?

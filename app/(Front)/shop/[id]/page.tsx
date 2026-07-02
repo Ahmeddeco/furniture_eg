@@ -28,7 +28,7 @@ export default async function ProductPage({ params }: Props) {
 				{/* --------------------------------- Details -------------------------------- */}
 				<div className="flex-1 w-full flex flex-col gap-4">
 					{/* ----------------------------- title ---------------------------- */}
-					<h2 className="dark:text-primary text-primary text-start">{product?.title}</h2>
+					<h2 className="text-secondary text-primary text-start">{product?.title}</h2>
 					{/* --------------------------- quantity --------------------------- */}
 					<h4 className="text-start">
 						متاح منه لدينا : <Badge variant={"secondary"}>{product?.quantity}</Badge> قطعة
@@ -89,7 +89,7 @@ export default async function ProductPage({ params }: Props) {
 
 			{/* -------------------------- RelatedProducts ------------------------- */}
 			<section className="flex flex-col items-center justify-center gap-8 ">
-				<h2 className="text-primary dark:text-primary">منتجات ذات صلة</h2>
+				<h2 className="text-primary text-secondary">منتجات ذات صلة</h2>
 				<RelatedProducts classSlug={product?.class?.slug!} />
 			</section>
 		</div>

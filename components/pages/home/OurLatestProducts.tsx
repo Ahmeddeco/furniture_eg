@@ -13,7 +13,7 @@ export default async function OurLatestProducts() {
 		<section className=" container mx-auto flex lg:flex-row flex-col items-center  justify-center lg:justify-start gap-8">
 			{/* ------------------------------- Title ------------------------------ */}
 			<div className="flex flex-col lg:items-start items-center justify-center lg:justify-start gap-4 w-full lg:w-1/3  ">
-				<h6 className="dark:text-primary">الأحدث وصولا</h6>
+				<h4 className="text-secondary">الأحدث وصولا</h4>
 				<h2>شوف أحدث منتجاتنا</h2>
 				<h6 className="max-w-md">
 					شوف أحدث منتجاتنا في متجرنا الخاص, ماتفوتش الفرصة في انك تشوف وتتابع احدث واخر صيحة في الديكور والاثاث.

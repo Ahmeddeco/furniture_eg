@@ -38,7 +38,7 @@ export default function Cart({ tax = 10 }: Props) {
 			<SheetContent showCloseButton className="w-[90%] overscroll-none">
 				<SheetHeader className="h-[5vh] ">
 					<SheetTitle className="flex items-center justify-center gap-2 ">
-						<ShoppingCart className="text-primary dark:text-primary" /> سلة المشتريات
+						<ShoppingCart className="text-primary text-secondary" /> سلة المشتريات
 					</SheetTitle>
 				</SheetHeader>
 

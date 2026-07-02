@@ -27,9 +27,13 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "loremflickr.com",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
     ]
   },
-  devIndicators: false
+  devIndicators: false,
 }
 
 export default nextConfig

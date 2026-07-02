@@ -10,7 +10,7 @@ export default async function ShopPage() {
 			{/* -------------------------------- Title ------------------------------- */}
 			<section className=" mt-12 flex flex-col items-center justify-center gap-8">
 				<div className="flex flex-col items-center justify-center gap-4">
-					<h1 className="dark:text-primary text-primary">أقسام منتجاتنا</h1>
+					<h1 className="text-secondary text-primary">أقسام منتجاتنا</h1>
 					<h6 className="max-w-lg text-center text-pretty">
 						أكثر من مئات المنتجات بتشكيلة واسعة بانتظارك. غرف نوم رئيسية، غرف معيشة، مطابخ، مراتب، رفوف أحذية. جميع حلول
 						أثاث منزلك من مكان واحد.

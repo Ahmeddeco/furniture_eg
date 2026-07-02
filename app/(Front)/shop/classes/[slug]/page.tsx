@@ -21,8 +21,6 @@ export default async function ClassesPage({ params, searchParams }: Props) {
 	const classSlug = (await params).slug
 	const products = await getAllProductsWithSpecificClass(classSlug, pageSize, pageNumber)
 
-	console.log("products from ClassesPage", products?.totalProducts)
-
 	return (
 		<div className="container mx-auto">
 			<section className="mt-12 flex flex-col items-center justify-center gap-8">

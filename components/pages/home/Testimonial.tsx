@@ -9,7 +9,7 @@ export default function Testimonial() {
 		<section className="container mx-auto flex flex-col items-center justify-center gap-8">
 			{/* ------------------------------- Title ------------------------------ */}
 			<div className="flex flex-col items-center justify-center gap-2">
-				<h4 className="dark:text-primary">آراء العملاء</h4>
+				<h4 className="text-secondary">آراء العملاء</h4>
 				<h2>آراء عائلتنا من العملاء</h2>
 			</div>
 

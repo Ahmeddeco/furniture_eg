@@ -5,7 +5,7 @@ export default function OffersBanner() {
 		<section className="container  mx-auto w-full flex flex-col items-center justify-center gap-12">
 			{/* ---------------------------------- title --------------------------------- */}
 			<div className="flex flex-col items-center justify-center gap-2">
-				<h4 className="dark:text-primary">العروض الأكثر تفضيلاً</h4>
+				<h4 className="text-secondary">العروض الأكثر تفضيلاً</h4>
 				<h2>العروض الأكثر رواجا لدينا</h2>
 			</div>
 

@@ -26,10 +26,8 @@ export default async function TheMostFavorite() {
 						<h4 className="text-secondary">{product?.title}</h4>
 						<h2 className="max-w-lg line-clamp-4">{product?.miniDescription}</h2>
 						<h6 className="max-w-lg line-clamp-6">{product?.description}</h6>
-						<div className="flex lg:flex-row flex-col items-center gap-4">
-							<AddToCart product={product} />
-							<SeeProductButton id={product.id} />
-						</div>
+						<AddToCart product={product} />
+						<SeeProductButton id={product.id} />
 					</div>
 				</div>
 			)}

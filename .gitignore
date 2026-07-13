@@ -49,3 +49,4 @@ TODO.md
 bot/public/*
 bot/public/*.duckdb
 bot/public/*.duckdb_wal
+mastra.db-wal

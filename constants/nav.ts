@@ -1,6 +1,6 @@
 import { Home, MapPin, Newspaper, Package2, Server, Smartphone, Users } from "lucide-react"
-import { BsRobot } from "react-icons/bs"
 import { FaFacebookF, FaInstagram, FaXTwitter } from "react-icons/fa6"
+import { RiRobot3Line } from "react-icons/ri"
 
 
 export const frontNavLinks = [
@@ -27,7 +27,7 @@ export const frontNavLinks = [
   {
     title: "bot",
     href: "/bot",
-    icon: BsRobot
+    icon: RiRobot3Line
   },
   {
     title: "server",

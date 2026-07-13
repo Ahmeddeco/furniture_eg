@@ -4,9 +4,9 @@ import Image from "next/image"
 import { priceAfterDiscount } from "@/helpers/currency"
 import { AddToCart, SeeProductButton } from "./CustomButtons"
 import { ProductCartType } from "@/types/product.type"
-import FavoriteButton from "../favorite/FavoriteButton"
-import { isFavorite } from "@/components/favorite/isFavorite"
 import { getSession } from "@/auth/getSession"
+import { isFavorite } from "../favorite/isFavorite"
+import FavoriteButton from "../favorite/FavoriteButton"
 
 type Props = {
 	product: ProductCartType

@@ -214,7 +214,7 @@
 		@apply text-sm lg:text-base font-light text-pretty;
 	}
 	p {
-		@apply text-xs lg:text-sm font-extralight text-muted text-balance;
+		@apply text-sm font-extralight  text-balance;
 	}
 	section {
 		@apply py-8 lg:py-16;

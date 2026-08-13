@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
-import ProductImagesCarousel from "@/components/shared/ProductImagesCarousel"
+import ImageSlider from "@/components/shared/ImageSlider"
 import RelatedProducts from "@/components/shared/RelatedProducts"
 import { Badge } from "@/components/ui/badge"
 import { getOneProduct } from "@/dl/product.data"
@@ -22,7 +22,7 @@ export default async function ProductPage({ params }: Props) {
 			<section className=" mt-12 flex flex-col lg:flex-row  justify-center gap-8">
 				{/* ------------------------------ Image ----------------------------- */}
 				<div className="flex-1 lg:flex-2 w-full  ">
-					<ProductImagesCarousel mainImage={product?.mainImage ?? ""} images={product?.images ?? []} />
+					<ImageSlider mainImage={product?.mainImage ?? ""} images={product?.images ?? []} alt={"product"} />
 				</div>
 
 				{/* --------------------------------- Details -------------------------------- */}

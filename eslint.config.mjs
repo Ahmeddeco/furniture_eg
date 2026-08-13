@@ -9,12 +9,14 @@ const eslintConfig = defineConfig([
 	globalIgnores([
 		// Default ignores of eslint-config-next:
 		".next/**",
+		".mastra/**",
+		".agents/**",
 		"out/**",
 		"build/**",
-		"components/ui/**",
-		"hooks/**",
-		"lib/**",
 		"next-env.d.ts",
+		"src/components/ai-elements/**",
+		"src/components/ui/**",
+		"src/hooks",
 	]),
 ])
 

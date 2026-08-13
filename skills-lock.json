@@ -1,6 +1,18 @@
 {
   "version": 1,
   "skills": {
+    "interior-design-expert": {
+      "source": "curiositech/some_claude_skills",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/interior-design-expert/SKILL.md",
+      "computedHash": "2fc8dbc00abff905a06d9dc8032e10ab44158e9dd2c256ae4c5962a8a1b56249"
+    },
+    "interior-design-visualization": {
+      "source": "eachlabs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/interior-design-visualization/SKILL.md",
+      "computedHash": "fafb06c8c9def18b42ce45434dd79a7f3e410848d183ec7996089fea37039319"
+    },
     "mastra": {
       "source": "mastra-ai/skills",
       "sourceType": "github",
